@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://da51k3b2ha8i7"]
+
+[ext_resource type="Script" uid="uid://c0o2lvc3mxlqv" path="res://cards/card.gd" id="1_ivai2"]
+[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="2_nwofj"]
+
+[sub_resource type="Shortcut" id="Shortcut_4k7q8"]
+resource_local_to_scene = true
+
+[node name="Card" type="Button" unique_id=1829360695]
+custom_minimum_size = Vector2(128, 0)
+anchors_preset = -1
+anchor_right = 0.07300001
+anchor_bottom = 0.119
+offset_right = -12.160019
+offset_bottom = -0.5200043
+shortcut = SubResource("Shortcut_4k7q8")
+text = "MOVE_DESP"
+script = ExtResource("1_ivai2")
+data = ExtResource("2_nwofj")

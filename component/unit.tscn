@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://cdt5dab7nnvtx"]
+
+[ext_resource type="Texture2D" uid="uid://15hh3obduirc" path="res://images/enemy.svg" id="1_btf8p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k4y1u"]
+size = Vector2(128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ctwoc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_btf8p")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="Unit" type="Area2D" unique_id=1954289715]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1157809008]
+shape = SubResource("RectangleShape2D_k4y1u")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2088623983]
+sprite_frames = SubResource("SpriteFrames_ctwoc")

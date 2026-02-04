@@ -1,0 +1,94 @@
+[gd_scene format=3 uid="uid://bei03pof8x3e7"]
+
+[ext_resource type="Texture2D" uid="uid://ba6hskglp56eu" path="res://images/hamman.svg" id="1_ju346"]
+[ext_resource type="Script" uid="uid://db67hdxqdyqwk" path="res://component/player.gd" id="2_v7rm1"]
+[ext_resource type="Texture2D" uid="uid://0bqrb5i8dlcu" path="res://images/ham.svg" id="3_v7rm1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_7dm0k"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ju346")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="Animation" id="Animation_v7rm1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_r0m46"]
+resource_name = "swing"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [0.0, -0.3403392, 2.33176]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Node2D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.3),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ok5lv"]
+_data = {
+&"RESET": SubResource("Animation_v7rm1"),
+&"swing": SubResource("Animation_r0m46")
+}
+
+[node name="Player" type="AnimatedSprite2D" unique_id=117303541]
+z_index = 2
+sprite_frames = SubResource("SpriteFrames_7dm0k")
+frame_progress = 0.08187145
+script = ExtResource("2_v7rm1")
+
+[node name="Node2D" type="Node2D" parent="." unique_id=655318819]
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D" unique_id=791531402]
+position = Vector2(0, -42)
+texture = ExtResource("3_v7rm1")
+offset = Vector2(-4, -59)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=720613022]
+active = false
+libraries/ = SubResource("AnimationLibrary_ok5lv")
