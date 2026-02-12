@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://cdt5dab7nnvtx"]
 
 [ext_resource type="Texture2D" uid="uid://15hh3obduirc" path="res://images/enemy.svg" id="1_btf8p"]
+[ext_resource type="Script" uid="uid://f3pa7dsnb2fq" path="res://component/unit.gd" id="1_oq0x7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4y1u"]
 size = Vector2(128, 128)
@@ -17,9 +18,38 @@ animations = [{
 }]
 
 [node name="Unit" type="Area2D" unique_id=1954289715]
+script = ExtResource("1_oq0x7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1157809008]
 shape = SubResource("RectangleShape2D_k4y1u")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2088623983]
 sprite_frames = SubResource("SpriteFrames_ctwoc")
+
+[node name="Control" type="Control" parent="." unique_id=1359668502]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+
+[node name="Panel" type="Panel" parent="Control" unique_id=1006199554]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 22.0
+offset_bottom = 22.0
+theme_type_variation = &"dot_panel"
+
+[node name="Label" type="Label" parent="Control/Panel" unique_id=1672382887]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 14
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

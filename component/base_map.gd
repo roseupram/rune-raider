@@ -1,5 +1,5 @@
 extends TileMapLayer
-class_name MyTileMap
+class_name BaseTileMap
 
 func isvalid(pos):
 	if pos is Vector2:

@@ -22,9 +22,13 @@ script = ExtResource("1_pqbjq")
 metadata/_edit_lock_ = true
 
 [node name="OptionButton" type="OptionButton" parent="." unique_id=1823028117]
-layout_mode = 0
-offset_right = 101.0
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -101.0
 offset_bottom = 28.0
+grow_horizontal = 0
 selected = 0
 item_count = 2
 popup/item_0/text = "en"
@@ -40,6 +44,7 @@ anchor_bottom = 1.0
 offset_top = 0.3199463
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 1
 
 [node name="Card" parent="Cards" unique_id=1829360695 instance=ExtResource("2_pclro")]
 layout_mode = 1

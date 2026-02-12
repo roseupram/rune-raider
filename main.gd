@@ -7,6 +7,8 @@ var Camera_move_speed=100
 var select_card:CardData
 
 var target_y = 0
+#var effect_lib = load("res://cards/effect_library.gd").new()	
+var effect_lib = EffectLibrary.new()
 
 func _ready() -> void:
 	GameContext.Player=$Player
@@ -44,13 +46,14 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_released("click"):
 		var pos = get_viewport().get_mouse_position()
 		pos=$Camera.to_global(pos)
-		if $RangeLayer.isvalid(pos):
-			if select_card :
-				match select_card.effect:
-					"move":
-						$Player.global_position = $Map.snap_to_global(pos)
-					"attack":
-						$Player.attack()
+		if $RangeLayer.isvalid(pos) and select_card:
+			var effect_fn:Callable = effect_lib[select_card.effect]
+			GameContext.mouse_pos = $Map.snap_to_global(pos)
+			if effect_fn:
+				await effect_fn.call()
+			else:
+				push_error("no effect [%s]" % select_card.effect)
+			GameContext.card_played.emit(select_card)
 			$RangeLayer.clear()
 			#show_circle_range(1)
 	elif  event is InputEventMouseButton:

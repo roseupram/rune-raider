@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bqiqfeau8st8d" path="res://main.gd" id="1_h2yge"]
 [ext_resource type="Texture2D" uid="uid://dc8f8ifeox8tu" path="res://images/ground.png" id="2_0xm2m"]
 [ext_resource type="PackedScene" uid="uid://c3b0cc4vo8p63" path="res://UI/gameplay_ui.tscn" id="2_1bvp3"]
-[ext_resource type="Script" uid="uid://2q27tmqolrsa" path="res://component/map.gd" id="3_4c57u"]
+[ext_resource type="Script" uid="uid://2q27tmqolrsa" path="res://component/base_map.gd" id="3_4c57u"]
 [ext_resource type="PackedScene" uid="uid://brrb78dma5tl2" path="res://component/range_tile.tscn" id="3_7mycd"]
 [ext_resource type="Texture2D" uid="uid://ck314n5ii52e2" path="res://component/red.tres" id="4_272bh"]
 [ext_resource type="Script" uid="uid://bfvu5gujiv6cj" path="res://component/camera.gd" id="5_lquwl"]
@@ -22,13 +22,21 @@ height = 1080
 fill = 1
 fill_from = Vector2(0.5140187, 0.5150571)
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_4c57u"]
+vertices = PackedVector2Array(64, 64, -64, 64, -64, -64, 64, -64)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-64, -64, 64, -64, 64, 64, -64, 64)])
+agent_radius = 0.0
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h2yge"]
 texture = ExtResource("2_0xm2m")
 texture_region_size = Vector2i(128, 128)
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_4c57u")
 
 [sub_resource type="TileSet" id="TileSet_ig7tw"]
 tile_size = Vector2i(128, 128)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_h2yge")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5vw27"]

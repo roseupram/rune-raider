@@ -57,6 +57,31 @@ border_width_right = 2
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eovu6"]
+content_margin_left = 3.0
+content_margin_right = 3.0
+bg_color = Color(0.94, 0.5506834, 0.27260002, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epsk"]
+bg_color = Color(0.8834109, 0.48114705, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
 [resource]
 Button/colors/font_color = Color(0.83, 0.83, 0.83, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
@@ -75,3 +100,7 @@ RedButton/base_type = &"Button"
 RedButton/styles/hover = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/normal = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_vj6dk")
+dot_label/base_type = &"Label"
+dot_label/styles/normal = SubResource("StyleBoxFlat_eovu6")
+dot_panel/base_type = &"Panel"
+dot_panel/styles/panel = SubResource("StyleBoxFlat_6epsk")

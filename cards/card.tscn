@@ -7,11 +7,10 @@
 resource_local_to_scene = true
 
 [node name="Card" type="Button" unique_id=1829360695]
-custom_minimum_size = Vector2(128, 0)
 anchors_preset = -1
-anchor_right = 0.07300001
+anchor_right = 0.05
 anchor_bottom = 0.119
-offset_right = -12.160019
+offset_right = 95.0
 offset_bottom = -0.5200043
 shortcut = SubResource("Shortcut_4k7q8")
 text = "MOVE_DESP"

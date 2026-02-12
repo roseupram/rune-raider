@@ -14,7 +14,7 @@ func _ready() -> void:
 func _update_data():
 	if not is_node_ready(): await  ready
 	var description = data.ID+"_DESP"
-	text=tr(description).format({value=data.value})
+	text=tr(description).format(data)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass

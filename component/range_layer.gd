@@ -1,4 +1,4 @@
-extends MyTileMap
+extends BaseTileMap
 
 func enable(v,y=0):
 	if v is Vector2i:

@@ -10,6 +10,12 @@ var cards
 var enegy
 var enegy_max
 
+func move(pos):
+	var tw = get_tree().create_tween()
+	tw.set_ease(Tween.EASE_OUT_IN)
+	tw.tween_property(self,"position",pos,.1)
+	await tw.finished
+	
 func attack():
 	var tween=get_tree().create_tween()
 	rotation = deg_to_rad(-120)
