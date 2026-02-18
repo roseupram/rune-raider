@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://15hh3obduirc" path="res://images/enemy.svg" id="1_btf8p"]
 [ext_resource type="Script" uid="uid://f3pa7dsnb2fq" path="res://component/unit.gd" id="1_oq0x7"]
+[ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="3_d22of"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_k4y1u"]
 size = Vector2(128, 128)
@@ -34,22 +35,7 @@ offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
 
-[node name="Panel" type="Panel" parent="Control" unique_id=1006199554]
+[node name="dot_panel" parent="Control" unique_id=1656285534 instance=ExtResource("3_d22of")]
 layout_mode = 0
-offset_left = 2.0
-offset_top = 2.0
-offset_right = 22.0
-offset_bottom = 22.0
-theme_type_variation = &"dot_panel"
-
-[node name="Label" type="Label" parent="Control/Panel" unique_id=1672382887]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_font_sizes/font_size = 14
-text = "2"
-horizontal_alignment = 1
-vertical_alignment = 1
+offset_right = 20.0
+number = 4
