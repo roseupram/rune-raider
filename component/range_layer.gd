@@ -1,10 +1,12 @@
 extends BaseTileMap
+enum Type {Blue,Red}
 
 func enable(v,y=0):
 	if v is Vector2i:
-		set_cell(v,1,Vector2i(0,0))
+		set_cell(v,Type.Red,Vector2i(0,0))
 	elif v is int:
-		enable(Vector2i(v,y)) 
+		var x =v
+		enable(Vector2i(x,y)) 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

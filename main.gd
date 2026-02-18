@@ -1,7 +1,5 @@
 extends Node
-
-var Camera_move_dir=Vector2.ZERO
-var Camera_move_thresh=100
+# main game
 var Camera_move_speed=100
 
 var select_card:CardData
@@ -16,7 +14,8 @@ func _ready() -> void:
 	GameContext.card_selected.connect(_on_card_selected)
 	
 	$Player.global_position = $Map.map_to_global(Vector2i(3,3))
-	$Unit.global_position = $Map.map_to_global(Vector2i(6,1))
+	$Unit.move_to($Map.map_to_global(Vector2i(6,1)))
+	$Unit2.move_to(GameContext.rand_pos())
 	var tile_size = $Map.tile_set.tile_size
 	var map_rect = $Map.get_used_rect()
 	$Camera.limit_top=$Map.to_global(map_rect.position*tile_size).y
