@@ -1,14 +1,11 @@
 [gd_scene format=3 uid="uid://c3b0cc4vo8p63"]
 
 [ext_resource type="Script" uid="uid://0iiyjpdjbhx3" path="res://UI/gameplay_ui.gd" id="1_pqbjq"]
-[ext_resource type="PackedScene" uid="uid://da51k3b2ha8i7" path="res://cards/card.tscn" id="2_pclro"]
-[ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="3_i7ma2"]
-
-[sub_resource type="Shortcut" id="Shortcut_i7ma2"]
-resource_local_to_scene = true
-
-[sub_resource type="Shortcut" id="Shortcut_jmrml"]
-resource_local_to_scene = true
+[ext_resource type="Script" uid="uid://dnqmp0vapennk" path="res://UI/cards_manager.gd" id="2_1j2ro"]
+[ext_resource type="PackedScene" uid="uid://da51k3b2ha8i7" path="res://UI/card.tscn" id="2_pclro"]
+[ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="3_jpgws"]
+[ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="4_1j2ro"]
+[ext_resource type="PackedScene" uid="uid://cdrhvaqkn7pqr" path="res://UI/bar_with_number.tscn" id="4_jmrml"]
 
 [node name="GameplayUI" type="Control" unique_id=673248041]
 layout_mode = 3
@@ -36,30 +33,42 @@ popup/item_0/id = 0
 popup/item_1/text = "zh"
 popup/item_1/id = 1
 
-[node name="Cards" type="Control" parent="." unique_id=2069784912]
+[node name="Cards" type="HBoxContainer" parent="." unique_id=1393108364]
 layout_mode = 1
-anchor_top = 0.87100005
-anchor_right = 1.0
+anchors_preset = -1
+anchor_left = 0.162
+anchor_top = 0.85
+anchor_right = 0.88385415
 anchor_bottom = 1.0
-offset_top = 0.3199463
+offset_left = -0.040008545
 grow_horizontal = 2
 grow_vertical = 0
-mouse_filter = 1
+script = ExtResource("2_1j2ro")
+metadata/_edit_use_anchors_ = true
 
 [node name="Card" parent="Cards" unique_id=1829360695 instance=ExtResource("2_pclro")]
-layout_mode = 1
-offset_left = 445.0
-offset_right = 511.83997
-offset_bottom = 122.459
-shortcut = SubResource("Shortcut_i7ma2")
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Card2" parent="Cards" unique_id=877098148 instance=ExtResource("2_pclro")]
-layout_mode = 1
-offset_left = 1007.0
-offset_right = 1073.84
-offset_bottom = 122.459
-shortcut = SubResource("Shortcut_jmrml")
-text = "ATTACK_DESP"
-data = ExtResource("3_i7ma2")
+layout_mode = 2
+size_flags_horizontal = 3
+data = ExtResource("3_jpgws")
+
+[node name="Card3" parent="Cards" unique_id=358259494 instance=ExtResource("2_pclro")]
+layout_mode = 2
+size_flags_horizontal = 3
+data = ExtResource("4_1j2ro")
+
+[node name="HpBar" parent="." unique_id=651504158 instance=ExtResource("4_jmrml")]
+layout_mode = 0
+color = Color(1, 0.14509805, 0.24705882, 1)
+
+[node name="ManaBar" parent="." unique_id=1712593223 instance=ExtResource("4_jmrml")]
+layout_mode = 0
+offset_top = 43.0
+offset_bottom = 73.0
+value = 10
+color = Color(0.108, 0.3324, 0.9, 1)
 
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]

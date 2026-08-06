@@ -2,29 +2,52 @@
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvktn"]
 bg_color = Color(0.82, 0.43132, 0.17219998, 1)
-border_width_left = 3
-border_width_top = 4
-border_width_right = 3
-border_color = Color(0.39129356, 0.87849283, 0.9698332, 1)
+border_width_left = 4
+border_width_top = 6
+border_width_right = 4
+border_color = Color(0.97, 0.97, 0.97, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.82, 0.43132, 0.17219998, 1)
-border_width_left = 3
-border_width_top = 4
-border_width_right = 3
+border_width_left = 4
+border_width_top = 6
+border_width_right = 4
+border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e1x85"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olyjj"]
 bg_color = Color(0.82, 0.43132, 0.17219998, 1)
+border_width_left = 4
+border_width_top = 6
+border_width_right = 4
+border_color = Color(0.39215687, 0.8784314, 0.96862745, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epsk"]
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
-border_color = Color(0.39129356, 0.87849283, 0.9698332, 1)
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 10
-corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5jho1"]
+bg_color = Color(0, 0, 0, 0)
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fux4m"]
+bg_color = Color(1, 0, 0, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wsa4l"]
 bg_color = Color(0.81960785, 0.43137255, 0.17254902, 1)
@@ -58,20 +81,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eovu6"]
-content_margin_left = 3.0
-content_margin_right = 3.0
-bg_color = Color(0.94, 0.5506834, 0.27260002, 1)
-border_width_left = 2
-border_width_top = 2
-border_width_right = 2
-border_width_bottom = 2
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epsk"]
-bg_color = Color(0.8834109, 0.48114705, 0, 1)
+bg_color = Color(0, 0.66701657, 0.8091209, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -86,10 +96,18 @@ corner_radius_bottom_left = 10
 Button/colors/font_color = Color(0.83, 0.83, 0.83, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/font_sizes/font_size = 32
+Button/font_sizes/font_size = 28
 Button/styles/hover = SubResource("StyleBoxFlat_wvktn")
 Button/styles/normal = SubResource("StyleBoxFlat_h2yge")
-Button/styles/pressed = SubResource("StyleBoxFlat_e1x85")
+Button/styles/pressed = SubResource("StyleBoxFlat_olyjj")
+CardPanel/base_type = &"Panel"
+CardPanel/styles/panel = SubResource("StyleBoxFlat_6epsk")
+DotPanelLabel/base_type = &"Label"
+DotPanelLabel/font_sizes/font_size = 14
+HpBar/base_type = &"ProgressBar"
+HpBar/styles/background = SubResource("StyleBoxFlat_5jho1")
+HpBar/styles/fill = SubResource("StyleBoxFlat_fux4m")
+Label/font_sizes/font_size = 28
 OptionButton/font_sizes/font_size = 16
 OptionButton/styles/hover = SubResource("StyleBoxFlat_wsa4l")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_go05t")
@@ -100,7 +118,5 @@ RedButton/base_type = &"Button"
 RedButton/styles/hover = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/normal = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_vj6dk")
-dot_label/base_type = &"Label"
-dot_label/styles/normal = SubResource("StyleBoxFlat_eovu6")
-dot_panel/base_type = &"Panel"
-dot_panel/styles/panel = SubResource("StyleBoxFlat_6epsk")
+card_cost/base_type = &"Panel"
+card_cost/styles/panel = SubResource("StyleBoxFlat_eovu6")

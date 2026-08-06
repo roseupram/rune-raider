@@ -2,10 +2,11 @@
 
 [ext_resource type="Script" uid="uid://cqntoebbdonm4" path="res://UI/dot_panel.gd" id="1_iqghu"]
 
-[node name="Panel" type="Panel" unique_id=1656285534]
-offset_right = 40.0
-offset_bottom = 20.0
-theme_type_variation = &"dot_panel"
+[node name="DotPanel" type="Panel" unique_id=1656285534]
+anchors_preset = -1
+offset_right = 25.0
+offset_bottom = 25.0
+theme_type_variation = &"card_cost"
 script = ExtResource("1_iqghu")
 
 [node name="Label" type="Label" parent="." unique_id=129029081]
@@ -22,7 +23,7 @@ offset_right = 4.0
 offset_bottom = 10.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_font_sizes/font_size = 14
-text = "1"
+theme_type_variation = &"DotPanelLabel"
+text = "2"
 horizontal_alignment = 1
 vertical_alignment = 1
