@@ -6,6 +6,40 @@
 [ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="3_jpgws"]
 [ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="4_1j2ro"]
 [ext_resource type="PackedScene" uid="uid://cdrhvaqkn7pqr" path="res://UI/bar_with_number.tscn" id="4_jmrml"]
+[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="4_rw8eu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw8eu"]
+resource_local_to_scene = true
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 4
+corner_radius_bottom_right = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jk46"]
+resource_local_to_scene = true
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 4
+corner_radius_bottom_right = 14
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bkgld"]
+resource_local_to_scene = true
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 4
+corner_radius_bottom_right = 14
 
 [node name="GameplayUI" type="Control" unique_id=673248041]
 layout_mode = 3
@@ -33,9 +67,8 @@ popup/item_0/id = 0
 popup/item_1/text = "zh"
 popup/item_1/id = 1
 
-[node name="Cards" type="HBoxContainer" parent="." unique_id=1393108364]
+[node name="Cards" type="Control" parent="." unique_id=2106648012]
 layout_mode = 1
-anchors_preset = -1
 anchor_left = 0.162
 anchor_top = 0.85
 anchor_right = 0.88385415
@@ -47,17 +80,43 @@ script = ExtResource("2_1j2ro")
 metadata/_edit_use_anchors_ = true
 
 [node name="Card" parent="Cards" unique_id=1829360695 instance=ExtResource("2_pclro")]
-layout_mode = 2
+layout_mode = 1
+anchor_right = 0.04040404
+anchor_bottom = 0.40123457
+offset_right = 162.0
+offset_bottom = 162.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_rw8eu")
+data = ExtResource("4_rw8eu")
 
 [node name="Card2" parent="Cards" unique_id=877098148 instance=ExtResource("2_pclro")]
-layout_mode = 2
+layout_mode = 1
+anchor_left = 0.0021645022
+anchor_right = 0.0021645022
+anchor_bottom = 0.0
+offset_left = 463.0
+offset_right = 625.0
+offset_bottom = 162.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_4jk46")
 data = ExtResource("3_jpgws")
 
 [node name="Card3" parent="Cards" unique_id=358259494 instance=ExtResource("2_pclro")]
-layout_mode = 2
+layout_mode = 0
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 926.0
+offset_right = 1088.0
+offset_bottom = 162.0
+grow_horizontal = 1
+grow_vertical = 1
 size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_bkgld")
 data = ExtResource("4_1j2ro")
 
 [node name="HpBar" parent="." unique_id=651504158 instance=ExtResource("4_jmrml")]

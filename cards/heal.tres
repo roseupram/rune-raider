@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="CardData" format=3 uid="uid://cl40wrv232sdd"]
+
+[ext_resource type="Script" uid="uid://b7i0b4up4dhjr" path="res://component/map_node/range_type.gd" id="1_34hh0"]
+[ext_resource type="Script" uid="uid://byknhbt5mvk82" path="res://cards/card_data.gd" id="1_fokd8"]
+
+[sub_resource type="Resource" id="Resource_efxa6"]
+script = ExtResource("1_34hh0")
+tile_mask = 4
+metadata/_custom_type_script = "uid://b7i0b4up4dhjr"
+
+[resource]
+script = ExtResource("1_fokd8")
+ID = "HEAL"
+cost = 1
+value = 3
+range = SubResource("Resource_efxa6")
+metadata/_custom_type_script = "uid://byknhbt5mvk82"

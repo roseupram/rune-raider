@@ -1,17 +1,11 @@
 extends Control
 
 
-
+func _gui_input(event: InputEvent) -> void:
+	if event is InputEventMouseButton and event.pressed:
+		print(event.as_text())
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var ci =1
-	for button:Button in $Cards.get_children():
-		button.pressed.connect(_on_button.bind(button))
-		var action=InputEventAction.new()
-		action.action="card_%d" % ci
-		button.shortcut.events.clear()
-		button.shortcut.events.push_back(action)
-		ci+=1
 	var all_locales = TranslationServer.get_loaded_locales()
 	var current_locale = TranslationServer.get_locale()
 	var current_locale_id = 0
@@ -23,10 +17,7 @@ func _ready() -> void:
 		$OptionButton.add_item(locale)
 		i+=1
 	$OptionButton.select(current_locale_id)
-	
-func _on_button(card):
-	GameContext.card_selected.emit(card.data)
-	#print(card.data.name)
+
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

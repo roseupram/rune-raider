@@ -1,31 +1,48 @@
 @tool
-extends Control
-@onready var cost_node = $Panel/CostPanel
-@onready var label_node =$Panel/Label
+extends Panel
+class_name CardUI
+
+@onready var cost_node = $CostPanel
+@onready var label_node =$Label
 @onready var anim_node = $AnimationPlayer
 @export var data: CardData:
 	set(d):
 		data=d
 		_update_data()
 
-signal  focus
+var shortcuts:Array[InputEvent]
+
+
+signal  focus(card:CardUI)
 
 
 enum State{normal,hover,focus,unfocus}
 
 var current_state:State=State.normal
 
+func _shortcut_input(event: InputEvent) -> void:
+	if shortcuts.size()==0:
+		return
+	for e:InputEvent in shortcuts:
+		if e.is_match(event) and event.pressed:
+			state_to(State.focus)
+			return
+	
+
 # Called when the node enters the scene tree for the first time.
 func _gui_input(event: InputEvent) -> void:
 	#print(event)
 	if event is InputEventMouseButton:
 		if event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
-			state_to(State.focus)
-			accept_event()
+			if current_state==State.hover:
+				state_to(State.focus)
+				accept_event()
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
+	#size.x=size.y
 func _update_data():
 	if not is_node_ready(): await  ready
+	#print(data)
 	var description = data.ID+"_DESP"
 	label_node.text=tr(description).format(data)
 	cost_node.number=data.cost
@@ -36,22 +53,22 @@ func _update_data():
 func unfocus():
 	state_to(State.unfocus)
 
-func state_to(s):
+func state_to(s:State):
 	if current_state==s:
 		return
 	match s:
 		State.focus:
 			anim_node.play("focus")
-			focus.emit()
+			focus.emit(self)
 		State.unfocus:
 			anim_node.play("normal")
 		_:
-			if current_state!=State.focus:
+			if current_state==State.focus:
+				return
+			else:
 				anim_node.play({State.hover:"hover",
 				State.normal:"normal"}[s])
-			else:
-				return
-	
+
 	current_state=s
 
 
