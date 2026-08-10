@@ -10,41 +10,36 @@ class_name CardUI
 		data=d
 		_update_data()
 
-var shortcuts:Array[InputEvent]
+var shortcut_name:StringName
 
-
-signal  focus(card:CardUI)
-
+signal  focus(card:CardUI,by_shortcut:bool)
 
 enum State{normal,hover,focus,unfocus}
-
 var current_state:State=State.normal
 
 func _shortcut_input(event: InputEvent) -> void:
-	if shortcuts.size()==0:
-		return
-	for e:InputEvent in shortcuts:
-		if e.is_match(event) and event.pressed:
-			state_to(State.focus)
-			return
+	if Input.is_action_just_pressed(shortcut_name):
+		state_to(State.focus,true)
+		get_viewport().set_input_as_handled()
 	
 
 # Called when the node enters the scene tree for the first time.
 func _gui_input(event: InputEvent) -> void:
 	#print(event)
-	if event is InputEventMouseButton:
-		if event.button_index==MOUSE_BUTTON_LEFT and event.pressed:
-			if current_state==State.hover:
-				state_to(State.focus)
-				accept_event()
+	if Input.is_action_just_pressed("select_card"):
+		if current_state==State.hover:
+			state_to(State.focus)
+			accept_event()
 func _ready() -> void:
 	pass
 	#size.x=size.y
 func _update_data():
 	if not is_node_ready(): await  ready
 	#print(data)
-	var description = data.ID+"_DESP"
-	label_node.text=tr(description).format(data)
+	label_node.text=""
+	for e in data.effects:
+		var description = e.tr_key.to_upper()
+		label_node.text+=tr(description).format(e)
 	cost_node.number=data.cost
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
@@ -53,16 +48,16 @@ func _update_data():
 func unfocus():
 	state_to(State.unfocus)
 
-func state_to(s:State):
+func state_to(s:State,focus_by_shortcut=false):
 	if current_state==s:
 		return
 	match s:
 		State.focus:
 			anim_node.play("focus")
-			focus.emit(self)
+			focus.emit(self,focus_by_shortcut)
 		State.unfocus:
 			anim_node.play("normal")
-		_:
+		State.normal,State.hover:
 			if current_state==State.focus:
 				return
 			else:

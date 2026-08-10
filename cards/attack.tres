@@ -1,18 +1,17 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://ce6bjr0vgs68j"]
 
 [ext_resource type="Script" uid="uid://byknhbt5mvk82" path="res://cards/card_data.gd" id="1_dg6u1"]
-[ext_resource type="Script" uid="uid://b7i0b4up4dhjr" path="res://component/map_node/range_type.gd" id="1_y5phx"]
+[ext_resource type="Script" uid="uid://b70lncrbhwsja" path="res://actions/effect_data.gd" id="1_wdaa8"]
+[ext_resource type="Script" uid="uid://bfiywm4yux7d" path="res://actions/attack/data.gd" id="2_wdaa8"]
 
-[sub_resource type="Resource" id="Resource_efxa6"]
-script = ExtResource("1_y5phx")
+[sub_resource type="Resource" id="Resource_7c1u8"]
+script = ExtResource("2_wdaa8")
 tile_mask = 3
-metadata/_custom_type_script = "uid://b7i0b4up4dhjr"
+metadata/_custom_type_script = "uid://bfiywm4yux7d"
 
 [resource]
 script = ExtResource("1_dg6u1")
 ID = "ATTACK"
 cost = 1
-value = 6
-effects = [null]
-range = SubResource("Resource_efxa6")
+effects = Array[ExtResource("1_wdaa8")]([SubResource("Resource_7c1u8")])
 metadata/_custom_type_script = "uid://byknhbt5mvk82"

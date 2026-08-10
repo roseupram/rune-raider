@@ -1,6 +1,11 @@
 extends TileMapLayer
 class_name BaseTileMap
 
+var AM:ActionManager:
+	set(am):
+		AM=am
+		AM.action_completed.connect(_on_action_completed)
+
 enum Type {
 	Free=1 << 0, 	# 1 
 	Occupied=1 << 1, #2 
@@ -50,9 +55,18 @@ func snap_to_global(pos: Vector2):
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	pass
 
+func _unhandled_input(event: InputEvent) -> void:
+	if AM==null:
+		push_error("No ActionManager in BaseTileMap")
 
+func _on_action_completed(a:ActionRequest):
+	if a is MoveRequest and a.actor is Player:
+		var from = global_to_map(a.from)
+		var to = global_to_map(a.target_position)
+		set_id(from,Type.Free)
+		set_id(to,Type.Player)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass

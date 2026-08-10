@@ -1,16 +1,16 @@
 [gd_resource type="Resource" script_class="CardData" format=3 uid="uid://d2trrookbwrx1"]
 
-[ext_resource type="Script" uid="uid://b7i0b4up4dhjr" path="res://component/map_node/range_type.gd" id="1_h7mtx"]
+[ext_resource type="Script" uid="uid://b70lncrbhwsja" path="res://actions/effect_data.gd" id="1_3mmd1"]
 [ext_resource type="Script" uid="uid://byknhbt5mvk82" path="res://cards/card_data.gd" id="1_ovp1r"]
+[ext_resource type="Script" uid="uid://bk0x1j5btkqdn" path="res://actions/move/data.gd" id="2_3mmd1"]
 
-[sub_resource type="Resource" id="Resource_dg77c"]
-script = ExtResource("1_h7mtx")
-value = 3
-metadata/_custom_type_script = "uid://b7i0b4up4dhjr"
+[sub_resource type="Resource" id="Resource_886gg"]
+script = ExtResource("2_3mmd1")
+tile_mask = 1
+metadata/_custom_type_script = "uid://bk0x1j5btkqdn"
 
 [resource]
 script = ExtResource("1_ovp1r")
 ID = "MOVE"
-value = 3
-range = SubResource("Resource_dg77c")
+effects = Array[ExtResource("1_3mmd1")]([SubResource("Resource_886gg")])
 metadata/_custom_type_script = "uid://byknhbt5mvk82"

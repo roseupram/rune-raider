@@ -1,0 +1,49 @@
+[gd_scene format=3 uid="uid://bei03pof8x3e7"]
+
+[ext_resource type="Script" uid="uid://db67hdxqdyqwk" path="res://unit/player.gd" id="2_v7rm1"]
+[ext_resource type="Texture2D" uid="uid://ckow04d6hd0up" path="res://images/bg.svg" id="3_mjnxy"]
+[ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
+[ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
+[ext_resource type="Shape2D" uid="uid://bhqhdtd845uqg" path="res://component/shape/one_tile.tres" id="4_r0m46"]
+[ext_resource type="PackedScene" uid="uid://s38qup8p58n3" path="res://component/health_componet.tscn" id="7_a2kr1"]
+[ext_resource type="PackedScene" uid="uid://hdi7xs6tswv7" path="res://skeleton/hamman.tscn" id="7_mompe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_llffi"]
+size = Vector2(75, 33)
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_a2kr1"]
+
+[node name="Player" type="Area2D" unique_id=944555483]
+collision_mask = 4
+script = ExtResource("2_v7rm1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143013733]
+shape = ExtResource("4_r0m46")
+
+[node name="Base" type="Sprite2D" parent="." unique_id=1206884610]
+texture = ExtResource("3_mjnxy")
+
+[node name="Hamman" parent="Base" unique_id=1803026868 instance=ExtResource("7_mompe")]
+position = Vector2(-8, 3)
+
+[node name="Hitbox" parent="Base" unique_id=1274199608 instance=ExtResource("4_mjnxy")]
+rotation = -0.000915274
+collision_layer = 0
+collision_mask = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Base/Hitbox" unique_id=791531402]
+position = Vector2(0, -42)
+texture = ExtResource("3_v7rm1")
+offset = Vector2(-4, -59)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Hitbox" unique_id=1137747206]
+position = Vector2(-4.5, -144.5)
+shape = SubResource("RectangleShape2D_llffi")
+debug_color = Color(1, 0, 0, 0.41960785)
+
+[node name="Health" parent="." unique_id=621677592 instance=ExtResource("7_a2kr1")]
+
+[node name="Mana" parent="." unique_id=856965956 instance=ExtResource("7_a2kr1")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1193849781]
+libraries/ = SubResource("AnimationLibrary_a2kr1")

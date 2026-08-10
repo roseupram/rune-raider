@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="1920"
+   height="1080"
+   viewBox="0 0 508 285.75"
+   version="1.1"
+   id="svg1"
+   inkscape:export-batch-name="bar"
+   inkscape:export-batch-path="E:\Documents\godot\rune-raider\images"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="绘图.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="2.078763"
+     inkscape:cx="239.80608"
+     inkscape:cy="103.66742"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="22"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1" />
+  <defs
+     id="defs1" />
+  <g
+     inkscape:label="图层 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <rect
+       style="fill:#000000;stroke:#ffffff;stroke-width:1.05833;stroke-dasharray:none"
+       id="rect2"
+       width="74.331062"
+       height="53.966389"
+       x="-6.2366815"
+       y="-5.6002855" />
+    <path
+       style="fill:none;stroke:#ffffff;stroke-width:0.52916667;stroke-dasharray:none;stroke-opacity:1"
+       d="M 3.7989548,14.505331 3.53299,10.418012 7.6140297,9.9225425 l 2.9930743,-1.36657 2.474247,0.1329312 20.974345,-0.1067341 -0.424746,4.4026824 -5.418694,0.159239 -2.757974,1.154012 z"
+       id="path1"
+       inkscape:label="line" />
+    <path
+       style="fill:#ffffff;stroke:#ffffff;stroke-width:1.05833;stroke-dasharray:none"
+       d="M 4.0689548,26.115331 3.80299,22.028012 l 4.0810397,-0.495469 2.9930743,-1.36657 2.474247,0.132931 20.974345,-0.106734 -0.424746,4.402682 -5.418694,0.159239 -2.757974,1.154012 z"
+       id="path2" />
+  </g>
+</svg>

@@ -1,10 +1,11 @@
-extends Control
+extends CanvasLayer
 
-
-func _gui_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton and event.pressed:
-		print(event.as_text())
+var BM:BattleManager:
+	set(bm):
+		BM=bm
+		BM.register_card_manager($Cards)
 # Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
 	var all_locales = TranslationServer.get_loaded_locales()
 	var current_locale = TranslationServer.get_locale()

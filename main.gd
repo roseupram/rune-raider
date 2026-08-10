@@ -1,31 +1,36 @@
 extends Node
 # main game
 
-var select_card:CardData
-
 
 @onready var Map:BaseTileMap = $Map
 
+var AM = ActionManager.new()
+var BM = BattleManager.new()
+var NM=NavManager.new()
+
 func _ready() -> void:
 	$RangeLayer.clear()
+	Map.AM=AM
+	#BM.AM=AM
+	$GameplayUI.BM=BM
 	
 	var player_hp = $Player/Health
 	var player_ma = $Player/Mana
-	var hpbar = $UI/GameplayUI/HpBar
-	hpbar.stat_node=player_hp
-	var mabar= $UI/GameplayUI/ManaBar
-	mabar.stat_node=player_ma
+	#var hpbar = $UI/GameplayUI/HpBar
+	#hpbar.stat_node=player_hp
+	#var mabar= $UI/GameplayUI/ManaBar
+	#mabar.stat_node=player_ma
 	
 	
-	NavManager.overwrite_by_map($Map)
+	NM.overwrite_by_map($Map)
 	for i in [$Player,$Unit,$Unit2]:
 		i.global_position = $Map.snap_to_global(i.global_position)
 	for i in [$Unit,$Unit2]:
-		NavManager.set_occupied(i.global_position)
+		NM.set_occupied(i.global_position)
 
 	Map.set_id($Player.global_position,BaseTileMap.Type.Player)
-	BattleManager.player_node=$Player
-	BattleManager.register_rangelayer($RangeLayer)
+	BM.player_node=$Player
+	BM.register_rangelayer($RangeLayer)
 		
 	var tile_size =Vector2( Map.tile_set.tile_size)
 	var map_left_top= Map.left_top()

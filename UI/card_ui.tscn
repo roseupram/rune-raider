@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://da51k3b2ha8i7"]
 
-[ext_resource type="Script" uid="uid://c0o2lvc3mxlqv" path="res://UI/card.gd" id="1_ivai2"]
-[ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="3_4k7q8"]
+[ext_resource type="Script" uid="uid://c0o2lvc3mxlqv" path="res://UI/card_ui.gd" id="1_q2o1x"]
+[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="2_4t6l7"]
+[ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="2_7c1u8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d460q"]
 resource_local_to_scene = true
@@ -95,7 +96,8 @@ grow_vertical = 2
 mouse_filter = 1
 theme_type_variation = &"CardPanel"
 theme_override_styles/panel = SubResource("StyleBoxFlat_d460q")
-script = ExtResource("1_ivai2")
+script = ExtResource("1_q2o1x")
+data = ExtResource("2_4t6l7")
 metadata/_edit_group_ = true
 metadata/_edit_use_anchors_ = true
 
@@ -106,12 +108,11 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "MOVE_DESP"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
-[node name="CostPanel" parent="." unique_id=1656285534 instance=ExtResource("3_4k7q8")]
+[node name="CostPanel" parent="." unique_id=1656285534 instance=ExtResource("2_7c1u8")]
 layout_mode = 1
 anchor_left = 0.016
 anchor_top = 0.016
