@@ -1,9 +1,6 @@
 @tool
 extends Control
 
-
-
-
 @export var value:int = 2:
 	set=set_value
 @export var max_value:int = 10:

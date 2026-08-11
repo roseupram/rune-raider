@@ -1,11 +1,11 @@
 [gd_scene format=3 uid="uid://c3b0cc4vo8p63"]
 
 [ext_resource type="Script" uid="uid://0iiyjpdjbhx3" path="res://UI/gameplay_ui.gd" id="1_pqbjq"]
-[ext_resource type="Script" uid="uid://dnqmp0vapennk" path="res://UI/cards_manager.gd" id="2_1j2ro"]
-[ext_resource type="PackedScene" uid="uid://da51k3b2ha8i7" path="res://UI/card_ui.tscn" id="2_pclro"]
+[ext_resource type="Script" uid="uid://dnqmp0vapennk" path="res://cards/cards_manager.gd" id="2_1j2ro"]
+[ext_resource type="PackedScene" uid="uid://da51k3b2ha8i7" path="res://cards/card_ui.tscn" id="2_pclro"]
 [ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="3_jpgws"]
 [ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="4_1j2ro"]
-[ext_resource type="PackedScene" uid="uid://cdrhvaqkn7pqr" path="res://UI/bar_with_number.tscn" id="4_jmrml"]
+[ext_resource type="PackedScene" uid="uid://cdrhvaqkn7pqr" path="res://UI/progressbar/bar_with_number.tscn" id="4_jmrml"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j2ro"]
 resource_local_to_scene = true
@@ -75,9 +75,9 @@ metadata/_edit_use_anchors_ = true
 layout_mode = 1
 anchor_right = 0.04040404
 anchor_bottom = 0.40123457
-offset_left = 477.0
-offset_right = 561.42426
-offset_bottom = 97.0
+offset_left = 138.00873
+offset_right = 202.37166
+offset_bottom = 64.66667
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
@@ -88,9 +88,9 @@ layout_mode = 1
 anchor_left = 0.0021645022
 anchor_right = 0.0021645022
 anchor_bottom = 0.0
-offset_left = 874.8442
-offset_right = 1036.8441
-offset_bottom = 162.0
+offset_left = 483.67102
+offset_right = 591.671
+offset_bottom = 108.0
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
@@ -102,9 +102,9 @@ layout_mode = 0
 anchors_preset = 0
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_left = 1281.0
-offset_right = 1443.0
-offset_bottom = 162.0
+offset_left = 834.0087
+offset_right = 942.0087
+offset_bottom = 108.0
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3

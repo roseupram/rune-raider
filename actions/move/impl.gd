@@ -5,7 +5,7 @@ var target_position:Vector2
 var from:Vector2
 
 func _init(ac,param):
-	var pos = param.target
+	var pos = param.target_pos
 	super._init(ac)
 	target_position=pos
 

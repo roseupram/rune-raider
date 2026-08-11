@@ -40,7 +40,7 @@ func _on_confirmed_at_rangelayer(posi:Vector2i):
 	print(posi)
 	var pos = range_node.map_to_global(posi)
 	for e in selected_card_data.effects:
-		var r = e.create_request(player_node,{"target":pos,"target_cell":posi})
+		var r = e.create_request(player_node,{"target_pos":pos,"target_cell":posi})
 		if AM:
 			AM.request(r)
 		else:

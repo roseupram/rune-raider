@@ -55,14 +55,14 @@ func idle():
 
 func enable(cell:Vector2i,tile_mask:int):
 	if not base_map:
-		printerr("not assgined BaseTileMap")
+		push_error("not assgined BaseTileMap")
 
 	var id_m = base_map.get_id(cell)
 	#print(cell,id_m)
 	var not_target_tile =id_m <=0 or not (id_m & tile_mask) 
 	if not_target_tile:
 		return
-	if tile_mask & BaseTileMap.Type.Occupied:
+	if tile_mask & BaseTileMap.Type.Enemy:
 		z_index=99
 	else:
 		z_index=0

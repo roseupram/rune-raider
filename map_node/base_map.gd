@@ -8,8 +8,9 @@ var AM:ActionManager:
 
 enum Type {
 	Free=1 << 0, 	# 1 
-	Occupied=1 << 1, #2 
-	Player=1<<2,
+	Enemy=1 << 1, #2 
+	Player=1<<2, #4
+	Obstacle=1<<3 #8
 }
 @onready var tile_size_i = tile_set.tile_size
 

@@ -1,7 +1,7 @@
-extends Node2D
+extends Unit
 
 var count=0
-@export var base_move=2
+@export_range(1,10) var base_move:=2
 var move_ablitity=1
 var player_enter=false
 var hit_target

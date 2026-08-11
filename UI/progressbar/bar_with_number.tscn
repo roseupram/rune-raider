@@ -1,15 +1,15 @@
 [gd_scene format=3 uid="uid://cdrhvaqkn7pqr"]
 
-[ext_resource type="Script" uid="uid://b8qyvlufk46p0" path="res://UI/bar_with_number.gd" id="1_itfpa"]
-[ext_resource type="Texture2D" uid="uid://d1yhxv5ewx5u8" path="res://images/bar_fill.png" id="2_6ega6"]
-[ext_resource type="Texture2D" uid="uid://i1pbyj3tqqd4" path="res://images/bar_line.png" id="3_3idd3"]
+[ext_resource type="Script" uid="uid://b8qyvlufk46p0" path="res://UI/progressbar/bar_with_number.gd" id="1_lf12y"]
+[ext_resource type="Texture2D" uid="uid://d1yhxv5ewx5u8" path="res://UI/progressbar/bar_fill.png" id="2_35jbm"]
+[ext_resource type="Texture2D" uid="uid://i1pbyj3tqqd4" path="res://UI/progressbar/bar_line.png" id="3_j4dsx"]
 
 [node name="Bar_with_number" type="Control" unique_id=651504158]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 226.0
 offset_bottom = 30.0
-script = ExtResource("1_itfpa")
+script = ExtResource("1_lf12y")
 
 [node name="ProgressBar" type="TextureProgressBar" parent="." unique_id=1156913819]
 layout_mode = 1
@@ -25,9 +25,9 @@ stretch_margin_left = 44
 stretch_margin_top = 10
 stretch_margin_right = 40
 stretch_margin_bottom = 10
-texture_under = ExtResource("2_6ega6")
-texture_over = ExtResource("3_3idd3")
-texture_progress = ExtResource("2_6ega6")
+texture_under = ExtResource("2_35jbm")
+texture_over = ExtResource("3_j4dsx")
+texture_progress = ExtResource("2_35jbm")
 tint_under = Color(0.22, 0.22, 0.22, 1)
 tint_progress = Color(1, 0, 0, 1)
 

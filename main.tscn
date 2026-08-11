@@ -7,9 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://ck314n5ii52e2" path="res://map_node/red.tres" id="4_272bh"]
 [ext_resource type="Texture2D" uid="uid://df8p4bc42pof6" path="res://map_node/blue.tres" id="4_efxa6"]
 [ext_resource type="Script" uid="uid://bfvu5gujiv6cj" path="res://component/camera.gd" id="5_lquwl"]
-[ext_resource type="PackedScene" uid="uid://cdt5dab7nnvtx" path="res://unit/enemy.tscn" id="6_5vw27"]
+[ext_resource type="PackedScene" uid="uid://cdt5dab7nnvtx" path="res://unit/enemy/enemy.tscn" id="6_5vw27"]
 [ext_resource type="Script" uid="uid://cbesg1m13wqr4" path="res://map_node/range_layer.gd" id="6_efxa6"]
-[ext_resource type="PackedScene" uid="uid://bei03pof8x3e7" path="res://unit/player.tscn" id="7_4c57u"]
+[ext_resource type="PackedScene" uid="uid://bei03pof8x3e7" path="res://unit/player/player.tscn" id="7_4c57u"]
 
 [sub_resource type="Gradient" id="Gradient_7dm0k"]
 offsets = PackedFloat32Array(0.33333334, 1)
@@ -41,7 +41,6 @@ sources/0 = SubResource("TileSetAtlasSource_dg77c")
 script = ExtResource("1_h2yge")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=756131291]
-visible = false
 z_index = -1
 texture = SubResource("GradientTexture2D_ig7tw")
 centered = false

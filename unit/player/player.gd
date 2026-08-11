@@ -1,4 +1,4 @@
-extends Node2D
+extends Unit
 class_name  Player
 
 signal died
@@ -15,13 +15,31 @@ func heal(h):
 	$Health.value+=h
 
 func move_to(pos):
+	var d:Vector2 =pos-global_position
+	var flip = d.sign().x
+	if flip!=0:
+		scale.x=flip
 	var ani_time = .1
 	var tw = get_tree().create_tween()
 	#tw.set_ease(Tween.EASE_OUT_IN)
 	tw.tween_property(self,"position",pos,ani_time)
 	await tw.finished
 	
-func attack():
+func attack(target_pos:Vector2):
+	var d = target_pos-global_position
+	var rotate_deg = rad_to_deg(d.angle())
+	print(rotate_deg)
+	if rotate_deg>-90 and rotate_deg<91:
+		rotate_deg=rotate_deg+45
+		scale.x=1
+	else:
+		rotate_deg=-rotate_deg-135
+		scale.x=-1
+	$Marker2D/RemoteTransform2D.rotation=deg_to_rad(rotate_deg)
+	$AnimationPlayer.play("swing")
+	await  $AnimationPlayer.animation_finished
+	$Marker2D/RemoteTransform2D.rotation=0
+	return 
 	var tween=get_tree().create_tween()
 	
 	ham_node.rotation = deg_to_rad(-90)

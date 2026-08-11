@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://cdt5dab7nnvtx"]
 
-[ext_resource type="Texture2D" uid="uid://wiq56o5mbbi8" path="res://images/enemy.svg" id="1_btf8p"]
-[ext_resource type="Script" uid="uid://f3pa7dsnb2fq" path="res://unit/enemy.gd" id="1_cpquj"]
+[ext_resource type="Script" uid="uid://f3pa7dsnb2fq" path="res://unit/enemy/enemy.gd" id="1_cpquj"]
+[ext_resource type="Texture2D" uid="uid://wiq56o5mbbi8" path="res://unit/enemy/enemy.svg" id="3_46vr5"]
 [ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="3_d22of"]
 [ext_resource type="Shape2D" uid="uid://bhqhdtd845uqg" path="res://component/shape/one_tile.tres" id="4_e140q"]
 [ext_resource type="Script" uid="uid://db05vtpd0ae3a" path="res://component/health_componet.gd" id="5_cpquj"]
@@ -10,7 +10,7 @@
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("1_btf8p")
+"texture": ExtResource("3_46vr5")
 }],
 "loop": 1,
 "name": &"default",
@@ -151,6 +151,7 @@ _data = {
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_cpquj")
+base_move = 3
 
 [node name="Health" type="Node" parent="." unique_id=927752796]
 script = ExtResource("5_cpquj")
@@ -171,6 +172,7 @@ offset_left = -64.0
 offset_top = -64.0
 offset_right = 64.0
 offset_bottom = 64.0
+mouse_filter = 1
 metadata/_edit_use_anchors_ = true
 
 [node name="dot_panel" parent="Control" unique_id=1656285534 instance=ExtResource("3_d22of")]

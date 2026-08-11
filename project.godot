@@ -29,7 +29,6 @@ window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/size/mode=3
 window/stretch/mode="canvas_items"
-window/stretch/scale_mode="integer"
 mouse_cursor/custom_image="uid://fja7dffemf1c"
 window/layer_1="visual"
 
@@ -108,10 +107,13 @@ locale/translations=PackedStringArray("res://translation/card.en.translation", "
 [layer_names]
 
 2d_physics/layer_1="player"
-2d_navigation/layer_1="visual"
+2d_navigation/layer_1="free"
 2d_physics/layer_2="enemy"
+2d_navigation/layer_2="enemy"
 2d_physics/layer_3="item"
+2d_navigation/layer_3="player"
 2d_physics/layer_4="env"
+2d_navigation/layer_4="obstacle"
 
 [rendering]
 

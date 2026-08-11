@@ -11,7 +11,7 @@ var NM=NavManager.new()
 func _ready() -> void:
 	$RangeLayer.clear()
 	Map.AM=AM
-	#BM.AM=AM
+	BM.AM=AM
 	$GameplayUI.BM=BM
 	
 	var player_hp = $Player/Health

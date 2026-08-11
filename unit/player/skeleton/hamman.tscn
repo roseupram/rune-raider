@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://hdi7xs6tswv7"]
 
-[ext_resource type="Texture2D" uid="uid://b0awk84nndr6o" path="res://images/hamman_parts.svg" id="1_ke2n6"]
+[ext_resource type="Texture2D" uid="uid://fkyhe7lqvo02" path="res://unit/player/skeleton/hamman_parts.svg" id="1_vfqwr"]
 
 [sub_resource type="Animation" id="Animation_xj5fb"]
 length = 0.001
@@ -119,7 +119,7 @@ position = Vector2(-151, -90)
 
 [node name="Body" type="Polygon2D" parent="pologons" unique_id=493284889]
 position = Vector2(-31, -11)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../Skeleton2D")
 polygon = PackedVector2Array(123.21236, 123.606316, 116.72548, 165.12231, 144.61903, 181.33948, 212.0825, 170.3118, 239.32738, 162.52756, 227.65102, 123.606316, 180.29683, 111.28126, 128.40184, 111.28126)
 uv = PackedVector2Array(123.21236, 123.606316, 116.72548, 165.12231, 144.61903, 181.33948, 212.0825, 170.3118, 239.32738, 162.52756, 227.65102, 123.606316, 180.29683, 111.28126, 128.40184, 111.28126)
@@ -127,7 +127,7 @@ bones = ["body", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "body/head", Packed
 
 [node name="Head" type="Polygon2D" parent="pologons/Body" unique_id=1134219614]
 position = Vector2(17, 32)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../Skeleton2D")
 polygon = PackedVector2Array(144.81555, 0.98337555, 106.431305, 27.51366, 97.39972, 72.10713, 116.027374, 107.66901, 175.29715, 111.62033, 204.64981, 106.540054, 216.50378, 85.65451, 218.1972, 63.075542, 220.45508, 28.642612, 183.76428, -10.30611)
 uv = PackedVector2Array(144.81555, 0.98337555, 106.431305, 27.51366, 97.39972, 72.10713, 116.027374, 107.66901, 175.29715, 111.62033, 204.64981, 106.540054, 216.50378, 85.65451, 218.1972, 63.075542, 220.45508, 28.642612, 183.76428, -10.30611)
@@ -135,7 +135,7 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head", 
 
 [node name="eye" type="Polygon2D" parent="pologons/Body/Head" unique_id=1521276805]
 position = Vector2(108.70151, -1.5738792)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../../Skeleton2D")
 polygon = PackedVector2Array(27.970432, 57.547737, 41.561905, 56.43432, 44.272903, 43.828186, 25.024832, 37.999546, 17.29849, 48.57243)
 uv = PackedVector2Array(27.970432, 57.547737, 41.561905, 56.43432, 44.272903, 43.828186, 25.024832, 37.999546, 17.29849, 48.57243)
@@ -143,7 +143,7 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0), "body/head", PackedFloat32Ar
 
 [node name="eye2" type="Polygon2D" parent="pologons/Body/Head" unique_id=1994504108]
 position = Vector2(108.403015, -1.5734253)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../../Skeleton2D")
 polygon = PackedVector2Array(71.13542, 41.208786, 69.34616, 55.224632, 71.28452, 62.38166, 77.84513, 62.38166, 88.28246, 56.71568, 87.08963, 46.576557, 79.9326, 41.35789)
 uv = PackedVector2Array(71.13542, 41.208786, 69.34616, 55.224632, 71.28452, 62.38166, 77.84513, 62.38166, 88.28246, 56.71568, 87.08963, 46.576557, 79.9326, 41.35789)
@@ -151,7 +151,7 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0), "body/head", PackedFlo
 
 [node name="eyebow" type="Polygon2D" parent="pologons/Body/Head" unique_id=921519760]
 position = Vector2(108.403015, -1.5734253)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../../Skeleton2D")
 polygon = PackedVector2Array(50.31069, 36.422318, 42.1221, 39.063805, 28.122238, 34.044987, 18.08461, 26.384687, 27.858093, 21.894167, 48.7258, 20.573425)
 uv = PackedVector2Array(50.31069, 36.422318, 42.1221, 39.063805, 28.122238, 34.044987, 18.08461, 26.384687, 27.858093, 21.894167, 48.7258, 20.573425)
@@ -159,7 +159,7 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0), "body/head", PackedFloat3
 
 [node name="eyebow2" type="Polygon2D" parent="pologons/Body/Head" unique_id=1808617834]
 position = Vector2(108.403015, -1.5734253)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../../Skeleton2D")
 polygon = PackedVector2Array(63.39897, 38.47444, 79.05497, 36.9834, 92.921715, 33.70309, 92.772606, 26.844275, 70.25779, 26.69517, 62.802555, 33.553986)
 uv = PackedVector2Array(63.39897, 38.47444, 79.05497, 36.9834, 92.921715, 33.70309, 92.772606, 26.844275, 70.25779, 26.69517, 62.802555, 33.553986)
@@ -167,32 +167,32 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0), "body/head", PackedFloat3
 
 [node name="nose" type="Polygon2D" parent="pologons/Body/Head" unique_id=110757096]
 position = Vector2(108.403015, -1.5734253)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../../Skeleton2D")
 polygon = PackedVector2Array(49.219883, 81.02101, 59.916798, 82.11253, 66.684235, 82.54913, 69.08557, 74.25357, 68.86728, 63.338356, 69.504135, 47.78386, 72.87793, 37.86094, 65.66756, 38.88588, 58.92598, 42.49184, 55.16117, 72.36275, 47.716988, 75.72463)
 uv = PackedVector2Array(49.219883, 81.02101, 59.916798, 82.11253, 66.684235, 82.54913, 69.08557, 74.25357, 68.86728, 63.338356, 69.504135, 47.78386, 72.87793, 37.86094, 65.66756, 38.88588, 58.92598, 42.49184, 55.16117, 72.36275, 47.716988, 75.72463)
 
 [node name="mouth" type="Polygon2D" parent="pologons/Body/Head" unique_id=2085438948]
 position = Vector2(108.403015, -1.5734253)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../../Skeleton2D")
 polygon = PackedVector2Array(60.376045, 89.54387, 52.758373, 94.2489, 46.260944, 94.58498, 39.203396, 90.10399, 36.290756, 84.95086, 42.900208, 83.270485, 48.50144, 81.92619, 50.629906, 83.49454, 54.774815, 82.26227, 58.3596, 83.270485, 61.94439, 88.535645)
 uv = PackedVector2Array(60.376045, 89.54387, 52.758373, 94.2489, 46.260944, 94.58498, 39.203396, 90.10399, 36.290756, 84.95086, 42.900208, 83.270485, 48.50144, 81.92619, 50.629906, 83.49454, 54.774815, 82.26227, 58.3596, 83.270485, 61.94439, 88.535645)
 bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eye-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eye-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eyebow-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eyebow-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/mouth", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "body/hand-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/hand-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="Hammer" type="Polygon2D" parent="pologons/Body" unique_id=1878014777]
-position = Vector2(142, 152.00002)
-rotation = 1.2205003
-scale = Vector2(0.9999995, 0.9999995)
+position = Vector2(141.99991, 153.99956)
+rotation = 1.225285
+scale = Vector2(0.99999803, 0.99999946)
 offset = Vector2(-266.89142, -137.02661)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 polygon = PackedVector2Array(219.92372, 18.803198, 218.85939, 60.666264, 251.4984, 68.11647, 256.82, 154.68079, 287.33032, 152.19737, 282.71832, 70.2451, 310.3905, 60.311497, 319.61456, 35.1227, 318.5503, 17.738882, 261.0772, 8.514816, 215.66646, 15.25548)
 uv = PackedVector2Array(219.92372, 18.803198, 218.85939, 60.666264, 251.4984, 68.11647, 256.82, 154.68079, 287.33032, 152.19737, 282.71832, 70.2451, 310.3905, 60.311497, 319.61456, 35.1227, 318.5503, 17.738882, 261.0772, 8.514816, 215.66646, 15.25548)
 bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eye-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eye-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eyebow-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/eyebow-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/head/mouth", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/hand-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0), "body/hand-r/weapon", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1), "body/hand-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="Hand-l" type="Polygon2D" parent="pologons/Body" unique_id=910540572]
 position = Vector2(122, -7.000003)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../Skeleton2D")
 polygon = PackedVector2Array(104.97766, 108.20569, 73.0482, 111.7534, 71.62912, 135.16833, 83.69136, 154.68079, 94.689285, 166.03348, 110.29924, 169.22643, 111.00879, 139.4256, 109.94447, 119.2036)
 uv = PackedVector2Array(104.97766, 108.20569, 73.0482, 111.7534, 71.62912, 135.16833, 83.69136, 154.68079, 94.689285, 166.03348, 110.29924, 169.22643, 111.00879, 139.4256, 109.94447, 119.2036)
@@ -200,7 +200,7 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head", Packed
 
 [node name="Hand-r" type="Polygon2D" parent="pologons/Body" unique_id=960537157]
 position = Vector2(117, -5)
-texture = ExtResource("1_ke2n6")
+texture = ExtResource("1_vfqwr")
 skeleton = NodePath("../../../Skeleton2D")
 polygon = PackedVector2Array(16.903976, 105.296684, 6.3555145, 143.53485, 15.145905, 174.74072, 43.714645, 170.78505, 52.505035, 154.96236, 56.46071, 136.50255, 58.65831, 114.08707, 47.230804, 106.61524)
 uv = PackedVector2Array(16.903976, 105.296684, 6.3555145, 143.53485, 15.145905, 174.74072, 43.714645, 170.78505, 52.505035, 154.96236, 56.46071, 136.50255, 58.65831, 114.08707, 47.230804, 106.61524)
@@ -211,37 +211,30 @@ bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head", Packed
 [node name="body" type="Bone2D" parent="Skeleton2D" unique_id=904877464]
 position = Vector2(-9, 47)
 rest = Transform2D(1, 0, 0, 1, -9, 47)
-editor_settings/show_bone_gizmo = false
 
 [node name="head" type="Bone2D" parent="Skeleton2D/body" unique_id=540785039]
 position = Vector2(9, -52)
 rest = Transform2D(1, 0, 0, 1, 9, -52)
-editor_settings/show_bone_gizmo = false
 
 [node name="eye-r" type="Bone2D" parent="Skeleton2D/body/head" unique_id=1986716150]
 position = Vector2(-25, -18)
 rest = Transform2D(1, 0, 0, 1, -25, -18)
-editor_settings/show_bone_gizmo = false
 
 [node name="eye-l" type="Bone2D" parent="Skeleton2D/body/head" unique_id=1033693511]
 position = Vector2(18, -13)
 rest = Transform2D(1, 0, 0, 1, 18, -13)
-editor_settings/show_bone_gizmo = false
 
 [node name="eyebow-r" type="Bone2D" parent="Skeleton2D/body/head" unique_id=1524608081]
 position = Vector2(-16, -34)
 rest = Transform2D(1, 0, 0, 1, -16, -34)
-editor_settings/show_bone_gizmo = false
 
 [node name="eyebow-l" type="Bone2D" parent="Skeleton2D/body/head" unique_id=775492285]
 position = Vector2(21, -31)
 rest = Transform2D(1, 0, 0, 1, 21, -31)
-editor_settings/show_bone_gizmo = false
 
 [node name="mouth" type="Bone2D" parent="Skeleton2D/body/head" unique_id=479044011]
 position = Vector2(-7, 23)
 rest = Transform2D(1, 0, 0, 1, -7, 23)
-editor_settings/show_bone_gizmo = false
 
 [node name="hand-r" type="Bone2D" parent="Skeleton2D/body" unique_id=1845896986]
 position = Vector2(-25, -4)
@@ -249,12 +242,12 @@ rotation = 5.967224
 rest = Transform2D(0.033295393, -0.99944556, 0.99944556, 0.033295393, -19.000002, -8)
 auto_calculate_length_and_angle = false
 length = 22.373
-bone_angle = -3.7649999
-editor_settings/show_bone_gizmo = false
+bone_angle = -3.7649987
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Skeleton2D/body/hand-r" unique_id=312676291]
-rotation = 1.4833275
+rotation = 1.225285
 remote_path = NodePath("../../../../pologons/Body/Hammer")
+use_global_coordinates = false
 update_position = false
 update_scale = false
 
@@ -264,8 +257,7 @@ rotation = 5.8994875
 rest = Transform2D(0.02749426, -0.999622, 0.999622, 0.02749426, 42, -14)
 auto_calculate_length_and_angle = false
 length = 19.31
-bone_angle = -7.8659997
-editor_settings/show_bone_gizmo = false
+bone_angle = -7.8659973
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1547265356]
 libraries/ = SubResource("AnimationLibrary_xj5fb")
