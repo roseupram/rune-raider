@@ -1,21 +1,10 @@
 [gd_scene format=3 uid="uid://cdt5dab7nnvtx"]
 
 [ext_resource type="Script" uid="uid://f3pa7dsnb2fq" path="res://unit/enemy/enemy.gd" id="1_cpquj"]
-[ext_resource type="Texture2D" uid="uid://wiq56o5mbbi8" path="res://unit/enemy/enemy.svg" id="3_46vr5"]
+[ext_resource type="Texture2D" uid="uid://st5f2vsai0hb" path="res://unit/enemy/enemy.svg" id="3_46vr5"]
 [ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="3_d22of"]
 [ext_resource type="Shape2D" uid="uid://bhqhdtd845uqg" path="res://component/shape/one_tile.tres" id="4_e140q"]
-[ext_resource type="Script" uid="uid://db05vtpd0ae3a" path="res://component/health_componet.gd" id="5_cpquj"]
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_ctwoc"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": ExtResource("3_46vr5")
-}],
-"loop": 1,
-"name": &"default",
-"speed": 5.0
-}]
+[ext_resource type="Script" uid="uid://db05vtpd0ae3a" path="res://component/stat_component.gd" id="5_cpquj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d22of"]
 size = Vector2(350, 350)
@@ -37,7 +26,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:modulate")
+tracks/1/path = NodePath(".:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -49,22 +38,10 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:modulate")
+tracks/2/path = NodePath(".:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath(".:rotation")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -127,18 +104,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(1, 1)]
 }
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("AnimatedSprite2D:modulate")
-tracks/1/interp = 2
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.2),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uu3e8"]
 _data = {
@@ -147,20 +112,15 @@ _data = {
 &"hurt": SubResource("Animation_5v2pi")
 }
 
-[node name="Enemy" type="Area2D" unique_id=1745691951]
+[node name="Enemy" type="Area2D" unique_id=1745691951 node_paths=PackedStringArray("health_node") groups=["Enemy"]]
 collision_layer = 2
 collision_mask = 4
 script = ExtResource("1_cpquj")
 base_move = 3
+health_node = NodePath("Health")
 
-[node name="Health" type="Node" parent="." unique_id=927752796]
-script = ExtResource("5_cpquj")
-max_value = 52
-value = 52
-metadata/_custom_type_script = "uid://db05vtpd0ae3a"
-
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=2088623983]
-sprite_frames = SubResource("SpriteFrames_ctwoc")
+[node name="Enemy" type="Sprite2D" parent="." unique_id=1882624567]
+texture = ExtResource("3_46vr5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1157809008]
 shape = ExtResource("4_e140q")
@@ -193,6 +153,10 @@ debug_color = Color(0.8586148, 0.18224698, 0.7736053, 0.41960785)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=713213839]
 libraries/ = SubResource("AnimationLibrary_uu3e8")
 speed_scale = 0.583
+
+[node name="Health" type="Node" parent="." unique_id=72771113]
+script = ExtResource("5_cpquj")
+metadata/_custom_type_script = "uid://db05vtpd0ae3a"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="input_event" from="." to="." method="_on_input_event"]

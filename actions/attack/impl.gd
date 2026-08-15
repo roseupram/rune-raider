@@ -10,4 +10,4 @@ func _init(ac,param):
 func execute():
 	print("attack")
 	if actor.has_method("attack"):
-		actor.attack(target_pos)
+		await actor.attack(target_pos)

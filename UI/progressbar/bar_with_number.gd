@@ -14,11 +14,11 @@ extends Control
 		value=n.value
 		n.changed.connect(_on_changed)
 	
-func _on_changed(_delta,current,max_v):
+func _on_changed(from,to,max_v):
 	max_value=max_v
 	#value=current
 	var tween = get_tree().create_tween()
-	tween.tween_property(self,"value",current,.1)
+	tween.tween_property(self,"value",to,.1)
 
 func set_color(c):
 	color=c

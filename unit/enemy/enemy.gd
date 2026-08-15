@@ -10,7 +10,7 @@ enum  State{Move,Attack,Died}
 var state=State.Move
 
 @onready var dot_panel = $Control/dot_panel
-@onready var health_node = $Health
+@export var health_node:StatComponent
 @onready var anim_node = $AnimationPlayer
 
 
@@ -25,8 +25,8 @@ func died():
 	await  anim_node.animation_finished
 	queue_free()
 
-func _on_health_change(delta,current,max_hp):
-	if current<=0:
+func _on_health_change(from,to):
+	if to <=0:
 		died()
 
 func update_move():

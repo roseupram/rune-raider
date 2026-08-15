@@ -6,5 +6,5 @@ class_name HealEffect
 
 func _init() -> void:
 	tr_key="Heal_DESP"
-func create_request(actor,param):
-	return MoveRequest.new(actor,param)
+func create_request(actor,param:Dictionary):
+	return HealRequest.new(actor,param.merged({value=value}))

@@ -2,27 +2,22 @@ extends Node
 # main game
 
 
-@onready var Map:BaseTileMap = $Map
+@export var Map:BaseTileMap
+@export var rangelayer:RangeLayer
+@export var ui_layer:CanvasLayer
 
-var AM = ActionManager.new()
-var BM = BattleManager.new()
-var NM=NavManager.new()
+var AM := ActionManager.new()
+var BM := BattleManager.new()
+var NM:=NavManager.new()
 
 func _ready() -> void:
-	$RangeLayer.clear()
+	rangelayer.clear()
 	Map.AM=AM
 	BM.AM=AM
-	$GameplayUI.BM=BM
+	ui_layer.BM=BM
 	
-	var player_hp = $Player/Health
-	var player_ma = $Player/Mana
-	#var hpbar = $UI/GameplayUI/HpBar
-	#hpbar.stat_node=player_hp
-	#var mabar= $UI/GameplayUI/ManaBar
-	#mabar.stat_node=player_ma
+	NM.overwrite_by_map(Map)
 	
-	
-	NM.overwrite_by_map($Map)
 	for i in [$Player,$Unit,$Unit2]:
 		i.global_position = $Map.snap_to_global(i.global_position)
 	for i in [$Unit,$Unit2]:
@@ -52,8 +47,9 @@ func _unhandled_input(event: InputEvent) -> void:
 	# 	if $RangeLayer.isvalid(pos) and select_card:
 	# 		$RangeLayer.clear()
 
-#func _process(delta: float) -> void:
-	#var pos_y = $Camera.position.y 
+func _process(delta: float) -> void:
+	AM.act()
+	var pos_y = $Camera.position.y 
 
 	
 	

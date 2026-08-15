@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
 [ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
 [ext_resource type="Shape2D" uid="uid://bhqhdtd845uqg" path="res://component/shape/one_tile.tres" id="4_r0m46"]
-[ext_resource type="PackedScene" uid="uid://s38qup8p58n3" path="res://component/health_componet.tscn" id="7_a2kr1"]
+[ext_resource type="PackedScene" uid="uid://s38qup8p58n3" path="res://component/stat_component.tscn" id="7_a2kr1"]
 [ext_resource type="PackedScene" uid="uid://hdi7xs6tswv7" path="res://unit/player/skeleton/hamman.tscn" id="7_mompe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llffi"]
@@ -168,9 +168,10 @@ _data = {
 &"swing": SubResource("Animation_6cahc")
 }
 
-[node name="Player" type="Area2D" unique_id=944555483]
+[node name="Player" type="Area2D" unique_id=944555483 node_paths=PackedStringArray("hp_node")]
 collision_mask = 4
 script = ExtResource("2_v7rm1")
+hp_node = NodePath("Health")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143013733]
 shape = ExtResource("4_r0m46")

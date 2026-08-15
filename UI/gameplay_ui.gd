@@ -18,8 +18,11 @@ func _ready() -> void:
 		$OptionButton.add_item(locale)
 		i+=1
 	$OptionButton.select(current_locale_id)
+	EventBus.stat_changed.connect(_on_stat_changed)
 
 
+func _on_stat_changed(from,to,source:StatComponent):
+	$HpBar._on_changed(from,to,source.max_value)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:

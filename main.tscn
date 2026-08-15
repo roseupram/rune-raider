@@ -37,8 +37,11 @@ tile_size = Vector2i(128, 128)
 sources/1 = SubResource("TileSetAtlasSource_5vw27")
 sources/0 = SubResource("TileSetAtlasSource_dg77c")
 
-[node name="Main" type="Node" unique_id=945536369]
+[node name="Main" type="Node" unique_id=945536369 node_paths=PackedStringArray("Map", "rangelayer", "ui_layer")]
 script = ExtResource("1_h2yge")
+Map = NodePath("Map")
+rangelayer = NodePath("RangeLayer")
+ui_layer = NodePath("GameplayUI")
 
 [node name="bg" type="Sprite2D" parent="." unique_id=756131291]
 z_index = -1

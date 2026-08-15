@@ -1,32 +1,5 @@
 [gd_resource type="Theme" format=3 uid="uid://bf4rag5rbyfn0"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wvktn"]
-bg_color = Color(0.82, 0.43132, 0.17219998, 1)
-border_width_left = 4
-border_width_top = 6
-border_width_right = 4
-border_color = Color(0.97, 0.97, 0.97, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
-bg_color = Color(0.82, 0.43132, 0.17219998, 1)
-border_width_left = 4
-border_width_top = 6
-border_width_right = 4
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olyjj"]
-bg_color = Color(0.82, 0.43132, 0.17219998, 1)
-border_width_left = 4
-border_width_top = 6
-border_width_right = 4
-border_color = Color(0.39215687, 0.8784314, 0.96862745, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6epsk"]
 border_width_left = 2
 border_width_top = 2
@@ -93,13 +66,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
-Button/colors/font_color = Color(0.83, 0.83, 0.83, 1)
-Button/colors/font_outline_color = Color(0, 0, 0, 1)
-Button/colors/font_pressed_color = Color(1, 1, 1, 1)
-Button/font_sizes/font_size = 28
-Button/styles/hover = SubResource("StyleBoxFlat_wvktn")
-Button/styles/normal = SubResource("StyleBoxFlat_h2yge")
-Button/styles/pressed = SubResource("StyleBoxFlat_olyjj")
+Button/font_sizes/font_size = 36
 CardPanel/base_type = &"Panel"
 CardPanel/styles/panel = SubResource("StyleBoxFlat_6epsk")
 DotPanelLabel/base_type = &"Label"
@@ -114,7 +81,6 @@ OptionButton/styles/normal = SubResource("StyleBoxFlat_go05t")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_oieh5")
 Panel/styles/panel = SubResource("StyleBoxFlat_bp4ym")
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_t3rxx")
-RedButton/base_type = &"Button"
 RedButton/styles/hover = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/normal = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_vj6dk")

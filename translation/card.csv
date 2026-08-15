@@ -2,4 +2,4 @@ keys,en,zh_CN
 MOVE_DESP,Move {range},移动 {range}
 ATTACK_DESP,Attack {value},攻击 {value}
 HEAL_DESP, Heal {value}, 恢复 {value}
-UNKONWN_DESP, unknown description, 未知效果
+UNKONWN_DESP, unknown description, update tr_key, 未知效果，需更新tr_key

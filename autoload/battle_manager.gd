@@ -45,7 +45,6 @@ func _on_confirmed_at_rangelayer(posi:Vector2i):
 			AM.request(r)
 		else:
 			push_error("no ActionManager in BattleManager")
-	AM.act()
 	
 
 func register_rangelayer(n:RangeLayer):

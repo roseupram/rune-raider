@@ -9,3 +9,5 @@ func _init(ac,param):
 
 func execute():
 	print("heal")
+	if actor.has_method("heal"):
+		await actor.heal(heal_value)
