@@ -4,3 +4,5 @@
 - use exclusive fullscreen
 
 - @export var before _ready()
+
+- no grid map

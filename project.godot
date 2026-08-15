@@ -27,6 +27,7 @@ EventBus="*uid://qwuxl0tx3k1h"
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
+window/size/mode=4
 window/stretch/mode="canvas_items"
 mouse_cursor/custom_image="uid://fja7dffemf1c"
 window/layer_1="visual"

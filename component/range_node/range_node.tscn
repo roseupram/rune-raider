@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://d3ijkon48y0jl"]
+
+[ext_resource type="Script" uid="uid://dri1k5604hxae" path="res://component/range_node/range_node.gd" id="1_41k7l"]
+[ext_resource type="Texture2D" uid="uid://clv03ueuhulod" path="res://component/range_node/arrow_head.svg" id="2_c6156"]
+[ext_resource type="Texture2D" uid="uid://cd76yh4x76nyt" path="res://component/range_node/arrow_tail.svg" id="2_klerv"]
+
+[node name="RangeNode" type="Node2D" unique_id=1675295997]
+visible = false
+script = ExtResource("1_41k7l")
+
+[node name="Line2D" type="Line2D" parent="." unique_id=77368385]
+texture_repeat = 3
+points = PackedVector2Array(0, 0, 200, 0)
+width = 115.0
+texture = ExtResource("2_klerv")
+texture_mode = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="Line2D" unique_id=896056943]
+position = Vector2(200, 0)
+texture = ExtResource("2_c6156")
+offset = Vector2(48, 0)
+
+[node name="RayCast2D" type="RayCast2D" parent="." unique_id=1246602624]
+target_position = Vector2(100, 20)
+collision_mask = 10

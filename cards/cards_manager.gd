@@ -10,10 +10,10 @@ signal card_unfocus(leaved_card:CardUI)
 		gap=g
 		arrange_cards()
 
-func _input(event: InputEvent) -> void:
-		if Input.is_action_just_pressed("cancel") and focused_card:
-			clear_focus()
-			get_viewport().set_input_as_handled()
+# func _input(_event: InputEvent) -> void:
+# 		if Input.is_action_just_pressed("cancel") and focused_card:
+# 			clear_focus()
+# 			get_viewport().set_input_as_handled()
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var height = size.y
@@ -49,7 +49,7 @@ func clear_focus():
 	if focused_card:
 		focused_card.unfocus()
 		#BattleManager.clear_range()
-		card_unfocus.emit(focused_card)
 		focused_card=null
+		card_unfocus.emit(focused_card)
 		
 		

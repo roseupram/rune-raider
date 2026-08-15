@@ -1,7 +1,7 @@
 extends EffectData
 class_name HealEffect
 
-@export var range =0
+
 @export var value=3
 
 func _init() -> void:

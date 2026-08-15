@@ -17,14 +17,14 @@ signal  focus(card:CardUI,by_shortcut:bool)
 enum State{normal,hover,focus,unfocus}
 var current_state:State=State.normal
 
-func _shortcut_input(event: InputEvent) -> void:
+func _shortcut_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(shortcut_name):
 		state_to(State.focus,true)
 		get_viewport().set_input_as_handled()
 	
 
 # Called when the node enters the scene tree for the first time.
-func _gui_input(event: InputEvent) -> void:
+func _gui_input(_event: InputEvent) -> void:
 	#print(event)
 	if Input.is_action_just_pressed("select_card"):
 		if current_state==State.hover:

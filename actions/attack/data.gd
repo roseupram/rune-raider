@@ -1,7 +1,6 @@
 extends EffectData
 class_name AttackEffect
 
-@export var range =1
 @export var value=6
 
 func _init() -> void:

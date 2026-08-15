@@ -11,4 +11,5 @@ func _init(ac,param):
 
 func execute():
 	from=actor.global_position
-	await  actor.move_to(target_position)
+	if actor.has_method("move_to"):
+		await  actor.move_to(target_position)
