@@ -25,10 +25,10 @@ func show_range(card:CardUI):
 		push_error("no range_node")
 		return
 	var d:CardData = card.data
-	var color = Color(1,1,1,.5)
+	var color = Color(0.0, 1.0, 1.0, 0.802)
 	var s_range = d.effects[0].scaled_range
 	var r=DrawCircle.new(player_node.global_position, 
-	s_range,4+log(2*s_range),color)
+	s_range,2+log(0.5*s_range),color)
 	range_node.request(r)
 	r=DrawArrow.new(player_node.global_position,0,d.effects[0].scaled_range)
 	range_node.request(r)

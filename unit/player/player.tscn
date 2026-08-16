@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://ckow04d6hd0up" path="res://images/bg.svg" id="3_mjnxy"]
 [ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
 [ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
-[ext_resource type="Shape2D" uid="uid://bhqhdtd845uqg" path="res://component/shape/one_tile.tres" id="4_r0m46"]
+[ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="6_am7h2"]
 [ext_resource type="PackedScene" uid="uid://s38qup8p58n3" path="res://component/stat_component.tscn" id="7_a2kr1"]
 [ext_resource type="PackedScene" uid="uid://hdi7xs6tswv7" path="res://unit/player/skeleton/hamman.tscn" id="7_mompe"]
 
@@ -168,13 +168,11 @@ _data = {
 &"swing": SubResource("Animation_6cahc")
 }
 
-[node name="Player" type="Area2D" unique_id=944555483 node_paths=PackedStringArray("hp_node")]
-collision_mask = 4
+[node name="Player" type="CharacterBody2D" unique_id=2086434871 node_paths=PackedStringArray("hp_node")]
+collision_mask = 14
 script = ExtResource("2_v7rm1")
+move_gain = 15
 hp_node = NodePath("Health")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143013733]
-shape = ExtResource("4_r0m46")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1206884610]
 texture = ExtResource("3_mjnxy")
@@ -199,6 +197,9 @@ position = Vector2(-4.5, -144.5)
 shape = SubResource("RectangleShape2D_llffi")
 debug_color = Color(1, 0, 0, 0.41960785)
 
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143013733]
+shape = ExtResource("6_am7h2")
+
 [node name="Health" parent="." unique_id=621677592 instance=ExtResource("7_a2kr1")]
 
 [node name="Mana" parent="." unique_id=856965956 instance=ExtResource("7_a2kr1")]
@@ -210,3 +211,5 @@ libraries/ = SubResource("AnimationLibrary_a2kr1")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Marker2D" unique_id=550647774]
 remote_path = NodePath("../../Base")
+
+[connection signal="body_entered" from="Base/Hitbox" to="Base/Hitbox" method="_on_body_entered"]

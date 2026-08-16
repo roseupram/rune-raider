@@ -1,0 +1,26 @@
+[gd_scene format=3 uid="uid://dfnn5yvtr4hl4"]
+
+[ext_resource type="Texture2D" uid="uid://cd76yh4x76nyt" path="res://component/range_node/arrow/arrow_tail.svg" id="1_cpuqd"]
+[ext_resource type="Script" uid="uid://cenkkk47lo2mp" path="res://component/range_node/arrow/arrow.gd" id="2_0p4wm"]
+[ext_resource type="Texture2D" uid="uid://clv03ueuhulod" path="res://component/range_node/arrow/arrow_head.svg" id="3_0p4wm"]
+[ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="4_0p4wm"]
+
+[node name="Arrow" type="Line2D" unique_id=532486175]
+texture_repeat = 3
+points = PackedVector2Array(0, 0, 200, 0)
+width = 115.0
+texture = ExtResource("1_cpuqd")
+texture_mode = 2
+script = ExtResource("2_0p4wm")
+
+[node name="head" type="Sprite2D" parent="." unique_id=1560419638]
+position = Vector2(200, 0)
+texture = ExtResource("3_0p4wm")
+offset = Vector2(50, 0)
+
+[node name="Body" type="CharacterBody2D" parent="." unique_id=1738166323]
+collision_layer = 0
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Body" unique_id=505655037]
+shape = ExtResource("4_0p4wm")

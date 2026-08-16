@@ -62,10 +62,9 @@ modulate = Color(0.9866667, 0.8, 1, 1)
 position = Vector2(977, 549)
 texture = ExtResource("6_7mycd")
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1938607595]
-visible = false
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1312211767]
 position = Vector2(977, 549)
-polygon = PackedVector2Array(36.5, -157, -84.5, -157, -84.5, -154.6, -160.6, -28, -162.6, -28, -155.5, 120.100006, -155.5, 132.4, -72.6, 161, 64, 161, 159, 114, 161.70001, 114, 163.70001, 110, 165.5, 110, 165.5, -56, 36.5, -155)
+polygon = PackedVector2Array(-78.5, -145, -78.5, -142.6, -148.6, -26, -150.6, -26, -143.5, 120.100006, -143.5, 125.5, -67.5, 149.4, -67.5, 150.9, -28.5, 152, 56, 152, 151, 105, 153.5, 105, 153.5, -51, 33.5, -143, 33.5, -145)
 
 [node name="RangeNode" parent="." unique_id=1675295997 instance=ExtResource("7_272bh")]
 

@@ -2,12 +2,12 @@
 <!-- Created with Inkscape (http://www.inkscape.org/) -->
 
 <svg
-   width="228.71896"
+   width="97.226562"
    height="114.55079"
-   viewBox="0 0 60.515226 30.308232"
+   viewBox="0 0 25.724528 30.308232"
    version="1.1"
    id="svg1"
-   inkscape:export-filename="arrow_head.svg"
+   inkscape:export-filename="arrow_tail.svg"
    inkscape:export-xdpi="96"
    inkscape:export-ydpi="96"
    inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
@@ -26,9 +26,9 @@
      inkscape:pagecheckerboard="0"
      inkscape:deskcolor="#d1d1d1"
      inkscape:document-units="mm"
-     inkscape:zoom="1.4142136"
-     inkscape:cx="-80.610173"
-     inkscape:cy="19.445436"
+     inkscape:zoom="2.8284271"
+     inkscape:cx="130.81475"
+     inkscape:cy="86.797357"
      inkscape:window-width="1920"
      inkscape:window-height="1027"
      inkscape:window-x="-8"
@@ -37,31 +37,43 @@
      inkscape:current-layer="layer1"
      showguides="true">
     <inkscape:page
-       x="0"
+       x="2.5189149e-08"
        y="0"
-       width="60.515224"
+       width="25.724529"
        height="30.308231"
        id="page1"
        margin="0 0 5.3466795e-08"
        bleed="0" />
     <sodipodi:guide
-       position="60.515227,30.307581"
+       position="3.2226046e-08,30.308231"
        orientation="1,0"
        id="guide2"
        inkscape:locked="false" />
-    <sodipodi:guide
-       position="-2.4849746e-07,30.306933"
-       orientation="1,0"
-       id="guide3"
-       inkscape:locked="false" />
   </sodipodi:namedview>
   <defs
-     id="defs1" />
+     id="defs1">
+    <inkscape:path-effect
+       effect="mirror_symmetry"
+       start_point="-98.934053,184.76088"
+       end_point="-12.693839,184.76088"
+       center_point="-55.813946,184.76088"
+       id="path-effect2"
+       is_visible="true"
+       lpeversion="1.2"
+       lpesatellites=""
+       mode="Y"
+       discard_orig_path="false"
+       fuse_paths="true"
+       oposite_fuse="false"
+       split_items="false"
+       split_open="false"
+       link_styles="false" />
+  </defs>
   <g
      inkscape:label="Layer 1"
      inkscape:groupmode="layer"
      id="layer1"
-     transform="translate(98.933591,-169.60677)">
+     transform="translate(38.418367,-169.60677)">
     <path
        id="path1"
        style="fill:#06d9e2;fill-opacity:1;stroke-width:1.05833;stroke-linejoin:round"
