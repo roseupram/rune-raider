@@ -14,6 +14,7 @@ signal died
 @export var hp_node:StatComponent
 @onready var ham_node=$Base/Hitbox
 @onready var Sprite = $Base
+@onready var skeleton = $Base/Hamman
 func heal(h):
 	hp_node.value+=h
 
@@ -26,7 +27,9 @@ func move_to(pos):
 		scale=Vector2(flip,1)
 		rotation=0
 	#print("dir: {0}, scale: {1}".format([d,scale]))
-	while distance>0.5 and no_collide:
+
+	skeleton.blur(d)
+	while distance>10 and no_collide:
 		velocity=d.normalized()*move_gain*distance
 		move_and_slide()
 		distance=global_position.distance_to(pos)
@@ -34,6 +37,7 @@ func move_to(pos):
 		if c:
 			no_collide=false
 		await  get_tree().physics_frame
+	skeleton.deblur()
 	#var ani_time = clamp(.05*d.length()/128,.1,.2)
 	#var tw = get_tree().create_tween()
 	##tw.set_ease(Tween.EASE_OUT_IN)

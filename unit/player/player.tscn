@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://hdi7xs6tswv7" path="res://unit/player/skeleton/hamman.tscn" id="7_mompe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llffi"]
-size = Vector2(75, 33)
+size = Vector2(82.22841, 44.72843)
 
 [sub_resource type="Animation" id="Animation_am7h2"]
 length = 0.001
@@ -171,14 +171,22 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=2086434871 node_paths=PackedStringArray("hp_node")]
 collision_mask = 14
 script = ExtResource("2_v7rm1")
-move_gain = 15
 hp_node = NodePath("Health")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1206884610]
 texture = ExtResource("3_mjnxy")
 
 [node name="Hamman" parent="Base" unique_id=1803026868 instance=ExtResource("7_mompe")]
-position = Vector2(-8, 3)
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -66.0
+offset_top = -67.0
+offset_right = -48.0
+offset_bottom = -49.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="Hitbox" parent="Base" unique_id=1274199608 instance=ExtResource("4_mjnxy")]
 rotation = -0.000915274
@@ -188,12 +196,12 @@ collision_mask = 2
 monitoring = false
 
 [node name="Sprite2D" type="Sprite2D" parent="Base/Hitbox" unique_id=791531402]
-position = Vector2(0, -42)
+position = Vector2(0.9943657, -50.489716)
 texture = ExtResource("3_v7rm1")
 offset = Vector2(-4, -59)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Base/Hitbox" unique_id=1137747206]
-position = Vector2(-4.5, -144.5)
+position = Vector2(-2.6342306, -154.42534)
 shape = SubResource("RectangleShape2D_llffi")
 debug_color = Color(1, 0, 0, 0.41960785)
 

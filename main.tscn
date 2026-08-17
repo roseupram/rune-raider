@@ -8,27 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://bei03pof8x3e7" path="res://unit/player/player.tscn" id="7_4c57u"]
 [ext_resource type="PackedScene" uid="uid://d3ijkon48y0jl" path="res://component/range_node/range_node.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://cklvalv7wour8" path="res://autoload/battle_manager.gd" id="8_5vw27"]
-
-[sub_resource type="Gradient" id="Gradient_7dm0k"]
-colors = PackedColorArray(0.37670672, 0.08360001, 0.76, 1, 0.26, 0.07279999, 0.21943998, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ig7tw"]
-gradient = SubResource("Gradient_7dm0k")
-width = 1920
-height = 1080
-fill = 1
-fill_from = Vector2(0.53333336, 0.5225589)
+[ext_resource type="Texture2D" uid="uid://ctpq01brynpgg" path="res://images/background.tres" id="9_kek77"]
 
 [node name="Main" type="Node" unique_id=945536369 node_paths=PackedStringArray("ui_layer", "BM")]
 script = ExtResource("1_h2yge")
 ui_layer = NodePath("GameplayUI")
 BM = NodePath("BattleManager")
-
-[node name="bg" type="Sprite2D" parent="." unique_id=756131291]
-z_index = -1
-texture = SubResource("GradientTexture2D_ig7tw")
-centered = false
-metadata/_edit_lock_ = true
 
 [node name="Unit" parent="." unique_id=1954289715 instance=ExtResource("6_5vw27")]
 position = Vector2(1215, 221)
@@ -38,6 +23,7 @@ position = Vector2(1377, 685)
 
 [node name="Player" parent="." unique_id=117303541 instance=ExtResource("7_4c57u")]
 position = Vector2(480, 633)
+move_gain = 12
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1565153153]
 anchor_mode = 0
@@ -71,3 +57,15 @@ polygon = PackedVector2Array(-78.5, -145, -78.5, -142.6, -148.6, -26, -150.6, -2
 [node name="BattleManager" type="Node2D" parent="." unique_id=504163143]
 script = ExtResource("8_5vw27")
 metadata/_custom_type_script = "uid://cklvalv7wour8"
+
+[node name="CanvasLayer-bg" type="CanvasLayer" parent="." unique_id=134138661]
+layer = -1
+
+[node name="bg" type="TextureRect" parent="CanvasLayer-bg" unique_id=862288910]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("9_kek77")
