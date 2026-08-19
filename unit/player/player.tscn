@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bei03pof8x3e7"]
 
 [ext_resource type="Script" uid="uid://db67hdxqdyqwk" path="res://unit/player/player.gd" id="2_v7rm1"]
-[ext_resource type="Texture2D" uid="uid://ckow04d6hd0up" path="res://images/bg.svg" id="3_mjnxy"]
+[ext_resource type="Texture2D" uid="uid://ckow04d6hd0up" path="res://unit/bg.svg" id="3_mjnxy"]
 [ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
 [ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
 [ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="6_am7h2"]
@@ -84,6 +84,18 @@ tracks/5/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Base:self_modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.33333334, 0.67058825, 0.59607846, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_6cahc"]
@@ -174,6 +186,7 @@ script = ExtResource("2_v7rm1")
 hp_node = NodePath("Health")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1206884610]
+self_modulate = Color(0.33333334, 0.67058825, 0.59607846, 1)
 texture = ExtResource("3_mjnxy")
 
 [node name="Hamman" parent="Base" unique_id=1803026868 instance=ExtResource("7_mompe")]

@@ -15,30 +15,6 @@ script = ExtResource("1_h2yge")
 ui_layer = NodePath("GameplayUI")
 BM = NodePath("BattleManager")
 
-[node name="Unit" parent="." unique_id=1954289715 instance=ExtResource("6_5vw27")]
-position = Vector2(1215, 221)
-
-[node name="Unit2" parent="." unique_id=1513071442 instance=ExtResource("6_5vw27")]
-position = Vector2(1377, 685)
-
-[node name="Player" parent="." unique_id=117303541 instance=ExtResource("7_4c57u")]
-position = Vector2(480, 633)
-move_gain = 12
-
-[node name="Camera" type="Camera2D" parent="." unique_id=1565153153]
-anchor_mode = 0
-script = ExtResource("5_lquwl")
-
-[node name="GameplayUI" parent="." unique_id=673248041 instance=ExtResource("2_1bvp3")]
-
-[node name="TODO" type="Label" parent="GameplayUI" unique_id=914142569]
-offset_top = 245.0
-offset_right = 296.0
-offset_bottom = 410.0
-text = "TODO
-no grid map"
-metadata/_edit_use_anchors_ = true
-
 [node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=353796848]
 collision_layer = 8
 collision_mask = 0
@@ -51,6 +27,36 @@ texture = ExtResource("6_7mycd")
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1312211767]
 position = Vector2(977, 549)
 polygon = PackedVector2Array(-78.5, -145, -78.5, -142.6, -148.6, -26, -150.6, -26, -143.5, 120.100006, -143.5, 125.5, -67.5, 149.4, -67.5, 150.9, -28.5, 152, 56, 152, 151, 105, 153.5, 105, 153.5, -51, 33.5, -143, 33.5, -145)
+
+[node name="Unit" parent="." unique_id=1954289715 instance=ExtResource("6_5vw27")]
+position = Vector2(1215, 221)
+
+[node name="Unit2" parent="." unique_id=1513071442 instance=ExtResource("6_5vw27")]
+position = Vector2(1377, 685)
+
+[node name="Player" parent="." unique_id=117303541 instance=ExtResource("7_4c57u")]
+position = Vector2(480, 633)
+
+[node name="Camera" type="Camera2D" parent="." unique_id=1565153153]
+anchor_mode = 0
+script = ExtResource("5_lquwl")
+
+[node name="GameplayUI" parent="." unique_id=673248041 instance=ExtResource("2_1bvp3")]
+
+[node name="TODO" type="RichTextLabel" parent="GameplayUI" unique_id=903994897]
+offset_top = 245.0
+offset_right = 296.0
+offset_bottom = 410.0
+bbcode_enabled = true
+text = "[wave]TODO[/wave][rainbow speed=0.5][ol]
+Enemy Navigation
+AOE
+throw a knife
+[/ol]
+
+ [/rainbow]"
+scroll_active = false
+metadata/_edit_use_anchors_ = true
 
 [node name="RangeNode" parent="." unique_id=1675295997 instance=ExtResource("7_272bh")]
 
@@ -69,3 +75,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_kek77")
+metadata/_edit_lock_ = true

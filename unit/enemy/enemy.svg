@@ -27,12 +27,12 @@
      showborder="true"
      labelstyle="default"
      inkscape:zoom="4"
-     inkscape:cx="100.375"
-     inkscape:cy="76.750001"
+     inkscape:cx="100.5"
+     inkscape:cy="76.875"
      inkscape:window-width="1920"
-     inkscape:window-height="1057"
-     inkscape:window-x="2552"
-     inkscape:window-y="270"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="22"
      inkscape:window-maximized="1"
      inkscape:current-layer="layer5"
      showguides="true">
@@ -215,14 +215,6 @@
      id="layer5"
      inkscape:label="Layer 5"
      transform="translate(-21.653504,-45.251629)">
-    <rect
-       style="display:inline;fill:#ab55a0;fill-opacity:1;stroke:#000000;stroke-width:1.16416669;stroke-dasharray:none;stroke-dashoffset:2.36221"
-       id="rect163"
-       width="32.705612"
-       height="32.705612"
-       x="26.467363"
-       y="50.065491"
-       inkscape:label="base" />
     <path
        style="display:inline;fill:url(#linearGradient3);fill-opacity:1;stroke:#000000;stroke-width:0.535939;stroke-dasharray:none;stroke-dashoffset:2.36221"
        d="m 31.750805,73.40388 c 0,0 -3.55619,2.953419 -4.032689,6.050665 -0.489811,3.183764 0.90339,2.65395 1.809819,3.050474 7.6036,0 23.127028,0.03644 27.503526,0.08856 1.873217,-3.017665 -2.624045,-8.861795 -5.661882,-10.70212 -7.428045,-4.499917 -19.618774,1.51242 -19.618774,1.512421 z"

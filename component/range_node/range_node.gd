@@ -26,7 +26,7 @@ func clear():
 	arrow_node.clear()
 	current_state=S.Idle
 	
-func _input(_event: InputEvent) -> void:
+func _unhandled_input(_event: InputEvent) -> void:
 	if current_state==S.Wait_for_comfirm:
 		queue_redraw()
 		var handled=true
@@ -47,7 +47,7 @@ func _input(_event: InputEvent) -> void:
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	#queue_redraw()
-	hide()
+	clear()
 	pass # Replace with function body.
 func _draw() -> void:
 	for r in draw_requests:
@@ -57,7 +57,6 @@ func draw_r(r:DrawRequest):
 	if 	r is DrawCircle:
 		#var points = 32
 		draw_arc(r.center,r.radius,0,TAU,r.points,r.color,r.line_width,true)
-		center = r.center
 		max_range=r.radius
 	elif r is DrawArrow:
 		draw_arrow(r)

@@ -9,7 +9,7 @@ signal died
 # everything is a touchable item, like potion, it drops on ground, you can pick it, enemy also
 # 
 
-@export var move_gain=10
+@export var move_gain=12
 
 @export var hp_node:StatComponent
 @onready var ham_node=$Base/Hitbox
@@ -19,6 +19,7 @@ func heal(h):
 	hp_node.value+=h
 
 func move_to(pos):
+	var from = global_position
 	var d:Vector2 =pos-global_position
 	var distance = d.length()
 	var flip = d.sign().x
@@ -38,6 +39,8 @@ func move_to(pos):
 			no_collide=false
 		await  get_tree().physics_frame
 	skeleton.deblur()
+	
+	EventBus.unit_moved.emit(from, global_position,self)
 	#var ani_time = clamp(.05*d.length()/128,.1,.2)
 	#var tw = get_tree().create_tween()
 	##tw.set_ease(Tween.EASE_OUT_IN)

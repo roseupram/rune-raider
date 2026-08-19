@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="46.890434"
+   height="45.438789"
+   viewBox="0 0 12.406427 12.022346"
+   version="1.1"
+   id="svg1"
+   inkscape:version="1.4.3 (0d15f75, 2025-12-25)"
+   sodipodi:docname="cursor.svg"
+   inkscape:export-filename="..\..\Documents\godot\rune-raider\images\cursor.svg"
+   inkscape:export-xdpi="96"
+   inkscape:export-ydpi="96"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1"
+     inkscape:document-units="px"
+     inkscape:zoom="8"
+     inkscape:cx="6.375"
+     inkscape:cy="15.1875"
+     inkscape:window-width="1920"
+     inkscape:window-height="1027"
+     inkscape:window-x="-8"
+     inkscape:window-y="22"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="layer1"
+     showguides="true"
+     inkscape:export-bgcolor="#ffffff00">
+    <sodipodi:guide
+       position="0,3.5839462"
+       orientation="0,-1"
+       id="guide2"
+       inkscape:locked="false" />
+  </sodipodi:namedview>
+  <defs
+     id="defs1">
+    <filter
+       inkscape:collect="always"
+       style="color-interpolation-filters:sRGB"
+       id="filter4"
+       x="-0.117439"
+       y="-0.12131439"
+       width="1.234878"
+       height="1.2426288">
+      <feGaussianBlur
+         inkscape:collect="always"
+         stdDeviation="0.41161833"
+         id="feGaussianBlur4" />
+    </filter>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       id="path3"
+       style="opacity:1;mix-blend-mode:normal;fill:#000000;fill-opacity:1;stroke:none;stroke-width:0.363537;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none;filter:url(#filter4)"
+       d="M 0.78944641,1.2207663 3.906569,9.3639384 9.2013364,9.1065898 9.0504414,3.9415305 Z"
+       transform="matrix(1.0382064,0,0,1,0.00758158,0)" />
+    <path
+       style="opacity:1;fill:#fac738;fill-opacity:1;stroke:#000000;stroke-width:0.47624999;stroke-linecap:butt;stroke-linejoin:round;stroke-dasharray:none"
+       d="M 0.56892842,0.55245052 3.6861144,8.6957124 8.9806069,8.4383997 8.8301591,3.2729811 Z"
+       id="path1"
+       sodipodi:nodetypes="ccccc" />
+    <path
+       style="opacity:1;fill:#00f7e1;fill-opacity:1;stroke:#000000;stroke-width:0.47624999;stroke-dasharray:none"
+       d="M 0.56892842,0.55245052 3.3763251,7.4178316 7.7414498,7.2766896 7.5135546,3.1568102 Z"
+       id="path2"
+       sodipodi:nodetypes="ccccc" />
+  </g>
+</svg>
