@@ -87,19 +87,16 @@ _data = {
 }
 
 [node name="Panel" type="Panel" unique_id=196047649]
-anchors_preset = -1
-anchor_right = 0.5390625
-anchor_bottom = 0.17222223
-offset_right = -840.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 theme_type_variation = &"CardPanel"
 theme_override_styles/panel = SubResource("StyleBoxFlat_d460q")
 script = ExtResource("1_hpx8p")
 data = ExtResource("2_bfk22")
 metadata/_edit_group_ = true
-metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=2102666246]
 layout_mode = 1

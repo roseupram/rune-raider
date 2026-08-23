@@ -24,8 +24,12 @@ func _ready() -> void:
 		c.set_deferred("size",child_size)
 		c.shortcut_name="card_"+str(i)
 		if not InputMap.has_action(c.shortcut_name):
-			printerr("[%s] not exist in InputMap" % [c.shortcut_name])
+			push_error("[%s] not exist in InputMap" % [c.shortcut_name])
 		i+=1
+	arrange_cards()
+	resized.connect(_on_resize)
+
+func _on_resize():
 	arrange_cards()
 
 func _on_card_focused(card:CardUI,by_shortcut):
@@ -44,6 +48,7 @@ func arrange_cards():
 	for i in range(n):
 		var c:CardUI =get_child(i)
 		c.position.x=start+step*i
+		c.size = Vector2(card_w,card_w)
 
 func clear_focus():
 	if focused_card:

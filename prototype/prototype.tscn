@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://dc2tiprjeqwyo"]
+
+[ext_resource type="PackedScene" uid="uid://bei03pof8x3e7" path="res://unit/player/player.tscn" id="1_y8ajs"]
+[ext_resource type="PackedScene" uid="uid://cdt5dab7nnvtx" path="res://unit/enemy/enemy.tscn" id="2_24a28"]
+
+[node name="Node" type="Node" unique_id=1464249240]
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=2130178763]
+color = Color(0.19793725, 0.19793722, 0.19793722, 1)
+polygon = PackedVector2Array(248, 43, 91, 177, 65, 341, 298, 579, 542, 583, 892, 299, 851, 107, 694, 13)
+
+[node name="Polygon2D2" type="Polygon2D" parent="." unique_id=1403467480]
+position = Vector2(842, 1169)
+rotation = 3.1415927
+color = Color(0.5729883, 0.5729883, 0.5729883, 1)
+polygon = PackedVector2Array(248, 43, 91, 177, 65, 341, 298, 579, 542, 583, 892, 299, 851, 107, 694, 13)
+
+[node name="Player" parent="." unique_id=2086434871 instance=ExtResource("1_y8ajs")]
+position = Vector2(295, 737)
+
+[node name="Enemy" parent="." unique_id=1694516433 instance=ExtResource("2_24a28")]
+position = Vector2(549, 452)
+
+[node name="Enemy2" parent="." unique_id=1115569309 instance=ExtResource("2_24a28")]
+position = Vector2(249, 391)
+
+[node name="Button" type="Button" parent="." unique_id=1990013795]
+offset_left = 295.0
+offset_top = 541.0
+offset_right = 549.0
+offset_bottom = 641.0
+theme_override_font_sizes/font_size = 54
+text = "门"

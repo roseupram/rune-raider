@@ -10,12 +10,21 @@
 [ext_resource type="Script" uid="uid://cklvalv7wour8" path="res://autoload/battle_manager.gd" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ctpq01brynpgg" path="res://images/background.tres" id="9_kek77"]
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_6e6us"]
+vertices = PackedVector2Array(943.2031, 1009, 995.5, 1009, 2290.2266, 1973.75, -310.39844, 1697.7422, 848.2031, 1056, 747.5781, 1056, 644.5, 1053.0938, 2297.7734, -370.0078, 995.5, 755.9297, 875.5, 663.9297, 875.5, 629, -555.46875, -119.21094, 633.5, 629, 558.15625, 748, 568.5, 1012.2031, 644.5, 1036.1016, 633.5, 678.3594, 591.6328, 748, 568.5, 960.6094)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 4, 3), PackedInt32Array(6, 5, 3), PackedInt32Array(7, 2, 1, 8), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 7, 10, 12), PackedInt32Array(3, 11, 12, 13), PackedInt32Array(14, 15, 6, 3), PackedInt32Array(16, 17, 13, 12), PackedInt32Array(18, 14, 3, 13)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-629, -178, -368, 1757, 2355, 2046, 2363, -441)])
+parsed_geometry_type = 1
+source_geometry_mode = 2
+source_geometry_group_name = &"Obstacle"
+agent_radius = 65.0
+
 [node name="Main" type="Node" unique_id=945536369 node_paths=PackedStringArray("ui_layer", "BM")]
 script = ExtResource("1_h2yge")
 ui_layer = NodePath("GameplayUI")
 BM = NodePath("BattleManager")
 
-[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=353796848]
+[node name="StaticBody2D" type="StaticBody2D" parent="." unique_id=353796848 groups=["Obstacle"]]
 collision_layer = 8
 collision_mask = 0
 
@@ -29,10 +38,13 @@ position = Vector2(977, 549)
 polygon = PackedVector2Array(-78.5, -145, -78.5, -142.6, -148.6, -26, -150.6, -26, -143.5, 120.100006, -143.5, 125.5, -67.5, 149.4, -67.5, 150.9, -28.5, 152, 56, 152, 151, 105, 153.5, 105, 153.5, -51, 33.5, -143, 33.5, -145)
 
 [node name="Unit" parent="." unique_id=1954289715 instance=ExtResource("6_5vw27")]
-position = Vector2(1215, 221)
+position = Vector2(957, 141)
 
 [node name="Unit2" parent="." unique_id=1513071442 instance=ExtResource("6_5vw27")]
 position = Vector2(1377, 685)
+
+[node name="Unit3" parent="." unique_id=1694516433 instance=ExtResource("6_5vw27")]
+position = Vector2(1561, 441)
 
 [node name="Player" parent="." unique_id=117303541 instance=ExtResource("7_4c57u")]
 position = Vector2(480, 633)
@@ -49,9 +61,8 @@ offset_right = 296.0
 offset_bottom = 410.0
 bbcode_enabled = true
 text = "[wave]TODO[/wave][rainbow speed=0.5][ol]
-Enemy Navigation
-AOE
-throw a knife
+Enemy Navigation: one stop, other avoid 
+Game loop
 [/ol]
 
  [/rainbow]"
@@ -76,3 +87,10 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("9_kek77")
 metadata/_edit_lock_ = true
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1125681309]
+visible = false
+position = Vector2(200, -290)
+navigation_polygon = SubResource("NavigationPolygon_6e6us")
+navigation_layers = 7
+travel_cost = 2.0

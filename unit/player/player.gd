@@ -50,7 +50,7 @@ func move_to(pos):
 func attack(target_pos:Vector2):
 	var d = target_pos-global_position
 	var rotate_deg = rad_to_deg(d.angle())
-	print(rotate_deg)
+	# print(rotate_deg)
 	var scx = 1
 	if rotate_deg>-90 and rotate_deg<91:
 		rotate_deg=rotate_deg+45

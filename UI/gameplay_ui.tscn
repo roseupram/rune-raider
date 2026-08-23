@@ -40,6 +40,12 @@ corner_radius_top_left = 14
 corner_radius_top_right = 4
 corner_radius_bottom_right = 14
 
+[sub_resource type="InputEventAction" id="InputEventAction_2jutx"]
+action = &"end_turn"
+
+[sub_resource type="Shortcut" id="Shortcut_1j2ro"]
+events = [SubResource("InputEventAction_2jutx")]
+
 [node name="GameplayUI" type="CanvasLayer" unique_id=556239460]
 script = ExtResource("1_pqbjq")
 metadata/_edit_lock_ = true
@@ -67,17 +73,17 @@ anchor_bottom = 1.0
 offset_left = -0.040008545
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 script = ExtResource("2_1j2ro")
 gap = 240
 metadata/_edit_use_anchors_ = true
 
 [node name="Card" parent="Cards" unique_id=1829360695 instance=ExtResource("2_pclro")]
 layout_mode = 1
-anchor_right = 0.04040404
-anchor_bottom = 0.40123457
+anchors_preset = -1
+anchor_right = 0.08
 offset_left = 477.0
-offset_right = 561.42426
-offset_bottom = 97.0
+offset_right = 485.40002
 grow_horizontal = 1
 grow_vertical = 1
 size_flags_horizontal = 3
@@ -85,6 +91,7 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_1j2ro")
 
 [node name="Card2" parent="Cards" unique_id=877098148 instance=ExtResource("2_pclro")]
 layout_mode = 1
+anchors_preset = -1
 anchor_left = 0.0021645022
 anchor_right = 0.0021645022
 anchor_bottom = 0.0
@@ -120,4 +127,14 @@ offset_bottom = 73.0
 value = 10
 color = Color(0.108, 0.3324, 0.9, 1)
 
+[node name="EndButton" type="Button" parent="." unique_id=2110573939]
+anchors_preset = -1
+anchor_left = 0.8
+anchor_top = 0.7
+anchor_right = 0.9
+anchor_bottom = 0.8
+shortcut = SubResource("Shortcut_1j2ro")
+text = "END_TURN_UI"
+
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="EndButton" to="." method="_on_end_button_button_up"]

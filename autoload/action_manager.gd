@@ -19,7 +19,7 @@ func act():
 	if current_state==State.Acting: return
 	current_state=State.Acting
 	while act_pointer<_pending_actions.size():
-		prints(act_pointer,_pending_actions.size())
+		# prints(act_pointer,_pending_actions.size())
 		var a = _pending_actions[act_pointer]
 		await a.execute()
 		action_completed.emit(a)

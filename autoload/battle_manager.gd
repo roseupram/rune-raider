@@ -49,7 +49,7 @@ func clear_range():
 func _on_card_focus(c:CardUI,by_shortcut):
 	show_range(c)
 	selected_card_data=c.data
-	print(c)
+	# print(c)
 	#if by_shortcut:
 		#range_node.check_tile_select()
 	
@@ -61,7 +61,7 @@ func _on_canceled():
 
 func _on_confirmed(pos):
 	clear_range()
-	print(pos)
+	# print(pos)
 	for e in selected_card_data.effects:
 		var r = e.create_request(player_node,{"target_pos":pos})
 		if AM:

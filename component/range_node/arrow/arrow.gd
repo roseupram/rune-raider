@@ -43,7 +43,7 @@ func _physics_process(_delta: float) -> void:
 	var result = state.intersect_shape(query)
 	var free_pos=target
 	if result:
-		print(result)
+		#print(result)
 		is_warnning=true
 		#free_pos=result.position
 	var dir = free_pos-position

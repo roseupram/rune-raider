@@ -3,6 +3,7 @@ extends Node
 signal unit_moved(from,to,act:Node2D)
 @warning_ignore("unused_signal")
 signal stat_changed(from,to,source:StatComponent)
+signal turn_end()
 
 var cursor_normal = preload("res://images/cursor.svg")
 

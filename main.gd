@@ -14,7 +14,7 @@ func _ready() -> void:
 	BM.range_node=$RangeNode
 	ui_layer.BM=BM
 	BM.player_node=$Player
-		
+	$Player.move_to($Player.global_position)
 
 	var screen_size = get_viewport().get_visible_rect().size
 

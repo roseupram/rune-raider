@@ -7,8 +7,8 @@
 [ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="3_yd30m"]
 [ext_resource type="Script" uid="uid://db05vtpd0ae3a" path="res://component/stat_component.gd" id="5_cpquj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_d22of"]
-size = Vector2(350, 350)
+[sub_resource type="CircleShape2D" id="CircleShape2D_yd30m"]
+radius = 128.0
 
 [sub_resource type="Animation" id="Animation_cpquj"]
 length = 0.001
@@ -127,7 +127,7 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1694516433 node_paths=PackedStringArray("health_node") groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 4
+collision_mask = 15
 input_pickable = true
 script = ExtResource("1_cpquj")
 base_move = 3
@@ -160,12 +160,11 @@ number = 4
 metadata/_edit_use_anchors_ = true
 
 [node name="hitbox" type="Area2D" parent="." unique_id=2122937435]
-visible = false
 collision_layer = 0
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="hitbox" unique_id=2031081670]
-shape = SubResource("RectangleShape2D_d22of")
+shape = SubResource("CircleShape2D_yd30m")
 debug_color = Color(0.8586148, 0.18224698, 0.7736053, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=713213839]
@@ -176,6 +175,15 @@ speed_scale = 0.583
 script = ExtResource("5_cpquj")
 metadata/_custom_type_script = "uid://db05vtpd0ae3a"
 
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=90963699]
+target_desired_distance = 130.0
+navigation_layers = 2
+avoidance_enabled = true
+radius = 64.0
+max_speed = 400.0
+debug_enabled = true
+
 [connection signal="input_event" from="." to="." method="_on_input_event"]
-[connection signal="area_entered" from="hitbox" to="." method="_on_hitbox_area_entered"]
-[connection signal="area_exited" from="hitbox" to="." method="_on_hitbox_area_exited"]
+[connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]
+[connection signal="body_exited" from="hitbox" to="." method="_on_hitbox_body_exited"]
+[connection signal="velocity_computed" from="NavigationAgent2D" to="." method="_on_navigation_agent_2d_velocity_computed"]

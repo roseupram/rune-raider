@@ -7,11 +7,25 @@ var player_enter=false
 var hit_target
 
 enum  State{Move,Attack,Died}
+var accumulated_distance=0.0
+var one_step = 200
 var state=State.Move
-
-@onready var dot_panel = $Control/dot_panel
+var player_pos
+@export var speed = 200
 @export var health_node:StatComponent
+@onready var dot_panel = $Control/dot_panel
 @onready var anim_node = $AnimationPlayer
+@onready var navi_agent = $NavigationAgent2D
+
+func _on_turn_end():
+	navi_agent.avoidance_enabled=true
+	navi_agent.target_position=player_pos
+	accumulated_distance=0.0
+	
+
+func _on_unit_move(from,to,unit):
+	if unit is Player:
+		player_pos=to
 
 
 func _ready() -> void:
@@ -19,6 +33,8 @@ func _ready() -> void:
 	count=base_move
 	health_node.changed.connect(_on_health_change)
 	update_move()
+	EventBus.unit_moved.connect(_on_unit_move)
+	EventBus.turn_end.connect(_on_turn_end)
 
 func died():
 	anim_node.play("die")
@@ -101,27 +117,52 @@ func move_to(pos):
 		#update_move()
 		
 
+func _physics_process(delta: float) -> void:
+	if navi_agent.is_navigation_finished(): return
+	accumulated_distance+=delta*velocity.length()
+	#print("accumu_distance %f" % accumulated_distance)
+	if accumulated_distance > one_step or player_enter: 
+		stop()
+		return
+	var from = global_position
+	var to = navi_agent.get_next_path_position()
+	
+	var new_v = from.direction_to(to)*speed
+	navi_agent.velocity=new_v
+	#print(velocity,from,to)
+	#move_and_slide()
 
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	if player_enter:
-		#modulate=Color.RED
+		modulate=Color.RED
 		pass
 	else :
 		modulate=Color.WHITE
 
+func stop():
+	navi_agent.velocity=Vector2.ZERO
+	#navi_agent.target_position=global_position
+	#navi_agent.avoidance_enabled=false
 
-func _on_hitbox_area_entered(area: Area2D) -> void:
-	player_enter=true
-	hit_target=area
+func _on_hitbox_body_entered(body: Node2D) -> void:
+	if body is Player:
+		player_enter=true
+		hit_target=body
 	
 
 
-func _on_hitbox_area_exited(area: Area2D) -> void:
-	player_enter=false
-	hit_target=null
+func _on_hitbox_body_exited(body: Node2D) -> void:
+	if body is Player:
+		player_enter=false
+		hit_target=null
 
 
-func _on_input_event(viewport: Node, event: InputEvent, shape_idx: int) -> void:
+func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_RIGHT:
 			print(self,"right clicked")
+
+
+func _on_navigation_agent_2d_velocity_computed(safe_velocity: Vector2) -> void:
+	velocity=safe_velocity
+	move_and_slide()

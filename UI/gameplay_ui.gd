@@ -36,3 +36,8 @@ func _on_option_button_item_selected(index: int) -> void:
 	for child in $Cards.get_children():
 		child._update_data()
 	
+
+
+func _on_end_button_button_up() -> void:
+	#print("button up")
+	EventBus.turn_end.emit()
