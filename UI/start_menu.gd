@@ -1,6 +1,6 @@
 extends Control
 
-@export var main_game:PackedScene
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -12,4 +12,8 @@ func _process(delta: float) -> void:
 
 
 func _on_button_button_up() -> void:
-	get_tree().change_scene_to_packed(main_game)
+	EventBus.to_game()
+
+
+func _on_exit_button_pressed() -> void:
+	get_tree().quit()

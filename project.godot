@@ -14,8 +14,8 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 [application]
 
-config/name="Rune Raider"
-run/main_scene="uid://cl1r60rn8mlxx"
+config/name="Raid the rune"
+run/main_scene="uid://chuuiheypxj4j"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="uid://d1drtldacawqm"
 

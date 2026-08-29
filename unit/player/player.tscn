@@ -218,11 +218,14 @@ shape = SubResource("RectangleShape2D_llffi")
 debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2143013733]
+visible = false
 shape = ExtResource("6_am7h2")
 
 [node name="Health" parent="." unique_id=621677592 instance=ExtResource("7_a2kr1")]
 
-[node name="Mana" parent="." unique_id=856965956 instance=ExtResource("7_a2kr1")]
+[node name="Enegy" parent="." unique_id=856965956 instance=ExtResource("7_a2kr1")]
+max_value = 3
+value = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1193849781]
 libraries/ = SubResource("AnimationLibrary_a2kr1")

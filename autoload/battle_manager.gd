@@ -1,5 +1,8 @@
 extends Node
 class_name BattleManager
+## receive intention, on turn end, execute all intention
+enum Intent{MOVE,MOVE_TO_PLAYER}
+
 
 var range_node:RangeNode:
 	set(n):
@@ -13,9 +16,60 @@ var selected_card_data:CardData
 var AM:ActionManager
 
 enum State{Idle,Wait_for_comfirm}
-
 var current_state = State.Idle
 
+var position_assign_array=[]
+var intent_count = 0
+var enemy_count = 0
+
+func _ready() -> void:
+	EventBus.turn_end.connect(_on_turn_end)
+	EventBus.enemy_spawn.connect(_on_enemy_spawn)
+
+
+
+func _on_turn_end():
+	for e:Node in position_assign_array:
+		if e.has_method("act"):
+			e.act()
+	position_assign_array.clear()
+	intent_count=0
+
+func _on_enemy_spawn(e):
+	enemy_count+=1
+	# print("enemy %d" % enemy_count)
+	var signal_name = "intention_get"
+	if e.has_signal(signal_name):
+		e.connect(signal_name,_receive_intention.bind(e))
+
+func _receive_intention(intent:Intent,node:Node):
+	match  intent:
+		Intent.MOVE_TO_PLAYER:
+			var method_name="set_target"
+			if node.has_method(method_name):
+				# node[method_name].call(player_node.global_position)
+				position_assign_array.push_back(node)
+	intent_count+=1
+	if intent_count==enemy_count:
+		assign_target_pos(position_assign_array)
+		# print("assign position")
+
+func assign_target_pos(nodes:Array):
+	# TODO need sort by angle
+	var center = player_node.global_position
+	var n_parts = 6
+	var last_angle
+	var gap  = TAU/n_parts
+	var u=Vector2(140,0)
+	for n in nodes:
+		var dir = n.global_position - center
+		var pos = center
+		var angle = dir.angle()
+		if last_angle and abs(last_angle-angle)<gap:
+			angle=last_angle+gap
+		pos+=u.rotated(angle)
+		last_angle=angle
+		n.set_target(pos)
 
 func state_to(s):
 	current_state=s
@@ -33,20 +87,13 @@ func show_range(card:CardUI):
 	r=DrawArrow.new(player_node.global_position,0,d.effects[0].scaled_range)
 	range_node.request(r)
 	state_to(State.Wait_for_comfirm)
-	#var tile_mask=d.effects[0].tile_mask
-	#var r=d.effects[0].range
-	#var x_r = [-r,r+1]
-	#var center:Vector2i  = range_node.global_to_map(player_node.global_position)
-	#for i in range.callv(x_r):
-		#for j in range.callv(x_r):
-			#range_node.enable(center+Vector2i(i,j),tile_mask)
-	#
+
 func clear_range():
 	card_manager.clear_focus()
 	range_node.clear()
 	state_to(State.Idle)
 
-func _on_card_focus(c:CardUI,by_shortcut):
+func _on_card_focus(c:CardUI,_by_shortcut):
 	show_range(c)
 	selected_card_data=c.data
 	# print(c)

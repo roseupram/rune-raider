@@ -7,6 +7,10 @@
 #### Design
 - no grid map
 
+#### Load
+- preload() can't load recursive scene, e.g. A preload B, B preload A.
+ In this case, preload will return null
+
 #### Organize
 - one node, one responsibility
 - keep assets near to node

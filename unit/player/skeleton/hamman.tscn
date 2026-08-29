@@ -234,6 +234,7 @@ uv = PackedVector2Array(16.903976, 105.296684, 6.3555145, 143.53485, 15.145905, 
 bones = ["body", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head/eye-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head/eye-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head/eyebow-r", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head/eyebow-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/head/mouth", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0), "body/hand-r", PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1), "body/hand-l", PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0)]
 
 [node name="Skeleton2D" type="Skeleton2D" parent="SubViewport/Node2D" unique_id=674527643]
+visible = false
 
 [node name="body" type="Bone2D" parent="SubViewport/Node2D/Skeleton2D" unique_id=904877464]
 position = Vector2(-9, 47)

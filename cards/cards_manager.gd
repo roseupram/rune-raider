@@ -48,7 +48,7 @@ func arrange_cards():
 	for i in range(n):
 		var c:CardUI =get_child(i)
 		c.position.x=start+step*i
-		c.size = Vector2(card_w,card_w)
+		c.set_size.call_deferred(Vector2(card_w,card_w))
 
 func clear_focus():
 	if focused_card:

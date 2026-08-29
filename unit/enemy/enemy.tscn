@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://db05vtpd0ae3a" path="res://component/stat_component.gd" id="5_cpquj"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yd30m"]
+resource_local_to_scene = true
 radius = 128.0
 
 [sub_resource type="Animation" id="Animation_cpquj"]
@@ -127,11 +128,13 @@ _data = {
 
 [node name="Enemy" type="CharacterBody2D" unique_id=1694516433 node_paths=PackedStringArray("health_node") groups=["Enemy"]]
 collision_layer = 2
-collision_mask = 15
+collision_mask = 3
 input_pickable = true
+motion_mode = 1
 script = ExtResource("1_cpquj")
-base_move = 3
+move_gain = 0.5
 health_node = NodePath("Health")
+base_move = 3
 
 [node name="Bg" type="Sprite2D" parent="." unique_id=1354034216]
 self_modulate = Color(0.67058825, 0.33333334, 0.627451, 1)
@@ -141,6 +144,7 @@ texture = ExtResource("2_yd30m")
 texture = ExtResource("3_46vr5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1157809008]
+visible = false
 shape = ExtResource("3_yd30m")
 
 [node name="Control" type="Control" parent="." unique_id=1359668502]
@@ -176,10 +180,11 @@ script = ExtResource("5_cpquj")
 metadata/_custom_type_script = "uid://db05vtpd0ae3a"
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=90963699]
-target_desired_distance = 130.0
+path_desired_distance = 100.0
+target_desired_distance = 40.0
 navigation_layers = 2
 avoidance_enabled = true
-radius = 64.0
+radius = 70.0
 max_speed = 400.0
 debug_enabled = true
 

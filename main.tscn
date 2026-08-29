@@ -11,13 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://ctpq01brynpgg" path="res://images/background.tres" id="9_kek77"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6e6us"]
-vertices = PackedVector2Array(943.2031, 1009, 995.5, 1009, 2290.2266, 1973.75, -310.39844, 1697.7422, 848.2031, 1056, 747.5781, 1056, 644.5, 1053.0938, 2297.7734, -370.0078, 995.5, 755.9297, 875.5, 663.9297, 875.5, 629, -555.46875, -119.21094, 633.5, 629, 558.15625, 748, 568.5, 1012.2031, 644.5, 1036.1016, 633.5, 678.3594, 591.6328, 748, 568.5, 960.6094)
+vertices = PackedVector2Array(944.3672, 1014, 1000.5, 1014, 2285.2422, 1968.2031, -305.96875, 1693.1797, 849.3672, 1061, 747.5078, 1061, 639.5, 1057.9531, 2292.75, -364.54688, 1000.5, 753.46094, 880.5, 661.46094, 880.5, 624, -549.8203, -114.6875, 628.5, 624, 552.9219, 743, 563.5, 1015.8672, 639.5, 1039.7734, 628.5, 676.97656, 588.8125, 743, 563.5, 960.85156)
 polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(5, 4, 3), PackedInt32Array(6, 5, 3), PackedInt32Array(7, 2, 1, 8), PackedInt32Array(7, 8, 9, 10), PackedInt32Array(11, 7, 10, 12), PackedInt32Array(3, 11, 12, 13), PackedInt32Array(14, 15, 6, 3), PackedInt32Array(16, 17, 13, 12), PackedInt32Array(18, 14, 3, 13)])
 outlines = Array[PackedVector2Array]([PackedVector2Array(-629, -178, -368, 1757, 2355, 2046, 2363, -441)])
 parsed_geometry_type = 1
 source_geometry_mode = 2
 source_geometry_group_name = &"Obstacle"
-agent_radius = 65.0
+agent_radius = 70.0
 
 [node name="Main" type="Node" unique_id=945536369 node_paths=PackedStringArray("ui_layer", "BM")]
 script = ExtResource("1_h2yge")
@@ -34,6 +34,7 @@ position = Vector2(977, 549)
 texture = ExtResource("6_7mycd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="StaticBody2D" unique_id=1312211767]
+visible = false
 position = Vector2(977, 549)
 polygon = PackedVector2Array(-78.5, -145, -78.5, -142.6, -148.6, -26, -150.6, -26, -143.5, 120.100006, -143.5, 125.5, -67.5, 149.4, -67.5, 150.9, -28.5, 152, 56, 152, 151, 105, 153.5, 105, 153.5, -51, 33.5, -143, 33.5, -145)
 
@@ -56,9 +57,11 @@ script = ExtResource("5_lquwl")
 [node name="GameplayUI" parent="." unique_id=673248041 instance=ExtResource("2_1bvp3")]
 
 [node name="TODO" type="RichTextLabel" parent="GameplayUI" unique_id=903994897]
-offset_top = 245.0
-offset_right = 296.0
-offset_bottom = 410.0
+anchors_preset = -1
+anchor_top = 0.22685185
+anchor_right = 0.13125
+anchor_bottom = 0.4675926
+mouse_filter = 2
 bbcode_enabled = true
 text = "[wave]TODO[/wave][rainbow speed=0.5][ol]
 Enemy Navigation: one stop, other avoid 

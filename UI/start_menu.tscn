@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://bhl3tkd7kgv07"]
 
 [ext_resource type="Script" uid="uid://d3axr3wv5fkgo" path="res://UI/start_menu.gd" id="1_dl586"]
-[ext_resource type="PackedScene" uid="uid://cl1r60rn8mlxx" path="res://main.tscn" id="2_q5qyg"]
 
 [node name="Start_Menu" type="Control" unique_id=705530170]
 layout_mode = 3
@@ -11,10 +10,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_dl586")
-main_game = ExtResource("2_q5qyg")
 metadata/_edit_lock_ = true
 
-[node name="Button" type="Button" parent="." unique_id=1009764958]
+[node name="StartButton" type="Button" parent="." unique_id=1009764958]
 layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.40052083
@@ -25,4 +23,16 @@ offset_right = -0.64001465
 text = "START_UI"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="button_up" from="Button" to="." method="_on_button_button_up"]
+[node name="ExitButton" type="Button" parent="." unique_id=1403165085]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.40052083
+anchor_top = 0.787963
+anchor_right = 0.58002084
+anchor_bottom = 0.94814813
+offset_right = -0.64001465
+text = "EXIT_UI"
+metadata/_edit_use_anchors_ = true
+
+[connection signal="pressed" from="StartButton" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

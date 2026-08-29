@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://chuuiheypxj4j"]
+
+[ext_resource type="Script" uid="uid://cvhoocelsou3u" path="res://autoload/launch.gd" id="1_gm8v5"]
+
+[node name="Launch" type="Node" unique_id=162295688]
+script = ExtResource("1_gm8v5")

@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+#@export var main_menu:PackedScene
+
 var BM:BattleManager:
 	set(bm):
 		BM=bm
@@ -41,3 +43,7 @@ func _on_option_button_item_selected(index: int) -> void:
 func _on_end_button_button_up() -> void:
 	#print("button up")
 	EventBus.turn_end.emit()
+
+
+func _on_backto_menu_pressed() -> void:
+	EventBus.to_menu()

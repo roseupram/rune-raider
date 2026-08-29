@@ -6,6 +6,9 @@ enum State{Idle,Acting}
 var current_state:=State.Idle
 var act_pointer=0
 
+#func _init() -> void:
+	#EventBus.turn_end.connect(_on_turn_end)
+
 var _pending_actions:Array[ActionRequest]=[]
 
 func request(r:ActionRequest):
@@ -14,6 +17,9 @@ func request(r:ActionRequest):
 func clear():
 	_pending_actions.clear()
 	act_pointer=0	
+
+func _on_turn_end():
+	print("AM: turn end")
 
 func act():
 	if current_state==State.Acting: return
