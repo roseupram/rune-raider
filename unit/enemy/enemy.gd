@@ -142,7 +142,7 @@ func _on_hitbox_body_exited(body: Node2D) -> void:
 	if body is Player:
 		player_enter=false
 		accumulated_distance=one_step+1
-		state_to(State.Move)
+		state_to(State.Idle)
 
 
 func _on_input_event(_viewport: Node, event: InputEvent, _shape_idx: int) -> void:

@@ -27,7 +27,7 @@ func _ready() -> void:
 	EventBus.enemy_spawn.connect(_on_enemy_spawn)
 
 
-
+# FIXME if enemy died, remove from array
 func _on_turn_end():
 	for e:Node in position_assign_array:
 		if e.has_method("act"):
@@ -107,8 +107,10 @@ func _on_canceled():
 	clear_range()
 
 func _on_confirmed(pos):
+	card_manager.discard()
 	clear_range()
 	# print(pos)
+	player_node.change_enegy(-selected_card_data.cost)
 	for e in selected_card_data.effects:
 		var r = e.create_request(player_node,{"target_pos":pos})
 		if AM:

@@ -4,3 +4,4 @@ class_name CardData
 @export var ID: String
 @export var cost: int
 @export var effects: Array[EffectData] = []
+@export var image:Texture2D

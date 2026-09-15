@@ -2,43 +2,11 @@
 
 [ext_resource type="Script" uid="uid://0iiyjpdjbhx3" path="res://UI/gameplay_ui.gd" id="1_pqbjq"]
 [ext_resource type="Script" uid="uid://dnqmp0vapennk" path="res://cards/cards_manager.gd" id="2_1j2ro"]
-[ext_resource type="PackedScene" uid="uid://da51k3b2ha8i7" path="res://cards/card_ui.tscn" id="2_pclro"]
+[ext_resource type="Script" uid="uid://byknhbt5mvk82" path="res://cards/card_data.gd" id="3_4jk46"]
 [ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="3_jpgws"]
-[ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="4_1j2ro"]
 [ext_resource type="PackedScene" uid="uid://cdrhvaqkn7pqr" path="res://UI/progressbar/bar_with_number.tscn" id="4_jmrml"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1j2ro"]
-resource_local_to_scene = true
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 4
-corner_radius_bottom_right = 14
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rw8eu"]
-resource_local_to_scene = true
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 4
-corner_radius_bottom_right = 14
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jk46"]
-resource_local_to_scene = true
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 2
-border_color = Color(0, 0, 0, 1)
-corner_radius_top_left = 14
-corner_radius_top_right = 4
-corner_radius_bottom_right = 14
+[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="4_rw8eu"]
+[ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="6_rw8eu"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_2jutx"]
 action = &"end_turn"
@@ -48,20 +16,6 @@ events = [SubResource("InputEventAction_2jutx")]
 
 [node name="GameplayUI" type="CanvasLayer" unique_id=556239460]
 script = ExtResource("1_pqbjq")
-
-[node name="OptionButton" type="OptionButton" parent="." unique_id=1823028117]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -101.0
-offset_bottom = 28.0
-grow_horizontal = 0
-selected = 0
-item_count = 2
-popup/item_0/text = "en"
-popup/item_0/id = 0
-popup/item_1/text = "zh"
-popup/item_1/id = 1
 
 [node name="Cards" type="Control" parent="." unique_id=2106648012]
 layout_mode = 3
@@ -74,57 +28,18 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("2_1j2ro")
-gap = 240
+card_deck = Array[ExtResource("3_4jk46")]([ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("6_rw8eu")])
+gap = 30
 metadata/_edit_use_anchors_ = true
-
-[node name="Card" parent="Cards" unique_id=1829360695 instance=ExtResource("2_pclro")]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 0.08
-offset_left = 477.0
-offset_right = 485.40002
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_1j2ro")
-
-[node name="Card2" parent="Cards" unique_id=877098148 instance=ExtResource("2_pclro")]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.0021645022
-anchor_right = 0.0021645022
-anchor_bottom = 0.0
-offset_left = 874.8442
-offset_right = 1036.8441
-offset_bottom = 162.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_rw8eu")
-data = ExtResource("3_jpgws")
-
-[node name="Card3" parent="Cards" unique_id=358259494 instance=ExtResource("2_pclro")]
-layout_mode = 0
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 1281.0
-offset_right = 1443.0
-offset_bottom = 162.0
-grow_horizontal = 1
-grow_vertical = 1
-size_flags_horizontal = 3
-theme_override_styles/panel = SubResource("StyleBoxFlat_4jk46")
-data = ExtResource("4_1j2ro")
 
 [node name="HpBar" parent="." unique_id=651504158 instance=ExtResource("4_jmrml")]
 color = Color(1, 0.14509805, 0.24705882, 1)
 
-[node name="ManaBar" parent="." unique_id=1712593223 instance=ExtResource("4_jmrml")]
+[node name="EnegyBar" parent="." unique_id=1712593223 instance=ExtResource("4_jmrml")]
 offset_top = 43.0
 offset_bottom = 73.0
 value = 10
-color = Color(0.108, 0.3324, 0.9, 1)
+color = Color(0, 0.6666667, 0.80784315, 1)
 
 [node name="EndButton" type="Button" parent="." unique_id=2110573939]
 anchors_preset = -1
@@ -137,14 +52,33 @@ text = "END_TURN_UI"
 
 [node name="BacktoMenu" type="Button" parent="." unique_id=765526643]
 anchors_preset = -1
-anchor_left = 0.8796875
+anchor_left = 0.9203125
 anchor_top = 0.10185185
 anchor_right = 1.0
-anchor_bottom = 0.20185184
-theme_override_font_sizes/font_size = 24
+anchor_bottom = 0.2037037
 text = "BACK_TO_MENU_UI"
+autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[node name="Button" type="Button" parent="." unique_id=1739715817]
+anchors_preset = -1
+anchor_top = 0.8898148
+anchor_right = 0.0625
+anchor_bottom = 1.0
+grow_vertical = 0
+text = "Draw"
+metadata/_edit_use_anchors_ = true
+
+[node name="Button2" type="Button" parent="." unique_id=1148945822]
+anchors_preset = -1
+anchor_left = 0.9328125
+anchor_top = 0.8898148
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "Discard"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="EndButton" to="." method="_on_end_button_button_up"]
 [connection signal="pressed" from="BacktoMenu" to="." method="_on_backto_menu_pressed"]

@@ -1,19 +1,29 @@
 [gd_scene format=3 uid="uid://da51k3b2ha8i7"]
 
 [ext_resource type="Script" uid="uid://c0o2lvc3mxlqv" path="res://cards/card_ui.gd" id="1_hpx8p"]
-[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="2_bfk22"]
+[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="2_hpx8p"]
 [ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="3_cw2xh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_yqnp2"]
+resource_local_to_scene = true
+border_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 14
+corner_radius_top_right = 17
+corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d460q"]
 resource_local_to_scene = true
-border_width_left = 3
-border_width_top = 3
-border_width_right = 3
-border_width_bottom = 2
+draw_center = false
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
 border_color = Color(0, 0, 0, 1)
 corner_radius_top_left = 14
-corner_radius_top_right = 4
+corner_radius_top_right = 14
 corner_radius_bottom_right = 14
+corner_radius_bottom_left = 14
 
 [sub_resource type="Animation" id="Animation_gjfx2"]
 length = 0.001
@@ -28,6 +38,33 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(0, 0, 0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("..:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_hpx8p"]
+resource_name = "error"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 0, 0, 1), Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_d460q"]
@@ -81,12 +118,45 @@ tracks/0/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_mkbd5"]
 _data = {
 &"RESET": SubResource("Animation_gjfx2"),
+&"error": SubResource("Animation_hpx8p"),
 &"focus": SubResource("Animation_d460q"),
 &"hover": SubResource("Animation_mkbd5"),
 &"normal": SubResource("Animation_tsfa4")
 }
 
-[node name="Panel" type="Panel" unique_id=196047649]
+[sub_resource type="Gradient" id="Gradient_hpx8p"]
+colors = PackedColorArray(0.49, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfk22"]
+gradient = SubResource("Gradient_hpx8p")
+
+[node name="Control" type="Control" unique_id=18124999 node_paths=PackedStringArray("label_node", "img_node")]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 267.0
+offset_bottom = 305.0
+script = ExtResource("1_hpx8p")
+label_node = NodePath("VBoxContainer/Label")
+img_node = NodePath("VBoxContainer/MarginContainer/TextureRect")
+data = ExtResource("2_hpx8p")
+metadata/_edit_group_ = true
+
+[node name="bg" type="Panel" parent="." unique_id=504626011]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.01
+anchor_top = 0.01
+anchor_right = 0.99
+anchor_bottom = 0.99
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"CardPanel"
+theme_override_styles/panel = SubResource("StyleBoxFlat_yqnp2")
+
+[node name="Panel" type="Panel" parent="." unique_id=196047649]
+z_index = 1
+clip_contents = true
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -94,22 +164,9 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"CardPanel"
 theme_override_styles/panel = SubResource("StyleBoxFlat_d460q")
-script = ExtResource("1_hpx8p")
-data = ExtResource("2_bfk22")
-metadata/_edit_group_ = true
-
-[node name="Label" type="Label" parent="." unique_id=2102666246]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-horizontal_alignment = 1
-vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
 
 [node name="CostPanel" parent="." unique_id=1656285534 instance=ExtResource("3_cw2xh")]
+z_index = 2
 layout_mode = 1
 anchor_left = 0.016
 anchor_top = 0.016
@@ -118,9 +175,38 @@ anchor_bottom = 0.016
 number = 0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1197730762]
+root_node = NodePath("../Panel")
 libraries/ = SubResource("AnimationLibrary_mkbd5")
 autoplay = &"normal"
 speed_scale = 3.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1181797471]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer" unique_id=1319486978]
+layout_mode = 2
+theme_override_constants/margin_left = 4
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 4
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/MarginContainer" unique_id=2111790972]
+layout_mode = 2
+texture = SubResource("GradientTexture2D_bfk22")
+expand_mode = 4
+stretch_mode = 4
+
+[node name="Label" type="Label" parent="VBoxContainer" unique_id=2102666246]
+layout_mode = 2
+text = "CARD"
+horizontal_alignment = 1
+vertical_alignment = 1
+clip_text = true
+metadata/_edit_use_anchors_ = true
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

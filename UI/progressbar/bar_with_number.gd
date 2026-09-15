@@ -1,4 +1,4 @@
-@tool
+#@tool
 extends Control
 
 @export var value:int = 2:
@@ -8,11 +8,6 @@ extends Control
 @export var color:Color=Color.RED:
 	set=set_color
 	
-@export var stat_node:StatComponent:
-	set(n):
-		max_value=n.max_value
-		value=n.value
-		n.changed.connect(_on_changed)
 	
 func _on_changed(from,to,max_v):
 	max_value=max_v

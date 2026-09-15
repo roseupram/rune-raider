@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://byknhbt5mvk82" path="res://cards/card_data.gd" id="1_dg6u1"]
 [ext_resource type="Script" uid="uid://b70lncrbhwsja" path="res://actions/effect_data.gd" id="1_wdaa8"]
 [ext_resource type="Script" uid="uid://bfiywm4yux7d" path="res://actions/attack/data.gd" id="2_wdaa8"]
+[ext_resource type="Texture2D" uid="uid://djmupweip27lq" path="res://cards/attack.svg" id="3_mmdk4"]
 
 [sub_resource type="Resource" id="Resource_7c1u8"]
 script = ExtResource("2_wdaa8")
@@ -15,4 +16,5 @@ script = ExtResource("1_dg6u1")
 ID = "ATTACK"
 cost = 1
 effects = Array[ExtResource("1_wdaa8")]([SubResource("Resource_7c1u8")])
+image = ExtResource("3_mmdk4")
 metadata/_custom_type_script = "uid://byknhbt5mvk82"

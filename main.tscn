@@ -4,7 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c3b0cc4vo8p63" path="res://UI/gameplay_ui.tscn" id="2_1bvp3"]
 [ext_resource type="Script" uid="uid://bfvu5gujiv6cj" path="res://component/camera.gd" id="5_lquwl"]
 [ext_resource type="PackedScene" uid="uid://cdt5dab7nnvtx" path="res://unit/enemy/enemy.tscn" id="6_5vw27"]
-[ext_resource type="Texture2D" uid="uid://duhdsqg0k5js1" path="res://unit/obstacle/obstacle.svg" id="6_7mycd"]
+[ext_resource type="Texture2D" uid="uid://83d4g1f3tgpi" path="res://unit/obstacle/obstacle.svg" id="6_7mycd"]
 [ext_resource type="PackedScene" uid="uid://bei03pof8x3e7" path="res://unit/player/player.tscn" id="7_4c57u"]
 [ext_resource type="PackedScene" uid="uid://d3ijkon48y0jl" path="res://component/range_node/range_node.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://cklvalv7wour8" path="res://autoload/battle_manager.gd" id="8_5vw27"]
@@ -63,8 +63,8 @@ anchor_right = 0.13125
 anchor_bottom = 0.4675926
 mouse_filter = 2
 bbcode_enabled = true
-text = "[wave]TODO[/wave][rainbow speed=0.5][ol]
-Enemy Navigation: one stop, other avoid 
+text = "[wave]TODO[/wave][rainbow speed=0.1]
+[ol]Draw Discard Hand Shuffle
 Game loop
 [/ol]
 

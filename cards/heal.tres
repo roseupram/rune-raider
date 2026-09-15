@@ -9,9 +9,15 @@ script = ExtResource("2_uytpi")
 tile_mask = 4
 metadata/_custom_type_script = "uid://dtq5fy0n86sil"
 
+[sub_resource type="Gradient" id="Gradient_uytpi"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_bfk22"]
+gradient = SubResource("Gradient_uytpi")
+
 [resource]
 script = ExtResource("1_fokd8")
 ID = "HEAL"
 cost = 1
 effects = Array[ExtResource("1_uytpi")]([SubResource("Resource_7c1u8")])
+image = SubResource("GradientTexture2D_bfk22")
 metadata/_custom_type_script = "uid://byknhbt5mvk82"

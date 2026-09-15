@@ -1,16 +1,18 @@
-@tool
-extends Panel
+#@tool
+extends Control
 class_name CardUI
 
 @onready var cost_node = $CostPanel
-@onready var label_node =$Label
+@export var label_node:Label
 @onready var anim_node = $AnimationPlayer
+@export var img_node:TextureRect
 @export var data: CardData:
 	set(d):
 		data=d
 		_update_data()
 
 var shortcut_name:StringName
+var current_enegy=0
 
 signal  focus(card:CardUI,by_shortcut:bool)
 
@@ -31,7 +33,9 @@ func _gui_input(_event: InputEvent) -> void:
 			state_to(State.focus)
 			accept_event()
 func _ready() -> void:
-	pass
+	anchor_top=0
+	anchor_bottom=1.0
+	EventBus.stat_changed.connect(_on_changed)
 	#size.x=size.y
 func _update_data():
 	if not is_node_ready(): await  ready
@@ -41,6 +45,7 @@ func _update_data():
 		var description = e.tr_key.to_upper()
 		label_node.text+=tr(description).format(e)
 	cost_node.number=data.cost
+	img_node.texture=data.image
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass
@@ -53,6 +58,9 @@ func state_to(s:State,focus_by_shortcut=false):
 		return
 	match s:
 		State.focus:
+			if current_enegy<data.cost:
+				anim_node.play("error")
+				return
 			anim_node.play("focus")
 			focus.emit(self,focus_by_shortcut)
 		State.unfocus:
@@ -63,9 +71,12 @@ func state_to(s:State,focus_by_shortcut=false):
 			else:
 				anim_node.play({State.hover:"hover",
 				State.normal:"normal"}[s])
-
 	current_state=s
 
+
+func _on_changed(from,to,node:StatComponent):
+	if node.type==StatComponent.Type.Enegy:
+		current_enegy=to
 
 func _on_mouse_entered() -> void:
 	state_to(State.hover)

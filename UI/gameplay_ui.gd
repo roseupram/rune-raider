@@ -9,23 +9,19 @@ var BM:BattleManager:
 # Called when the node enters the scene tree for the first time.
 
 func _ready() -> void:
-	var all_locales = TranslationServer.get_loaded_locales()
-	var current_locale = TranslationServer.get_locale()
-	var current_locale_id = 0
-	var i =0 
-	$OptionButton.clear()
-	for locale in all_locales:
-		if locale==current_locale:
-			current_locale_id=i
-		$OptionButton.add_item(locale)
-		i+=1
-	$OptionButton.select(current_locale_id)
+
 	EventBus.stat_changed.connect(_on_stat_changed)
 
 
 func _on_stat_changed(from,to,source:StatComponent):
-	$HpBar._on_changed(from,to,source.max_value)
-
+	var n
+	match source.type:
+		StatComponent.Type.HP:
+			n=$HpBar
+		StatComponent.Type.Enegy:
+			n=$EnegyBar
+	if n:
+		n._on_changed(from,to,source.max_value)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta: float) -> void:
 	#pass

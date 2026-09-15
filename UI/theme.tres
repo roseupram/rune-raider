@@ -54,7 +54,7 @@ corner_radius_top_left = 10
 corner_radius_top_right = 10
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eovu6"]
-bg_color = Color(0, 0.66701657, 0.8091209, 1)
+bg_color = Color(0, 0.6666667, 0.80784315, 1)
 border_width_left = 2
 border_width_top = 2
 border_width_right = 2
@@ -66,7 +66,7 @@ corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
 [resource]
-Button/font_sizes/font_size = 36
+Button/font_sizes/font_size = 28
 CardPanel/base_type = &"Panel"
 CardPanel/styles/panel = SubResource("StyleBoxFlat_6epsk")
 DotPanelLabel/base_type = &"Label"
@@ -74,8 +74,8 @@ DotPanelLabel/font_sizes/font_size = 14
 HpBar/base_type = &"ProgressBar"
 HpBar/styles/background = SubResource("StyleBoxFlat_5jho1")
 HpBar/styles/fill = SubResource("StyleBoxFlat_fux4m")
-Label/font_sizes/font_size = 28
-OptionButton/font_sizes/font_size = 16
+Label/font_sizes/font_size = 24
+OptionButton/font_sizes/font_size = 24
 OptionButton/styles/hover = SubResource("StyleBoxFlat_wsa4l")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_go05t")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_oieh5")

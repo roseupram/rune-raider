@@ -34,5 +34,24 @@ offset_right = -0.64001465
 text = "EXIT_UI"
 metadata/_edit_use_anchors_ = true
 
+[node name="OptionButton" type="OptionButton" parent="." unique_id=1903139803]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.7109375
+anchor_top = 0.6324074
+anchor_right = 0.7895833
+anchor_bottom = 0.66944444
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="." unique_id=510526805]
+layout_mode = 0
+anchor_left = 0.7109375
+anchor_top = 0.587037
+anchor_right = 0.74010414
+anchor_bottom = 0.62314814
+text = "LANGUAGE_UI"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="pressed" from="StartButton" to="." method="_on_button_button_up"]
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]

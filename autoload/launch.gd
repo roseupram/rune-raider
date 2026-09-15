@@ -9,5 +9,6 @@ func _ready() -> void:
 		EventBus.to_game()
 	else:
 		EventBus.to_menu()
+		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	
 		

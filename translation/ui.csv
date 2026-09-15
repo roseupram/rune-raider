@@ -2,3 +2,5 @@ keys,en,zh_CN
 START_UI,Start,开始
 END_TURN_UI,End Turn,结束回合
 EXIT_UI,Exit,退出
+LANGUAGE_UI,Langague,语言
+BACK_TO_MENU_UI,Back to Menu,回到菜单

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bei03pof8x3e7"]
 
 [ext_resource type="Script" uid="uid://db67hdxqdyqwk" path="res://unit/player/player.gd" id="2_v7rm1"]
-[ext_resource type="Texture2D" uid="uid://ckow04d6hd0up" path="res://unit/bg.svg" id="3_mjnxy"]
+[ext_resource type="Texture2D" uid="uid://dpnxvf52mk3ww" path="res://unit/bg.svg" id="3_mjnxy"]
 [ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
 [ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
 [ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="6_am7h2"]
@@ -180,10 +180,11 @@ _data = {
 &"swing": SubResource("Animation_6cahc")
 }
 
-[node name="Player" type="CharacterBody2D" unique_id=2086434871 node_paths=PackedStringArray("hp_node")]
+[node name="Player" type="CharacterBody2D" unique_id=2086434871 node_paths=PackedStringArray("hp_node", "enegy_node")]
 collision_mask = 14
 script = ExtResource("2_v7rm1")
 hp_node = NodePath("Health")
+enegy_node = NodePath("Enegy")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1206884610]
 self_modulate = Color(0.33333334, 0.67058825, 0.59607846, 1)
@@ -222,8 +223,11 @@ visible = false
 shape = ExtResource("6_am7h2")
 
 [node name="Health" parent="." unique_id=621677592 instance=ExtResource("7_a2kr1")]
+max_value = 56
+value = 42
 
 [node name="Enegy" parent="." unique_id=856965956 instance=ExtResource("7_a2kr1")]
+type = 1
 max_value = 3
 value = 3
 
