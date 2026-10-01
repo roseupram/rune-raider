@@ -5,8 +5,9 @@
 [ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
 [ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
 [ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="6_am7h2"]
-[ext_resource type="PackedScene" uid="uid://s38qup8p58n3" path="res://component/stat_component.tscn" id="7_a2kr1"]
 [ext_resource type="PackedScene" uid="uid://hdi7xs6tswv7" path="res://unit/player/skeleton/hamman.tscn" id="7_mompe"]
+[ext_resource type="Script" uid="uid://b5c18ylmehx82" path="res://component/capped_value.gd" id="8_6cahc"]
+[ext_resource type="Script" uid="uid://8we6snch7egg" path="res://component/turn_value.gd" id="8_qhn7d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_llffi"]
 size = Vector2(82.22841, 44.72843)
@@ -183,7 +184,7 @@ _data = {
 [node name="Player" type="CharacterBody2D" unique_id=2086434871 node_paths=PackedStringArray("hp_node", "enegy_node")]
 collision_mask = 14
 script = ExtResource("2_v7rm1")
-hp_node = NodePath("Health")
+hp_node = NodePath("HP")
 enegy_node = NodePath("Enegy")
 
 [node name="Base" type="Sprite2D" parent="." unique_id=1206884610]
@@ -222,15 +223,6 @@ debug_color = Color(1, 0, 0, 0.41960785)
 visible = false
 shape = ExtResource("6_am7h2")
 
-[node name="Health" parent="." unique_id=621677592 instance=ExtResource("7_a2kr1")]
-max_value = 56
-value = 42
-
-[node name="Enegy" parent="." unique_id=856965956 instance=ExtResource("7_a2kr1")]
-type = 1
-max_value = 3
-value = 3
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1193849781]
 libraries/ = SubResource("AnimationLibrary_a2kr1")
 
@@ -238,3 +230,13 @@ libraries/ = SubResource("AnimationLibrary_a2kr1")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="Marker2D" unique_id=550647774]
 remote_path = NodePath("../../Base")
+
+[node name="Enegy" type="Node" parent="." unique_id=95962755 groups=["Enegy"]]
+script = ExtResource("8_qhn7d")
+metadata/_custom_type_script = "uid://8we6snch7egg"
+
+[node name="HP" type="Node" parent="." unique_id=211390486 groups=["HP"]]
+script = ExtResource("8_6cahc")
+max_value = 56
+value = 48
+metadata/_custom_type_script = "uid://b5c18ylmehx82"

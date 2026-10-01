@@ -53,6 +53,25 @@ border_width_right = 2
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_olyjj"]
+bg_color = Color(0.97, 0.21340004, 0.21340004, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.76, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4jk46"]
+bg_color = Color(0.97, 0.21340004, 0.21340004, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5ip22"]
+bg_color = Color(0.76, 0.16720001, 0.16720001, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.8, 0.76, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_eovu6"]
 bg_color = Color(0, 0.6666667, 0.80784315, 1)
 border_width_left = 2
@@ -80,10 +99,15 @@ OptionButton/styles/hover = SubResource("StyleBoxFlat_wsa4l")
 OptionButton/styles/normal = SubResource("StyleBoxFlat_go05t")
 OptionButton/styles/pressed = SubResource("StyleBoxFlat_oieh5")
 Panel/styles/panel = SubResource("StyleBoxFlat_bp4ym")
+PopupMenu/font_sizes/font_size = 24
 PopupMenu/styles/panel = SubResource("StyleBoxFlat_t3rxx")
 RedButton/styles/hover = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/normal = SubResource("StyleBoxFlat_cjfk0")
 RedButton/styles/pressed = SubResource("StyleBoxFlat_vj6dk")
+ReturnButton/base_type = &"Button"
+ReturnButton/styles/hover = SubResource("StyleBoxFlat_olyjj")
+ReturnButton/styles/normal = SubResource("StyleBoxFlat_4jk46")
+ReturnButton/styles/pressed = SubResource("StyleBoxFlat_5ip22")
 RichTextLabel/font_sizes/normal_font_size = 22
 card_cost/base_type = &"Panel"
 card_cost/styles/panel = SubResource("StyleBoxFlat_eovu6")

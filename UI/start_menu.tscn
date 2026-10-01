@@ -41,6 +41,7 @@ anchor_left = 0.7109375
 anchor_top = 0.6324074
 anchor_right = 0.7895833
 anchor_bottom = 0.66944444
+theme_override_font_sizes/font_size = 24
 metadata/_edit_use_anchors_ = true
 
 [node name="Label" type="Label" parent="." unique_id=510526805]

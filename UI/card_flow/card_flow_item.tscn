@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://bw0bnkd0bjduu"]
+
+[ext_resource type="Texture2D" uid="uid://djmupweip27lq" path="res://cards/attack.svg" id="1_4s7j5"]
+[ext_resource type="Script" uid="uid://686i6ghxf4wd" path="res://UI/card_flow/card_flow_item.gd" id="1_pljtq"]
+[ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="2_wcexm"]
+[ext_resource type="Script" uid="uid://83awn1fgp8b8" path="res://UI/hover_anim.gd" id="4_jqltx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_djgj5"]
+font_size = 20
+
+[node name="Control" type="Control" unique_id=1176191784 node_paths=PackedStringArray("img_node", "name_node", "desp_node")]
+oversampling_with_scale = 2
+custom_minimum_size = Vector2(250, 350)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 250.0
+offset_bottom = 350.0
+grow_horizontal = 0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+script = ExtResource("1_pljtq")
+img_node = NodePath("VBoxContainer/TextureRect")
+name_node = NodePath("VBoxContainer/name")
+desp_node = NodePath("VBoxContainer/description")
+card_data = ExtResource("2_wcexm")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=636366180]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.39308554, 0.3930855, 0.39308548, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1664359405]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="name" type="Label" parent="VBoxContainer" unique_id=1209682923]
+layout_mode = 2
+text = "Name"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer" unique_id=171843302]
+layout_mode = 2
+size_flags_vertical = 3
+texture = ExtResource("1_4s7j5")
+stretch_mode = 5
+metadata/_edit_use_anchors_ = true
+
+[node name="description" type="Label" parent="VBoxContainer" unique_id=1242174935]
+layout_mode = 2
+size_flags_vertical = 3
+text = "这是一段描述文字aaaaaaaaaa
+这是一段描述文字
+这是一段描述文字"
+label_settings = SubResource("LabelSettings_djgj5")
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="HoverAnim" type="Node" parent="." unique_id=1285311519 node_paths=PackedStringArray("node")]
+script = ExtResource("4_jqltx")
+node = NodePath("..")
+hover_scale = Vector2(1.1, 1.1)
+metadata/_custom_type_script = "uid://83awn1fgp8b8"

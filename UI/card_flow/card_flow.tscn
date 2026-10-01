@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://d2705e6is51og"]
+
+[ext_resource type="Script" uid="uid://dekdyt6b5b5hd" path="res://UI/card_flow/card_flow.gd" id="1_jiu3i"]
+[ext_resource type="Script" uid="uid://byknhbt5mvk82" path="res://cards/card_data.gd" id="2_6lt6x"]
+[ext_resource type="PackedScene" uid="uid://bw0bnkd0bjduu" path="res://UI/card_flow/card_flow_item.tscn" id="2_u3djs"]
+[ext_resource type="Resource" uid="uid://ce6bjr0vgs68j" path="res://cards/attack.tres" id="3_646ms"]
+[ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="4_bt2yc"]
+[ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="5_3uv84"]
+
+[node name="Cardflow" type="Control" unique_id=1443185404 node_paths=PackedStringArray("flow_node")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_jiu3i")
+flow_node = NodePath("scroll/MarginContainer/Control")
+card_datas = Array[ExtResource("2_6lt6x")]([ExtResource("3_646ms"), ExtResource("4_bt2yc"), ExtResource("5_3uv84"), ExtResource("4_bt2yc"), ExtResource("5_3uv84"), ExtResource("3_646ms")])
+
+[node name="scroll" type="ScrollContainer" parent="." unique_id=1140860342]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="scroll" unique_id=1983485539]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 100
+
+[node name="Control" type="HFlowContainer" parent="scroll/MarginContainer" unique_id=843945083]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/h_separation = 40
+theme_override_constants/v_separation = 30
+
+[node name="Control" parent="scroll/MarginContainer/Control" unique_id=1176191784 instance=ExtResource("2_u3djs")]
+layout_mode = 2
+
+[node name="Control2" parent="scroll/MarginContainer/Control" unique_id=1197747125 instance=ExtResource("2_u3djs")]
+layout_mode = 2
+
+[node name="Control3" parent="scroll/MarginContainer/Control" unique_id=669305918 instance=ExtResource("2_u3djs")]
+layout_mode = 2
+
+[node name="Control4" parent="scroll/MarginContainer/Control" unique_id=519937344 instance=ExtResource("2_u3djs")]
+layout_mode = 2
+
+[node name="Control5" parent="scroll/MarginContainer/Control" unique_id=1079501630 instance=ExtResource("2_u3djs")]
+layout_mode = 2

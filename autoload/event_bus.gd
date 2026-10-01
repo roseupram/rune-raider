@@ -7,15 +7,19 @@ const START_MENU = preload("uid://bhl3tkd7kgv07")
 
 signal unit_moved(from:Vector2,to:Vector2,act:Node2D)
 ## for hp, enegy change
-signal stat_changed(from,to,source:StatComponent)
+signal stat_changed(from,to,source)
 ## EventBus.turn_end => BattaleManager
+signal turn_start()
 signal turn_end()
 signal enemy_spawn(node)
+signal enemy_died(node)
+signal card_played(card)
 
 var cursor_normal = preload("res://images/cursor.svg")
 
 func _ready() -> void:
-	print(MAIN_GAME,"\n",START_MENU)
+	pass
+	#print(MAIN_GAME,"\n",START_MENU)
 	#var clipboard = DisplayServer.clipboard_get()
 	#print(clipboard)
 

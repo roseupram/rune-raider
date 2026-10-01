@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cdrhvaqkn7pqr" path="res://UI/progressbar/bar_with_number.tscn" id="4_jmrml"]
 [ext_resource type="Resource" uid="uid://d2trrookbwrx1" path="res://cards/move.tres" id="4_rw8eu"]
 [ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="6_rw8eu"]
+[ext_resource type="PackedScene" uid="uid://d2705e6is51og" path="res://UI/card_flow/card_flow.tscn" id="8_4jk46"]
+[ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="9_bkgld"]
+[ext_resource type="Texture2D" uid="uid://robqyn0qww4y" path="res://images/draw_pile_icon.svg" id="9_tru4y"]
+[ext_resource type="Script" uid="uid://83awn1fgp8b8" path="res://UI/hover_anim.gd" id="11_mgv6r"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_2jutx"]
 action = &"end_turn"
@@ -14,8 +18,40 @@ action = &"end_turn"
 [sub_resource type="Shortcut" id="Shortcut_1j2ro"]
 events = [SubResource("InputEventAction_2jutx")]
 
-[node name="GameplayUI" type="CanvasLayer" unique_id=556239460]
+[sub_resource type="LabelSettings" id="LabelSettings_wcexm"]
+font_size = 32
+
+[sub_resource type="InputEventAction" id="InputEventAction_bkgld"]
+action = &"show_draw_pile"
+
+[sub_resource type="Shortcut" id="Shortcut_4jk46"]
+events = [SubResource("InputEventAction_bkgld")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_mgv6r"]
+action = &"show_discard_pile"
+
+[sub_resource type="Shortcut" id="Shortcut_tru4y"]
+events = [SubResource("InputEventAction_mgv6r")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgv6r"]
+bg_color = Color(0.8564562, 0.034649134, 0.31549564, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameplayUI" type="CanvasLayer" unique_id=556239460 node_paths=PackedStringArray("seed_label", "upper_layer", "card_flow", "card_manager", "upper_label")]
 script = ExtResource("1_pqbjq")
+seed_label = NodePath("SeedLabel")
+upper_layer = NodePath("UpperLayer")
+card_flow = NodePath("UpperLayer/VBoxContainer/Cardflow")
+card_manager = NodePath("Cards")
+upper_label = NodePath("UpperLayer/VBoxContainer/MarginContainer/TopLabel")
 
 [node name="Cards" type="Control" parent="." unique_id=2106648012]
 layout_mode = 3
@@ -28,7 +64,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("2_1j2ro")
-card_deck = Array[ExtResource("3_4jk46")]([ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("6_rw8eu")])
+card_deck = Array[ExtResource("3_4jk46")]([ExtResource("4_rw8eu"), ExtResource("4_rw8eu"), ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("6_rw8eu"), ExtResource("3_jpgws"), ExtResource("6_rw8eu")])
 gap = 30
 metadata/_edit_use_anchors_ = true
 
@@ -60,16 +96,80 @@ text = "BACK_TO_MENU_UI"
 autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
-[node name="Button" type="Button" parent="." unique_id=1739715817]
-anchors_preset = -1
-anchor_top = 0.8898148
-anchor_right = 0.0625
+[node name="SeedLabel" type="Label" parent="." unique_id=1816908545]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 34.0
+grow_horizontal = 0
+text = "seed"
+
+[node name="UpperLayer" type="CanvasLayer" parent="." unique_id=659848561]
+
+[node name="ColorRect" type="ColorRect" parent="UpperLayer" unique_id=476668181]
+anchors_preset = 15
+anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+color = Color(0, 0, 0, 0.5019608)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="UpperLayer" unique_id=492889251]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 0
+mouse_force_pass_scroll_events = false
+
+[node name="MarginContainer" type="MarginContainer" parent="UpperLayer/VBoxContainer" unique_id=81668306]
+layout_mode = 2
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_bottom = 20
+
+[node name="TopLabel" type="Label" parent="UpperLayer/VBoxContainer/MarginContainer" unique_id=1285922137]
+layout_mode = 2
+text = "TITLE"
+label_settings = SubResource("LabelSettings_wcexm")
+horizontal_alignment = 1
+
+[node name="Cardflow" parent="UpperLayer/VBoxContainer" unique_id=1443185404 instance=ExtResource("8_4jk46")]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TopLayer" type="CanvasLayer" parent="." unique_id=117664296]
+layer = 2
+
+[node name="Draw" type="Button" parent="TopLayer" unique_id=1739715817]
+custom_minimum_size = Vector2(120, 120)
+anchors_preset = -1
+anchor_left = 0.009895833
+anchor_top = 0.8796296
+anchor_right = 0.07239583
+anchor_bottom = 0.9907407
 grow_vertical = 0
-text = "Draw"
+pivot_offset = Vector2(61, 80)
+offset_transform_enabled = true
+offset_transform_position = Vector2(-10, 5)
+toggle_mode = true
+shortcut = SubResource("Shortcut_4jk46")
+icon = ExtResource("9_tru4y")
+flat = true
+icon_alignment = 1
+expand_icon = true
 metadata/_edit_use_anchors_ = true
 
-[node name="Button2" type="Button" parent="." unique_id=1148945822]
+[node name="HoverAnim" type="Node" parent="TopLayer/Draw" unique_id=865521679 node_paths=PackedStringArray("node")]
+script = ExtResource("11_mgv6r")
+node = NodePath("..")
+hover_scale = Vector2(1.05, 1.05)
+tween_time = 0.05
+metadata/_custom_type_script = "uid://83awn1fgp8b8"
+
+[node name="Discard" type="Button" parent="TopLayer" unique_id=1148945822]
 anchors_preset = -1
 anchor_left = 0.9328125
 anchor_top = 0.8898148
@@ -77,8 +177,27 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 0
 grow_vertical = 0
+toggle_mode = true
+shortcut = SubResource("Shortcut_tru4y")
 text = "Discard"
+metadata/_edit_use_anchors_ = true
+
+[node name="DrawDotPanel" parent="TopLayer" unique_id=1656285534 instance=ExtResource("9_bkgld")]
+anchor_left = 0.047916666
+anchor_top = 0.95
+anchor_right = 0.06753473
+anchor_bottom = 0.98456794
+offset_left = -7.0
+offset_right = -20.666687
+offset_bottom = -13.333374
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_mgv6r")
+color = Color(0.8564562, 0.034649134, 0.31549564, 1)
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="EndButton" to="." method="_on_end_button_button_up"]
 [connection signal="pressed" from="BacktoMenu" to="." method="_on_backto_menu_pressed"]
+[connection signal="toggled" from="TopLayer/Draw" to="." method="_on_draw_toggled"]
+[connection signal="toggled" from="TopLayer/Discard" to="." method="_on_discard_toggled"]

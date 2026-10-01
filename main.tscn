@@ -81,19 +81,18 @@ metadata/_custom_type_script = "uid://cklvalv7wour8"
 [node name="CanvasLayer-bg" type="CanvasLayer" parent="." unique_id=134138661]
 layer = -1
 
-[node name="bg" type="TextureRect" parent="CanvasLayer-bg" unique_id=862288910]
-z_index = -1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("9_kek77")
-metadata/_edit_lock_ = true
-
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="." unique_id=1125681309]
 visible = false
 position = Vector2(200, -290)
 navigation_polygon = SubResource("NavigationPolygon_6e6us")
 navigation_layers = 7
 travel_cost = 2.0
+
+[node name="Parallax2D" type="Parallax2D" parent="." unique_id=825623538]
+scroll_scale = Vector2(0.1, 0.1)
+repeat_size = Vector2(0, 1080)
+repeat_times = 2
+
+[node name="bg" type="TextureRect" parent="Parallax2D" unique_id=862288910]
+z_index = -1
+texture = ExtResource("9_kek77")

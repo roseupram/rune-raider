@@ -1,17 +1,16 @@
 extends Unit
 class_name Enemy
 signal intention_get(intent:BattleManager.Intent)
+signal action_finish()
 
 @export_range(0.1,10.0) var move_gain = 10.0
-@export var health_node:StatComponent
+@export var health_node:CappedValue
+@export_range(1,10) var base_move:=2
 
 var count=0
-@export_range(1,10) var base_move:=2
-var move_ablitity=1
+
 var player_enter=false
-var enemy_count=0
 var other_enemy:Array[Node2D]=[]
-var pushed_target=Vector2.ZERO
 
 enum  State{Idle,Move,Arrive,SIZE}
 const intent_graph={
@@ -35,9 +34,11 @@ func state_to(s:State):
 			#navi_agent.avoidance_priority=0.1
 			navi_agent.velocity=Vector2.ZERO
 			velocity=Vector2.ZERO
+			action_finish.emit()
 		State.Move:
 			accumulated_distance=0.0
 		State.Arrive:
+			action_finish.emit()
 			#arrived.emit()
 			#velocity=Vector2.ZERO
 			navi_agent.velocity=Vector2.ZERO
@@ -54,8 +55,8 @@ func _ready() -> void:
 	#GameContext.card_played.connect(_on_action)
 	count=base_move
 	health_node.changed.connect(_on_health_change)
+	EventBus.turn_end.connect(_on_turn_end)
 	EventBus.enemy_spawn.emit.call_deferred(self)
-	get_intention.call_deferred()
 	#EventBus.unit_moved.connect(_on_unit_move)
 	#EventBus.turn_end.connect(_on_turn_end)
 
@@ -64,7 +65,8 @@ func act():
 		State.Idle:
 			state_to(State.Move)
 	
-	get_intention.call_deferred()
+func _on_turn_end():
+	get_intention()
 
 
 
@@ -73,6 +75,7 @@ func _on_health_change(from,to):
 		died()
 
 func died():
+	EventBus.enemy_died.emit(self)
 	anim_node.play("die")
 	await  anim_node.animation_finished
 	queue_free()

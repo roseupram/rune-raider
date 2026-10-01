@@ -12,7 +12,7 @@ var range_node:RangeNode:
 
 var player_node:Player
 var card_manager:CardManager
-var selected_card_data:CardData
+var selected_card:CardHandUI
 var AM:ActionManager
 
 enum State{Idle,Wait_for_comfirm}
@@ -20,27 +20,39 @@ var current_state = State.Idle
 
 var position_assign_array=[]
 var intent_count = 0
+var finish_count = 0
 var enemy_count = 0
 
 func _ready() -> void:
-	EventBus.turn_end.connect(_on_turn_end)
+	EventBus.turn_end.connect(_on_turn_end,ConnectFlags.CONNECT_DEFERRED)
 	EventBus.enemy_spawn.connect(_on_enemy_spawn)
+	EventBus.enemy_died.connect(_on_enemy_died)
+	EventBus.turn_start.emit()
 
+func _on_enemy_died(e):
+	enemy_count-=1
 
 # FIXME if enemy died, remove from array
 func _on_turn_end():
+	intent_count=0
+	finish_count=0
 	for e:Node in position_assign_array:
 		if e.has_method("act"):
 			e.act()
 	position_assign_array.clear()
-	intent_count=0
 
-func _on_enemy_spawn(e):
+func _on_enemy_spawn(e:Enemy):
 	enemy_count+=1
 	# print("enemy %d" % enemy_count)
-	var signal_name = "intention_get"
-	if e.has_signal(signal_name):
-		e.connect(signal_name,_receive_intention.bind(e))
+	e.intention_get.connect(_receive_intention.bind(e))
+	e.action_finish.connect(_on_enemy_action_finish)
+
+func _on_enemy_action_finish():
+	finish_count+=1
+	print("BM finish count{0}/{1}".format([finish_count,enemy_count]))
+	if finish_count==enemy_count:
+		EventBus.turn_start.emit()
+
 
 func _receive_intention(intent:Intent,node:Node):
 	match  intent:
@@ -74,7 +86,7 @@ func assign_target_pos(nodes:Array):
 func state_to(s):
 	current_state=s
 
-func show_range(card:CardUI):
+func show_range(card:CardHandUI):
 	if not range_node:
 		push_error("no range_node")
 		return
@@ -93,25 +105,26 @@ func clear_range():
 	range_node.clear()
 	state_to(State.Idle)
 
-func _on_card_focus(c:CardUI,_by_shortcut):
+func _on_card_focus(c:CardHandUI,_by_shortcut):
 	show_range(c)
-	selected_card_data=c.data
+	selected_card=c
 	# print(c)
 	#if by_shortcut:
 		#range_node.check_tile_select()
 	
-func _on_card_unfocus(_c:CardUI):
+func _on_card_unfocus(_c:CardHandUI):
 	clear_range()
 
 func _on_canceled():
 	clear_range()
 
 func _on_confirmed(pos):
-	card_manager.discard()
+	selected_card.played()
 	clear_range()
-	# print(pos)
-	player_node.change_enegy(-selected_card_data.cost)
-	for e in selected_card_data.effects:
+	var current_enegy = player_node.enegy()
+	var card_data = selected_card.data
+	player_node.enegy(current_enegy-card_data.cost)
+	for e in card_data.effects:
 		var r = e.create_request(player_node,{"target_pos":pos})
 		if AM:
 			AM.request(r)

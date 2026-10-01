@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://btyr4jgcy20oh" path="res://unit/enemy/enemy.svg" id="3_46vr5"]
 [ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="3_d22of"]
 [ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="3_yd30m"]
-[ext_resource type="Script" uid="uid://db05vtpd0ae3a" path="res://component/stat_component.gd" id="5_cpquj"]
+[ext_resource type="Script" uid="uid://b5c18ylmehx82" path="res://component/capped_value.gd" id="6_yd30m"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yd30m"]
 resource_local_to_scene = true
@@ -133,7 +133,7 @@ input_pickable = true
 motion_mode = 1
 script = ExtResource("1_cpquj")
 move_gain = 0.5
-health_node = NodePath("Health")
+health_node = NodePath("CappedValue")
 base_move = 3
 
 [node name="Bg" type="Sprite2D" parent="." unique_id=1354034216]
@@ -144,7 +144,6 @@ texture = ExtResource("2_yd30m")
 texture = ExtResource("3_46vr5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1157809008]
-visible = false
 shape = ExtResource("3_yd30m")
 
 [node name="Control" type="Control" parent="." unique_id=1359668502]
@@ -175,10 +174,6 @@ debug_color = Color(0.8586148, 0.18224698, 0.7736053, 0.41960785)
 libraries/ = SubResource("AnimationLibrary_uu3e8")
 speed_scale = 0.583
 
-[node name="Health" type="Node" parent="." unique_id=72771113]
-script = ExtResource("5_cpquj")
-metadata/_custom_type_script = "uid://db05vtpd0ae3a"
-
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="." unique_id=90963699]
 path_desired_distance = 100.0
 target_desired_distance = 40.0
@@ -187,6 +182,10 @@ avoidance_enabled = true
 radius = 70.0
 max_speed = 400.0
 debug_enabled = true
+
+[node name="CappedValue" type="Node" parent="." unique_id=1167481179]
+script = ExtResource("6_yd30m")
+metadata/_custom_type_script = "uid://b5c18ylmehx82"
 
 [connection signal="input_event" from="." to="." method="_on_input_event"]
 [connection signal="body_entered" from="hitbox" to="." method="_on_hitbox_body_entered"]

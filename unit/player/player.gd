@@ -11,8 +11,8 @@ signal died
 
 @export var move_gain=12
 
-@export var hp_node:StatComponent
-@export var enegy_node:StatComponent
+@export var hp_node:CappedValue
+@export var enegy_node:TurnValue
 @onready var ham_node=$Base/Hitbox
 @onready var Sprite = $Base
 @onready var skeleton = $Base/Hamman
@@ -21,8 +21,11 @@ signal died
 func heal(h):
 	hp_node.value+=h
 
-func change_enegy(delta):
-	enegy_node.value+=delta
+# set enegy as v, return the value
+func enegy(v=null):
+	if v!=null:
+		enegy_node.value=v
+	return enegy_node.value
 
 func move_to(pos):
 	var from = global_position
@@ -69,12 +72,12 @@ func attack(target_pos:Vector2):
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	ham_node.disable()
-	for n in [$Health,$Enegy]:
+	for n in [hp_node,enegy_node]:
 		n.changed.connect(_on_health_change.bind(n))
 
-func _on_health_change(from,to,node:StatComponent):
+func _on_health_change(from,to,node):
 	EventBus.stat_changed.emit(from,to,node)
-	if node.type==StatComponent.Type.HP and  to<=0:
+	if  to<=0:
 		died.emit()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

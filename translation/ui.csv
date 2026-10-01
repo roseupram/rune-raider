@@ -4,3 +4,6 @@ END_TURN_UI,End Turn,结束回合
 EXIT_UI,Exit,退出
 LANGUAGE_UI,Langague,语言
 BACK_TO_MENU_UI,Back to Menu,回到菜单
+RETURN_UI,Return,返回
+DRAW_UI,Draw Pile,抽牌堆
+DISCARD_UI,Discard Pile,弃牌堆

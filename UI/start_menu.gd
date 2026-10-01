@@ -27,6 +27,7 @@ func _process(delta: float) -> void:
 
 
 func _on_button_button_up() -> void:
+	SeedManager.start_new_run()
 	EventBus.to_game()
 
 

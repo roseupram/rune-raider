@@ -1,6 +1,6 @@
 #@tool
 extends Control
-class_name CardUI
+class_name CardHandUI
 
 @onready var cost_node = $CostPanel
 @export var label_node:Label
@@ -12,12 +12,19 @@ class_name CardUI
 		_update_data()
 
 var shortcut_name:StringName
-var current_enegy=0
 
-signal  focus(card:CardUI,by_shortcut:bool)
+
+var discard:Callable
+var get_enegy:Callable
+
+signal  focus(card:CardHandUI,by_shortcut:bool)
 
 enum State{normal,hover,focus,unfocus}
 var current_state:State=State.normal
+
+func _ready() -> void:
+	anchor_top=0
+	anchor_bottom=1.0
 
 func _shortcut_input(_event: InputEvent) -> void:
 	if Input.is_action_just_pressed(shortcut_name):
@@ -32,11 +39,7 @@ func _gui_input(_event: InputEvent) -> void:
 		if current_state==State.hover:
 			state_to(State.focus)
 			accept_event()
-func _ready() -> void:
-	anchor_top=0
-	anchor_bottom=1.0
-	EventBus.stat_changed.connect(_on_changed)
-	#size.x=size.y
+
 func _update_data():
 	if not is_node_ready(): await  ready
 	#print(data)
@@ -58,7 +61,7 @@ func state_to(s:State,focus_by_shortcut=false):
 		return
 	match s:
 		State.focus:
-			if current_enegy<data.cost:
+			if get_enegy.call()<data.cost:
 				anim_node.play("error")
 				return
 			anim_node.play("focus")
@@ -73,10 +76,17 @@ func state_to(s:State,focus_by_shortcut=false):
 				State.normal:"normal"}[s])
 	current_state=s
 
+func played():
+	if discard:
+		discard.call()
+	else:
+		push_error("not define discard function")
 
-func _on_changed(from,to,node:StatComponent):
-	if node.type==StatComponent.Type.Enegy:
-		current_enegy=to
+
+func move_to(pos,time=0.1):
+	var tw =get_tree().create_tween()
+	tw.tween_property(self,"position",pos,time).set_trans(Tween.TRANS_SINE)
+
 
 func _on_mouse_entered() -> void:
 	state_to(State.hover)
