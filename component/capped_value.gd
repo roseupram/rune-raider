@@ -1,10 +1,8 @@
 extends Node
-class_name StatComponent
-enum Type{HP,Enegy}
+class_name CappedValue
 
 ## emit on health change, delta: changed number
 signal changed(from,to)
-@export var type:Type
 @export var max_value = 20
 @export var min_value = 0
 @export var value=10:
