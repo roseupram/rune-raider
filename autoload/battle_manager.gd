@@ -4,6 +4,7 @@ class_name BattleManager
 enum Intent{MOVE,MOVE_TO_PLAYER}
 
 
+# display range of card
 var range_node:RangeNode:
 	set(n):
 		range_node=n

@@ -12,9 +12,10 @@ var count=0
 var player_enter=false
 var other_enemy:Array[Node2D]=[]
 
-enum  State{Idle,Move,Arrive,SIZE}
+enum  State{Idle,Move,Arrive,Attack,SIZE}
 const intent_graph={
 	State.Idle:{State.Move:1},
+	State.Arrive:{State.Attack:1},
 }
 var current_state:=State.Idle
 

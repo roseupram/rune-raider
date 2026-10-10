@@ -1,4 +1,6 @@
 extends Camera2D
+# move wheel to up and down
+# maybe use edge move
 
 @export var MoveStep=100
 
@@ -13,10 +15,10 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton and event.pressed:
 		var cam_move=Vector2.ZERO
 		if event.button_index == MOUSE_BUTTON_WHEEL_UP:
-			cam_move.y-=MoveStep
+			cam_move.y-=1
 		elif event.button_index == MOUSE_BUTTON_WHEEL_DOWN:
-			cam_move.y+=MoveStep
-		move_by(cam_move)
+			cam_move.y+=1
+		move_by(cam_move*MoveStep)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
