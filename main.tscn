@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://d3ijkon48y0jl" path="res://component/range_node/range_node.tscn" id="7_272bh"]
 [ext_resource type="Script" uid="uid://cklvalv7wour8" path="res://autoload/battle_manager.gd" id="8_5vw27"]
 [ext_resource type="Texture2D" uid="uid://ctpq01brynpgg" path="res://images/background.tres" id="9_kek77"]
+[ext_resource type="PackedScene" uid="uid://egac73ix4p2w" path="res://UI/esc_menu.tscn" id="10_4c57u"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_6e6us"]
 vertices = PackedVector2Array(944.3672, 1014, 1000.5, 1014, 2285.2422, 1968.2031, -305.96875, 1693.1797, 849.3672, 1061, 747.5078, 1061, 639.5, 1057.9531, 2292.75, -364.54688, 1000.5, 753.46094, 880.5, 661.46094, 880.5, 624, -549.8203, -114.6875, 628.5, 624, 552.9219, 743, 563.5, 1015.8672, 639.5, 1039.7734, 628.5, 676.97656, 588.8125, 743, 563.5, 960.85156)
@@ -64,7 +65,7 @@ anchor_bottom = 0.4675926
 mouse_filter = 2
 bbcode_enabled = true
 text = "[wave]TODO[/wave][rainbow speed=0.1]
-[ol]Draw Discard Hand Shuffle
+[ol]Enemy attack
 Game loop
 [/ol]
 
@@ -96,3 +97,7 @@ repeat_times = 2
 [node name="bg" type="TextureRect" parent="Parallax2D" unique_id=862288910]
 z_index = -1
 texture = ExtResource("9_kek77")
+metadata/_edit_lock_ = true
+
+[node name="ESCmenu" parent="." unique_id=579024394 instance=ExtResource("10_4c57u")]
+visible = false

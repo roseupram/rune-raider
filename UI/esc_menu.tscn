@@ -1,0 +1,61 @@
+[gd_scene format=3 uid="uid://egac73ix4p2w"]
+
+[ext_resource type="Script" uid="uid://u4ctd2cndk87" path="res://UI/esc_menu.gd" id="1_hfsnl"]
+
+[sub_resource type="Gradient" id="Gradient_hfsnl"]
+offsets = PackedFloat32Array(0, 0.43636364, 1)
+colors = PackedColorArray(0.1, 0.1, 0.1, 1, 0.051970966, 0.05197096, 0.05197095, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_6e6us"]
+gradient = SubResource("Gradient_hfsnl")
+fill = 2
+fill_from = Vector2(0.5, 0.5)
+metadata/_snap_enabled = true
+
+[node name="ESCmenu" type="CanvasLayer" unique_id=579024394]
+layer = 10
+script = ExtResource("1_hfsnl")
+
+[node name="Control" type="Control" parent="." unique_id=1749419989]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+
+[node name="ColorRect" type="TextureRect" parent="Control" unique_id=144149303]
+modulate = Color(1, 1, 1, 0.91764706)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_force_pass_scroll_events = false
+texture = SubResource("GradientTexture2D_6e6us")
+stretch_mode = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control" unique_id=1468769761]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.4
+anchor_right = 0.6
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="tomainmenu" type="Button" parent="Control/VBoxContainer" unique_id=981833360]
+layout_mode = 2
+text = "BACK_TO_MENU_UI"
+
+[node name="returnButton2" type="Button" parent="Control/VBoxContainer" unique_id=1776120965]
+layout_mode = 2
+text = "RETURN_UI"
+
+[connection signal="button_up" from="Control/VBoxContainer/tomainmenu" to="." method="_on_back_to_menu"]
+[connection signal="button_up" from="Control/VBoxContainer/returnButton2" to="." method="_on_return"]

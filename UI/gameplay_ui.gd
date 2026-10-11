@@ -6,6 +6,9 @@ extends CanvasLayer
 @export var card_flow:CardFlow
 @export var card_manager:CardManager
 @export var upper_label:Label
+@export var draw_dot:DotPanel
+@export var discard_dot:DotPanel
+
 
 @onready var pile_buttons  = [$TopLayer/Discard,$TopLayer/Draw]
 
@@ -20,8 +23,14 @@ var BM:BattleManager:
 func _ready() -> void:
 	seed_label.text=SeedManager.encode_seed(SeedManager.main_seed)
 	EventBus.stat_changed.connect(_on_stat_changed)
+	card_manager.changed.connect(_on_card_changed)
 	
 	upper_layer.hide()
+
+
+func _on_card_changed():
+	draw_dot.number=card_manager.draw_pile.size()
+	discard_dot.number=card_manager.discard_pile.size()
 
 
 func _on_stat_changed(from,to,source:Node):
@@ -74,22 +83,19 @@ func _on_draw_toggled(toggled_on: bool) -> void:
 		var cds = card_manager.draw_pile.duplicate()
 		cds.sort_custom(CardData.sort_by_ID)
 		show_cards(cds)
-		$TopLayer/Discard.disabled=true
 		upper_label.text="DRAW_UI"
+		$TopLayer/Discard.hide()
 	else:
 		upper_layer.hide()
-		$TopLayer/Discard.disabled=false
-		
+		$TopLayer/Discard.show()
 
 func _on_discard_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		show_cards(card_manager.discard_pile.duplicate())
-		$TopLayer/Draw.disabled=true
 		upper_label.text="DISCARD_UI"
-		$TopLayer/DrawDotPanel.modulate=disable_color
+		$TopLayer/Draw.hide()
 	else:
 		upper_layer.hide()
-		$TopLayer/Draw.disabled=false
-		$TopLayer/DrawDotPanel.modulate=Color.WHITE
+		$TopLayer/Draw.show()
 		
 		

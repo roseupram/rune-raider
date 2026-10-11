@@ -1,5 +1,6 @@
 @tool
 extends Panel
+class_name DotPanel
 @export var color:Color
 @export var number:int=2:
 	set(n):

@@ -9,7 +9,8 @@
 [ext_resource type="Resource" uid="uid://cl40wrv232sdd" path="res://cards/heal.tres" id="6_rw8eu"]
 [ext_resource type="PackedScene" uid="uid://d2705e6is51og" path="res://UI/card_flow/card_flow.tscn" id="8_4jk46"]
 [ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="9_bkgld"]
-[ext_resource type="Texture2D" uid="uid://robqyn0qww4y" path="res://images/draw_pile_icon.svg" id="9_tru4y"]
+[ext_resource type="Texture2D" uid="uid://cjet17ac47ffw" path="res://images/draw_pile_icon.svg" id="9_tru4y"]
+[ext_resource type="Texture2D" uid="uid://7kgnt43cjcpv" path="res://images/discard_pile_icon.svg" id="11_1gupt"]
 [ext_resource type="Script" uid="uid://83awn1fgp8b8" path="res://UI/hover_anim.gd" id="11_mgv6r"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_2jutx"]
@@ -27,13 +28,7 @@ action = &"show_draw_pile"
 [sub_resource type="Shortcut" id="Shortcut_4jk46"]
 events = [SubResource("InputEventAction_bkgld")]
 
-[sub_resource type="InputEventAction" id="InputEventAction_mgv6r"]
-action = &"show_discard_pile"
-
-[sub_resource type="Shortcut" id="Shortcut_tru4y"]
-events = [SubResource("InputEventAction_mgv6r")]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mgv6r"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1gupt"]
 bg_color = Color(0.8564562, 0.034649134, 0.31549564, 1)
 border_width_left = 2
 border_width_top = 2
@@ -45,13 +40,33 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="GameplayUI" type="CanvasLayer" unique_id=556239460 node_paths=PackedStringArray("seed_label", "upper_layer", "card_flow", "card_manager", "upper_label")]
+[sub_resource type="InputEventAction" id="InputEventAction_mgv6r"]
+action = &"show_discard_pile"
+
+[sub_resource type="Shortcut" id="Shortcut_tru4y"]
+events = [SubResource("InputEventAction_mgv6r")]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xypgn"]
+bg_color = Color(0.8564562, 0.034649134, 0.31549564, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(1, 1, 1, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="GameplayUI" type="CanvasLayer" unique_id=556239460 node_paths=PackedStringArray("seed_label", "upper_layer", "card_flow", "card_manager", "upper_label", "draw_dot", "discard_dot")]
 script = ExtResource("1_pqbjq")
 seed_label = NodePath("SeedLabel")
 upper_layer = NodePath("UpperLayer")
 card_flow = NodePath("UpperLayer/VBoxContainer/Cardflow")
 card_manager = NodePath("Cards")
 upper_label = NodePath("UpperLayer/VBoxContainer/MarginContainer/TopLabel")
+draw_dot = NodePath("TopLayer/Draw/DrawDotPanel")
+discard_dot = NodePath("TopLayer/Discard/DiscardDotPanel")
 
 [node name="Cards" type="Control" parent="." unique_id=2106648012]
 layout_mode = 3
@@ -79,21 +94,12 @@ color = Color(0, 0.6666667, 0.80784315, 1)
 
 [node name="EndButton" type="Button" parent="." unique_id=2110573939]
 anchors_preset = -1
-anchor_left = 0.8
-anchor_top = 0.7
-anchor_right = 0.9
-anchor_bottom = 0.8
+anchor_left = 0.7817708
+anchor_top = 0.6722222
+anchor_right = 0.90520835
+anchor_bottom = 0.7638889
 shortcut = SubResource("Shortcut_1j2ro")
 text = "END_TURN_UI"
-
-[node name="BacktoMenu" type="Button" parent="." unique_id=765526643]
-anchors_preset = -1
-anchor_left = 0.9203125
-anchor_top = 0.10185185
-anchor_right = 1.0
-anchor_bottom = 0.2037037
-text = "BACK_TO_MENU_UI"
-autowrap_mode = 3
 metadata/_edit_use_anchors_ = true
 
 [node name="SeedLabel" type="Label" parent="." unique_id=1816908545]
@@ -106,6 +112,8 @@ grow_horizontal = 0
 text = "seed"
 
 [node name="UpperLayer" type="CanvasLayer" parent="." unique_id=659848561]
+layer = 2
+visible = false
 
 [node name="ColorRect" type="ColorRect" parent="UpperLayer" unique_id=476668181]
 anchors_preset = 15
@@ -141,19 +149,18 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="TopLayer" type="CanvasLayer" parent="." unique_id=117664296]
-layer = 2
+layer = 3
 
 [node name="Draw" type="Button" parent="TopLayer" unique_id=1739715817]
 custom_minimum_size = Vector2(120, 120)
 anchors_preset = -1
-anchor_left = 0.009895833
-anchor_top = 0.8796296
-anchor_right = 0.07239583
-anchor_bottom = 0.9907407
+anchor_top = 0.8888889
+anchor_right = 0.0625
+anchor_bottom = 1.0
 grow_vertical = 0
 pivot_offset = Vector2(61, 80)
-offset_transform_enabled = true
 offset_transform_position = Vector2(-10, 5)
+theme_type_variation = &"FlatButton"
 toggle_mode = true
 shortcut = SubResource("Shortcut_4jk46")
 icon = ExtResource("9_tru4y")
@@ -169,35 +176,63 @@ hover_scale = Vector2(1.05, 1.05)
 tween_time = 0.05
 metadata/_custom_type_script = "uid://83awn1fgp8b8"
 
-[node name="Discard" type="Button" parent="TopLayer" unique_id=1148945822]
-anchors_preset = -1
-anchor_left = 0.9328125
-anchor_top = 0.8898148
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 0
-grow_vertical = 0
-toggle_mode = true
-shortcut = SubResource("Shortcut_tru4y")
-text = "Discard"
-metadata/_edit_use_anchors_ = true
-
-[node name="DrawDotPanel" parent="TopLayer" unique_id=1656285534 instance=ExtResource("9_bkgld")]
-anchor_left = 0.047916666
-anchor_top = 0.95
-anchor_right = 0.06753473
-anchor_bottom = 0.98456794
-offset_left = -7.0
-offset_right = -20.666687
-offset_bottom = -13.333374
+[node name="DrawDotPanel" parent="TopLayer/Draw" unique_id=1656285534 instance=ExtResource("9_bkgld")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchor_left = 0.6166667
+anchor_top = 0.55
+anchor_right = 0.8666667
+anchor_bottom = 0.8
+offset_right = -10.0
+offset_bottom = -10.0
 grow_horizontal = 0
 grow_vertical = 0
 scale = Vector2(1.5, 1.5)
-theme_override_styles/panel = SubResource("StyleBoxFlat_mgv6r")
+theme_override_styles/panel = SubResource("StyleBoxFlat_1gupt")
+color = Color(0.8564562, 0.034649134, 0.31549564, 1)
+metadata/_edit_use_anchors_ = true
+
+[node name="Discard" type="Button" parent="TopLayer" unique_id=1148945822]
+custom_minimum_size = Vector2(120, 120)
+anchors_preset = -1
+anchor_left = 0.93645835
+anchor_top = 0.88611114
+anchor_right = 0.99895835
+anchor_bottom = 0.99722224
+offset_top = -6.1035156e-05
+grow_horizontal = 0
+grow_vertical = 0
+pivot_offset = Vector2(58, 63)
+theme_type_variation = &"FlatButton"
+toggle_mode = true
+shortcut = SubResource("Shortcut_tru4y")
+icon = ExtResource("11_1gupt")
+flat = true
+expand_icon = true
+metadata/_edit_use_anchors_ = true
+
+[node name="HoverAnim2" type="Node" parent="TopLayer/Discard" unique_id=194919532]
+script = ExtResource("11_mgv6r")
+hover_scale = Vector2(1.05, 1.05)
+tween_time = 0.05
+metadata/_custom_type_script = "uid://83awn1fgp8b8"
+
+[node name="DiscardDotPanel" parent="TopLayer/Discard" unique_id=376271207 instance=ExtResource("9_bkgld")]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 1
+anchor_left = 0.14166667
+anchor_top = 0.5833333
+anchor_right = 0.39166668
+anchor_bottom = 0.8333333
+offset_right = -10.0
+offset_bottom = -10.0
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(1.5, 1.5)
+theme_override_styles/panel = SubResource("StyleBoxFlat_xypgn")
 color = Color(0.8564562, 0.034649134, 0.31549564, 1)
 metadata/_edit_use_anchors_ = true
 
 [connection signal="pressed" from="EndButton" to="." method="_on_end_button_button_up"]
-[connection signal="pressed" from="BacktoMenu" to="." method="_on_backto_menu_pressed"]
 [connection signal="toggled" from="TopLayer/Draw" to="." method="_on_draw_toggled"]
 [connection signal="toggled" from="TopLayer/Discard" to="." method="_on_discard_toggled"]

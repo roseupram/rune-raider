@@ -7,6 +7,7 @@ const CARD_UI = preload("uid://da51k3b2ha8i7")
 var focused_card
 signal card_focus(card:CardHandUI,by_shortcut:bool)
 signal card_unfocus(leaved_card:CardHandUI)
+signal changed()
 
 @export var card_deck:Array[CardData]
 @export var card_wh_ratio=1/1.3
@@ -67,6 +68,7 @@ func draw_card(n=1):
 			discard_pile=[]
 			shuffle(draw_pile)
 		add_card(draw_pile.pop_back())
+		changed.emit()
 	arrange_cards()
 
 func add_card(data:CardData):
@@ -74,13 +76,14 @@ func add_card(data:CardData):
 		push_error("CardData is "+str(data))
 		return
 	var card_ui:CardHandUI=CARD_UI.instantiate()
-	var disc_fn  = func(): 
+	var discard_fn  = func(): 
 		discard_pile.append(data)
 		card_ui.queue_free()
 		remove_child(card_ui)
 		arrange_cards()
+		changed.emit()
 	var e_fn=func ():return current_enegy
-	card_ui.discard=disc_fn
+	card_ui.discard=discard_fn
 	card_ui.get_enegy=e_fn
 	card_ui.data=data
 	card_ui.focus.connect(_on_card_focused)
@@ -118,14 +121,6 @@ func arrange_cards():
 		c.move_to(Vector2(x,c.position.y))
 		c.set_size.call_deferred(Vector2(card_w,card_h))
 
-func discard(card=null):
-	if card==null and focused_card:
-		remove_child(focused_card)
-		focused_card.queue_free()
-		arrange_cards()
-	else:
-		push_error("no card to discard")
-		
 		
 func clear_focus():
 	if focused_card:

@@ -10,6 +10,10 @@ var tw:Tween
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	if not node :
+		node=get_parent()
+		if not node is Control:
+			push_error("need a Control node")
 	node.mouse_entered.connect(_on_mouse_enter)
 	node.mouse_exited.connect(_on_mouse_exit)
 	normal_scale=node.scale

@@ -12,28 +12,6 @@ grow_vertical = 2
 script = ExtResource("1_dl586")
 metadata/_edit_lock_ = true
 
-[node name="StartButton" type="Button" parent="." unique_id=1009764958]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.40052083
-anchor_top = 0.587037
-anchor_right = 0.58002084
-anchor_bottom = 0.74722224
-offset_right = -0.64001465
-text = "START_UI"
-metadata/_edit_use_anchors_ = true
-
-[node name="ExitButton" type="Button" parent="." unique_id=1403165085]
-layout_mode = 1
-anchors_preset = -1
-anchor_left = 0.40052083
-anchor_top = 0.787963
-anchor_right = 0.58002084
-anchor_bottom = 0.94814813
-offset_right = -0.64001465
-text = "EXIT_UI"
-metadata/_edit_use_anchors_ = true
-
 [node name="OptionButton" type="OptionButton" parent="." unique_id=1903139803]
 layout_mode = 1
 anchors_preset = -1
@@ -53,6 +31,27 @@ anchor_bottom = 0.62314814
 text = "LANGUAGE_UI"
 metadata/_edit_use_anchors_ = true
 
-[connection signal="pressed" from="StartButton" to="." method="_on_button_button_up"]
-[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=997166966]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.39375
+anchor_top = 0.5546296
+anchor_right = 0.57604164
+anchor_bottom = 1.0
+offset_bottom = -6.1035156e-05
+metadata/_edit_group_ = true
+metadata/_edit_use_anchors_ = true
+
+[node name="StartButton" type="Button" parent="VBoxContainer" unique_id=1009764958]
+layout_mode = 2
+text = "START_UI"
+metadata/_edit_use_anchors_ = true
+
+[node name="ExitButton" type="Button" parent="VBoxContainer" unique_id=1403165085]
+layout_mode = 2
+text = "EXIT_UI"
+metadata/_edit_use_anchors_ = true
+
 [connection signal="item_selected" from="OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="pressed" from="VBoxContainer/StartButton" to="." method="_on_button_button_up"]
+[connection signal="pressed" from="VBoxContainer/ExitButton" to="." method="_on_exit_button_pressed"]

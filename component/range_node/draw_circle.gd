@@ -15,4 +15,4 @@ func _init(center_,r,lw,colo=Color.WHITE) -> void:
 	points=radius/10+32
 
 func draw(n:RangeNode):
-	n.draw_circle(center,radius,color,false,line_width)
+	n.draw_circle(center,radius,color,false,line_width,true)

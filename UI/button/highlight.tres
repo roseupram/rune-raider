@@ -1,0 +1,14 @@
+[gd_resource type="StyleBoxTexture" format=3 uid="uid://clcu72si53eyx"]
+
+[ext_resource type="Texture2D" uid="uid://bjv1s8yktjcai" path="res://UI/button/button_highlight.svg" id="1_pvyb2"]
+
+[resource]
+texture = ExtResource("1_pvyb2")
+texture_margin_left = 45.0
+texture_margin_top = 30.0
+texture_margin_right = 45.0
+texture_margin_bottom = 30.0
+expand_margin_left = 10.0
+expand_margin_top = 5.0
+expand_margin_right = 10.0
+expand_margin_bottom = 5.0
