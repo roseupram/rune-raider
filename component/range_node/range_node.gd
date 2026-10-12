@@ -3,9 +3,7 @@ extends Node2D
 class_name RangeNode
 # Type: direction, one target, area
 
-#TODO combine to one, finish(success:bool) or one request class
-signal confirmed(pos) # pos or target
-signal canceled
+signal finished(success:bool,result)
 
 enum  S{Idle,Wait_for_comfirm}
 var current_state=S.Idle
@@ -31,18 +29,22 @@ func clear():
 func _unhandled_input(_event: InputEvent) -> void:
 	if current_state==S.Wait_for_comfirm:
 		queue_redraw()
+		var success=true
+		var result={}
 		var handled=true
 		if Input.is_action_just_released("confirm"):
-			var player = center
-			var dir = get_global_mouse_position()-player
+			var dir = get_global_mouse_position()-center
 			dir = dir.normalized()*clamp(dir.length(),0,max_range)
-			confirmed.emit(dir+player)
+			var pos = dir+center
+			result["position"]=pos
 		elif Input.is_action_just_pressed("cancel"):
-			canceled.emit()
+			success=false
 			clear()
 		else:
 			handled=false
+
 		if handled:
+			finished.emit(success,result)
 			get_viewport().set_input_as_handled()
 			
 

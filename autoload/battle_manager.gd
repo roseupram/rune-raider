@@ -1,15 +1,16 @@
 extends Node
 class_name BattleManager
 ## receive intention, on turn end, execute all intention
-enum Intent{MOVE,MOVE_TO_PLAYER}
+enum Intent{MOVE,MOVE_TO_PLAYER,OTHER}
 
 
 # display range of card
 var range_node:RangeNode:
 	set(n):
 		range_node=n
-		range_node.confirmed.connect(_on_confirmed)
-		range_node.canceled.connect(_on_canceled)
+		# range_node.confirmed.connect(_on_confirmed)
+		# range_node.canceled.connect(_on_canceled)
+		range_node.finished.connect(_on_range_node_finished)
 
 var player_node:Player
 var card_manager:CardManager
@@ -19,13 +20,15 @@ var AM:ActionManager
 enum State{Idle,Wait_for_comfirm}
 var current_state = State.Idle
 
+var enemy_to_act=[]
 var position_assign_array=[]
 var intent_count = 0
 var finish_count = 0
 var enemy_count = 0
 
 func _ready() -> void:
-	EventBus.turn_end.connect(_on_turn_end,ConnectFlags.CONNECT_DEFERRED)
+	# defer to wait enemy 
+	EventBus.turn_end.connect(_on_turn_end,ConnectFlags.CONNECT_DEFERRED) 
 	EventBus.enemy_spawn.connect(_on_enemy_spawn)
 	EventBus.enemy_died.connect(_on_enemy_died)
 	EventBus.turn_start.emit()
@@ -37,10 +40,6 @@ func _on_enemy_died(e):
 func _on_turn_end():
 	intent_count=0
 	finish_count=0
-	for e:Node in position_assign_array:
-		if e.has_method("act"):
-			e.act()
-	position_assign_array.clear()
 
 func _on_enemy_spawn(e:Enemy):
 	enemy_count+=1
@@ -53,9 +52,11 @@ func _on_enemy_action_finish():
 	print("BM finish count{0}/{1}".format([finish_count,enemy_count]))
 	if finish_count==enemy_count:
 		EventBus.turn_start.emit()
+		finish_count=0
 
 
 func _receive_intention(intent:Intent,node:Node):
+	enemy_to_act.push_back(node)
 	match  intent:
 		Intent.MOVE_TO_PLAYER:
 			var method_name="set_target"
@@ -65,7 +66,12 @@ func _receive_intention(intent:Intent,node:Node):
 	intent_count+=1
 	if intent_count==enemy_count:
 		assign_target_pos(position_assign_array)
-		# print("assign position")
+		for e:Node in enemy_to_act:
+			if e.has_method("act"):
+				e.act()
+		enemy_to_act.clear()
+		position_assign_array.clear()
+		intent_count=0
 
 func assign_target_pos(nodes:Array):
 	# TODO need sort by angle
@@ -116,22 +122,22 @@ func _on_card_focus(c:CardHandUI,_by_shortcut):
 func _on_card_unfocus(_c:CardHandUI):
 	clear_range()
 
-func _on_canceled():
-	clear_range()
-
-func _on_confirmed(pos):
-	selected_card.played()
-	clear_range()
-	var current_enegy = player_node.enegy()
-	var card_data = selected_card.data
-	player_node.enegy(current_enegy-card_data.cost)
-	for e in card_data.effects:
-		var r = e.create_request(player_node,{"target_pos":pos})
-		if AM:
-			AM.request(r)
-		else:
-			push_error("no ActionManager in BattleManager")
+func _on_range_node_finished(success,res):
+	if success:
+		selected_card.played()
+		clear_range()
+		var current_enegy = player_node.enegy()
+		var card_data = selected_card.data
+		player_node.enegy(current_enegy-card_data.cost)
+		for e in card_data.effects:
+			var r = e.create_request(player_node,{"target_pos":res["position"]})
+			if AM:
+				AM.request(r)
+			else:
+				push_error("no ActionManager in BattleManager")
 	
+	else:
+		clear_range()
 
 
 func register_card_manager(m:CardManager):

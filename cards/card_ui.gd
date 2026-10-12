@@ -84,7 +84,7 @@ func played():
 
 
 func move_to(pos,time=0.1):
-	var tw =get_tree().create_tween()
+	var tw =create_tween()
 	tw.tween_property(self,"position",pos,time).set_trans(Tween.TRANS_SINE)
 
 

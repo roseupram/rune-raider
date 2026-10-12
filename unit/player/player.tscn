@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://db67hdxqdyqwk" path="res://unit/player/player.gd" id="2_v7rm1"]
 [ext_resource type="Texture2D" uid="uid://dpnxvf52mk3ww" path="res://unit/bg.svg" id="3_mjnxy"]
-[ext_resource type="Texture2D" uid="uid://bqrejgpmdbjkw" path="res://images/ham.svg" id="3_v7rm1"]
+[ext_resource type="Texture2D" uid="uid://bf0mufv0u1lvf" path="res://images/ham.svg" id="3_v7rm1"]
 [ext_resource type="PackedScene" uid="uid://cl45gabnbook2" path="res://component/hitbox.tscn" id="4_mjnxy"]
 [ext_resource type="Shape2D" uid="uid://c55ddk8opgcum" path="res://component/shape/one_circle.tres" id="6_am7h2"]
 [ext_resource type="PackedScene" uid="uid://hdi7xs6tswv7" path="res://unit/player/skeleton/hamman.tscn" id="7_mompe"]
@@ -238,5 +238,5 @@ metadata/_custom_type_script = "uid://8we6snch7egg"
 [node name="HP" type="Node" parent="." unique_id=211390486 groups=["HP"]]
 script = ExtResource("8_6cahc")
 max_value = 56
-value = 48
+value = 32
 metadata/_custom_type_script = "uid://b5c18ylmehx82"

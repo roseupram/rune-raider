@@ -10,6 +10,7 @@ signal action_finish()
 var count=0
 
 var player_enter=false
+var player_node
 var other_enemy:Array[Node2D]=[]
 
 enum  State{Idle,Move,Arrive,Attack,SIZE}
@@ -35,11 +36,9 @@ func state_to(s:State):
 			#navi_agent.avoidance_priority=0.1
 			navi_agent.velocity=Vector2.ZERO
 			velocity=Vector2.ZERO
-			action_finish.emit()
 		State.Move:
 			accumulated_distance=0.0
 		State.Arrive:
-			action_finish.emit()
 			#arrived.emit()
 			#velocity=Vector2.ZERO
 			navi_agent.velocity=Vector2.ZERO
@@ -49,7 +48,12 @@ func state_to(s:State):
 
 
 func get_intention():
-	var intent = BattleManager.Intent.MOVE_TO_PLAYER
+	var intent = BattleManager.Intent.OTHER
+	match  current_state:
+		State.Idle:
+			intent = BattleManager.Intent.MOVE_TO_PLAYER
+		State.Arrive:
+			state_to(State.Attack)
 	intention_get.emit(intent)
 
 func _ready() -> void:
@@ -65,6 +69,11 @@ func act():
 	match current_state:
 		State.Idle:
 			state_to(State.Move)
+		State.Attack:
+			await  attack_player()
+			action_finish.emit()
+			player_node.heal(-6)
+			state_to(State.Arrive)
 	
 func _on_turn_end():
 	get_intention()
@@ -90,22 +99,19 @@ func take_damage(d):
 	health_node.value-=d
 
 
-#func attack_player():
-	#var player_pos = GameContext.Player.position
-	#var old_z = z_index
-	#z_index=100
-	#var tw = get_tree().create_tween()
-	#var hit_pos = player_pos*.7+position*0.3
-	#tw.tween_property(self,"position",hit_pos,.1)
-	#tw.parallel().tween_property(self,"scale",Vector2(1,1)*1.2,.07)
-	#tw.tween_property(self,"scale",Vector2(1,1),.03)
-	#tw.tween_property(self,"position",position,.1)
-	#await  tw.finished
-	#z_index=old_z
-	#var player_hp = hit_target.get_node("Health")
-	#player_hp.value-=6
+func attack_player():
+	var old_z = z_index
+	z_index=100
+	var tw = get_tree().create_tween()
+	var hit_pos = player_node.position*.7+position*0.3
+	tw.tween_property(self,"position",hit_pos,.1)
+	tw.parallel().tween_property(self,"scale",Vector2(1,1)*1.2,.07)
+	tw.tween_property(self,"scale",Vector2(1,1),.03)
+	tw.tween_property(self,"position",position,.1)
+	await  tw.finished
+	z_index=old_z
 
-
+#BUG stuck when two enemy to close
 func _physics_process(delta: float) -> void:
 	#if navi_agent.is_navigation_finished(): 
 		#state_to(State.Idle)
@@ -115,6 +121,7 @@ func _physics_process(delta: float) -> void:
 			accumulated_distance+=delta*velocity.length()
 			if accumulated_distance >= one_step : 
 				state_to(State.Idle)
+				action_finish.emit()
 				return
 			var from = global_position
 			var to = navi_agent.get_next_path_position()
@@ -138,6 +145,7 @@ func _process(_delta: float) -> void:
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Player:
 		player_enter=true
+		player_node=body
 		state_to(State.Arrive)
 
 

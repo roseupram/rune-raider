@@ -12,7 +12,7 @@ extends Control
 func _on_changed(from,to,max_v):
 	max_value=max_v
 	#value=current
-	var tween = get_tree().create_tween()
+	var tween = create_tween()
 	tween.tween_property(self,"value",to,.1)
 
 func set_color(c):

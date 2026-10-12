@@ -10,7 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://d2705e6is51og" path="res://UI/card_flow/card_flow.tscn" id="8_4jk46"]
 [ext_resource type="PackedScene" uid="uid://blcxfqk2oe147" path="res://UI/dot_panel.tscn" id="9_bkgld"]
 [ext_resource type="Texture2D" uid="uid://cjet17ac47ffw" path="res://images/draw_pile_icon.svg" id="9_tru4y"]
-[ext_resource type="Texture2D" uid="uid://7kgnt43cjcpv" path="res://images/discard_pile_icon.svg" id="11_1gupt"]
+[ext_resource type="Texture2D" uid="uid://bgbp73fqhos4i" path="res://images/discard_pile_icon.svg" id="11_1gupt"]
 [ext_resource type="Script" uid="uid://83awn1fgp8b8" path="res://UI/hover_anim.gd" id="11_mgv6r"]
 
 [sub_resource type="InputEventAction" id="InputEventAction_2jutx"]
@@ -79,7 +79,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 script = ExtResource("2_1j2ro")
-card_deck = Array[ExtResource("3_4jk46")]([ExtResource("4_rw8eu"), ExtResource("4_rw8eu"), ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("6_rw8eu"), ExtResource("3_jpgws"), ExtResource("6_rw8eu")])
+card_deck = Array[ExtResource("3_4jk46")]([ExtResource("4_rw8eu"), ExtResource("4_rw8eu"), ExtResource("4_rw8eu"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("3_jpgws"), ExtResource("6_rw8eu")])
 gap = 30
 metadata/_edit_use_anchors_ = true
 
