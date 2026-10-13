@@ -26,7 +26,7 @@ func _process(delta: float) -> void:
 
 func _on_player_died():
 	pass
-	EventBus.to_menu.call_deferred()
+	SceneManager.to_menu.call_deferred()
 
 	
 	

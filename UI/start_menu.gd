@@ -28,8 +28,8 @@ func _process(delta: float) -> void:
 
 func _on_button_button_up() -> void:
 	SeedManager.start_new_run()
-	EventBus.to_game()
+	SceneManager.to_game()
 
 
 func _on_exit_button_pressed() -> void:
-	get_tree().quit()
+	SceneManager.quit()

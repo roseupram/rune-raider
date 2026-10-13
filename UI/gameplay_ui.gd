@@ -65,7 +65,7 @@ func _on_end_button_button_up() -> void:
 
 
 func _on_backto_menu_pressed() -> void:
-	EventBus.to_menu()
+	SceneManager.to_menu()
 
 func show_cards(cards:Array[CardData]):
 	card_flow.card_datas=cards

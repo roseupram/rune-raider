@@ -16,4 +16,4 @@ func _on_return():
 	hide()
 
 func _on_back_to_menu():
-	EventBus.to_menu()
+	SceneManager.to_menu()

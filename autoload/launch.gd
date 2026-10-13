@@ -6,9 +6,9 @@ extends Node
 func _ready() -> void:
 	#var launch_scene=START_MENU
 	if OS.has_feature("editor"):
-		EventBus.to_game()
+		SceneManager.to_game()
 	else:
-		EventBus.to_menu()
+		SceneManager.to_menu()
 		DisplayServer.window_set_mode(DisplayServer.WINDOW_MODE_EXCLUSIVE_FULLSCREEN)
 	
 		

@@ -1,8 +1,6 @@
 extends Node
 ## EventBus
 
-const MAIN_GAME = preload("uid://cl1r60rn8mlxx")
-const START_MENU = preload("uid://bhl3tkd7kgv07")
 
 
 signal unit_moved(from:Vector2,to:Vector2,act:Node2D)
@@ -29,7 +27,3 @@ func _input(_event: InputEvent) -> void:
 	elif  Input.is_action_just_released("click"):
 		Input.set_custom_mouse_cursor(cursor_normal)
 
-func to_game():
-	get_tree().change_scene_to_packed.call_deferred(MAIN_GAME)
-func to_menu():
-	get_tree().change_scene_to_packed.call_deferred(START_MENU)

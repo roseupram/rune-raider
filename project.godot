@@ -23,6 +23,7 @@ config/icon="uid://d1drtldacawqm"
 
 EventBus="*uid://qwuxl0tx3k1h"
 SeedManager="*uid://dmtwuq3enue0v"
+SceneManager="*uid://b6a01bucm2uxx"
 
 [display]
 
